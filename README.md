@@ -52,9 +52,7 @@
 
 ---
 
-## 📸 Screenshots
 
-> _Add screenshots here in future using Markdown!_
 
 ---
 
@@ -100,3 +98,4 @@ AI & ML Engineering Student | Front-End Developer | Python Programmer
 ## 📌 License
 
 This project is open source and available under the [MIT License](LICENSE).
+
