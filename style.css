@@ -397,11 +397,11 @@ body {
     left: 10%;
     animation-delay: 4s;
 }
-
 /* About Section */
 .about {
     padding: var(--section-padding);
     background: var(--bg-primary);
+    height: 100vh;
 }
 
 .about-content {
@@ -442,6 +442,7 @@ body {
     font-weight: 500;
 }
 
+/* Profile Card */
 .profile-card {
     background: var(--bg-secondary);
     border-radius: var(--border-radius-lg);
@@ -455,46 +456,38 @@ body {
     transform: translateY(-5px);
 }
 
-.profile-image {
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 20px;
-    border-radius: 50%;
-    background: var(--gradient-primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* Circular image with decorative ring */
+.profile-card img {
+    width: 150px;                  /* base size */
+    max-width: 100%;               /* responsive scaling */
+    aspect-ratio: 1 / 1;           /* keeps it square */
+    border-radius: 50%;            /* makes it circular */
+    object-fit: cover;             /* fills without distortion */
+    border: 4px solid var(--bg-primary); /* decorative ring */
+    box-shadow: var(--shadow-light);
+    display: block;
+    margin: 0 auto 20px;           /* center & add bottom space */
 }
 
-.profile-placeholder {
-    color: white;
-    font-size: 3rem;
+/* Optional hover zoom on image */
+.profile-card:hover img {
+    transform: scale(1.05);
+    transition: transform var(--transition-normal);
 }
 
-.profile-info h3 {
-    font-size: var(--font-size-xl);
-    font-weight: 600;
-    margin-bottom: 8px;
-}
-
-.profile-info p {
-    color: var(--text-secondary);
-    margin-bottom: 16px;
-}
-
-.profile-location {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    color: var(--text-secondary);
-    font-size: var(--font-size-sm);
+/* Responsive: stack columns */
+@media (max-width: 768px) {
+    .about-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
 }
 
 /* Skills Section */
 .skills {
     padding: var(--section-padding);
     background: var(--bg-secondary);
+    height: 100vh;
 }
 
 .skills-categories {
@@ -582,6 +575,7 @@ body {
     padding: var(--section-padding);
     background: var(--bg-primary);
     cursor: pointer;
+    height: 100vh;
 }
 
 .projects-grid {
@@ -1192,7 +1186,7 @@ body {
         padding: 10px 20px;
         font-size: var(--font-size-sm);
     }
-
+    
     .contact-form-container {
         padding: 24px;
     }
