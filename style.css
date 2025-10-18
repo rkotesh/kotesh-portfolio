@@ -432,7 +432,7 @@ body {
     display: block;
     font-size: var(--font-size-4xl);
     font-weight: 700;
-    color: var(--primary-color);
+    color: var(--text-secondary);
     margin-bottom: 8px;
 }
 
