@@ -115,6 +115,20 @@ function animateCounters() {
     });
 }
 
+const aboutSection = document.querySelector(".about");
+const objects = document.querySelectorAll(".bg-object");
+
+aboutSection.addEventListener("mousemove", (e) => {
+    const x = e.clientX / window.innerWidth - 0.5; // range -0.5 to 0.5
+    const y = e.clientY / window.innerHeight - 0.5;
+
+    objects.forEach((obj, index) => {
+        const factor = (index + 1) * 15; // depth factor
+        obj.style.transform = `translate3d(${x * factor}px, ${y * factor}px, 0)`;
+    });
+});
+
+
 // Skill Bar Animation
 function animateSkillBars() {
     const skillBars = document.querySelectorAll('.skill-progress');
