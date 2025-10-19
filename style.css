@@ -141,7 +141,6 @@ body {
     background-color: var(--bg-primary);
     transition: background-color var(--transition-normal), color var(--transition-normal);
     overflow-x: hidden;
-    perspective: 800px;
 
 }
 
@@ -211,24 +210,67 @@ body {
     max-width: 600px;
     margin: 0 auto;
 }
-
-/* Navigation */
+/* Navigation - Sparkling Animated Navbar with Glowing Effects */
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background: var(--transition-fast);
-    backdrop-filter: blur(10px);
-    z-index: 1000;
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(12px);
+    z-index: 9999; /* Always on top */
     transition: all var(--transition-normal);
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 2px solid rgba(9, 37, 42, 0.979);
+    pointer-events: auto;
 }
 
-[data-theme="dark"] .navbar {
-    background: rgba(71, 77, 90, 0.95);
+/* Sparkling moving gradient overlay */
+.navbar::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: -150%;
+    width: 300%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0.05) 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    transform: skewX(-20deg);
+    animation: sparkleMove 3s infinite linear;
+    pointer-events: none;
+    z-index: 0;
 }
 
+/* Sparkle movement */
+@keyframes sparkleMove {
+    0% { left: -150%; }
+    100% { left: 150%; }
+}
+
+/* Glowing floating particles */
+.navbar::after {
+    content: '';
+    position: fixed;
+    width: 200%;
+    height: 100%;
+    top: 0;
+    left: -50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+    animation: floatParticles 4s infinite alternate ease-in-out;
+    z-index: 2;
+    pointer-events: none;
+}
+
+@keyframes floatParticles {
+    0% { transform: translate3d(0,0,0); }
+    50% { transform: translate3d(30px, 10px, 0); }
+    100% { transform: translate3d(0,0,0); }
+}
+
+/* Navbar container */
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -237,17 +279,27 @@ body {
     justify-content: space-between;
     align-items: center;
     height: 70px;
+    position: relative;
+    z-index: 2; /* Above sparkle overlay */
 }
 
+/* Logo text shimmering gradient */
 .nav-logo .logo-text {
     font-size: var(--font-size-xl);
     font-weight: 700;
-    background: var(--gradient-primary);
+    background: linear-gradient(90deg, #ff85ff, #00fff0, #ff85ff);
+    background-size: 200% 100%;
     -webkit-background-clip: text;
-    -webkit-text-fill-color: white;
-    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmerText 3s infinite linear;
 }
 
+@keyframes shimmerText {
+    0% { background-position: 0% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* Nav menu links */
 .nav-menu {
     display: flex;
     list-style: none;
@@ -258,12 +310,13 @@ body {
     text-decoration: none;
     color: rgba(255, 255, 255, 0.95);
     font-weight: 500;
-    transition: color var(--transition-normal);
+    transition: color var(--transition-normal), transform 0.3s ease;
     position: relative;
+    z-index: 2;
 }
 
 .nav-link:hover {
-    color: rgba(255, 255, 255, 0.95);
+    transform: translateY(-3px) scale(1.05);
 }
 
 .nav-link::after {
@@ -273,7 +326,7 @@ body {
     left: 0;
     width: 0;
     height: 2px;
-    background: var(--gradient-primary);
+    background: linear-gradient(90deg, #ff85ff, #00fff0);
     transition: width var(--transition-normal);
 }
 
@@ -281,12 +334,7 @@ body {
     width: 100%;
 }
 
-.nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
-
+/* Theme toggle & hover animation */
 .theme-toggle {
     background: none;
     border: none;
@@ -299,10 +347,11 @@ body {
 }
 
 .theme-toggle:hover {
-    background: rgb(0, 0, 0);
-    transform: rotate(180deg);
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(180deg) scale(1.1);
 }
 
+/* Hamburger menu bars */
 .hamburger {
     display: none;
     flex-direction: column;
@@ -316,6 +365,7 @@ body {
     background: var(--text-primary);
     transition: all var(--transition-normal);
 }
+
 
 /* Hero Section */
 .hero {
@@ -357,7 +407,7 @@ body {
 }
 
 .main-name {
-    background: linear-gradient(45deg, #ffffff, #ffffff);
+    background: linear-gradient(90deg, #ff0f1f);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -366,7 +416,7 @@ body {
 .role-text {
     font-size: var(--font-size-2xl);
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(0, 248, 231, 0.9);
 }
 
 .hero-description {
