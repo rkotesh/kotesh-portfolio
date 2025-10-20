@@ -65,7 +65,22 @@
     --transition-slow: 0.5s ease;
 }
 
-/* Dark Theme with Richer 3D Marble Effect */
+/* Starry Light Theme */
+[data-theme="light"] {
+    --text-primary: #F9FAFB;
+    --text-secondary: #E0E7FF;
+    --bg-primary: radial-gradient(circle at 30% 30%, #423e4d 0%, #271a42 100%);
+    --bg-secondary: linear-gradient(145deg, #251b54, #1a1f2a);
+    --bg-tertiary: linear-gradient(125deg, #0d0b1a 0%, #000000 100%);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --shadow-light: 0 4px 10px rgba(255, 255, 255, 0.05);
+    --shadow-medium: 0 10px 25px rgba(0, 0, 0, 0.5);
+    --shadow-heavy: 0 25px 50px rgba(0, 0, 0, 0.7);
+}
+
+
+
+/* Dark Theme with Richer 3D Marble Effect */   
 [data-theme="dark"] {
     --text-primary: #F9FAFB;
     --text-secondary: #E0E7FF;
