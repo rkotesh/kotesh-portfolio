@@ -1,6 +1,6 @@
 // DOM Elements
 const navbar = document.getElementById('navbar');
-const themeToggle = document.getElementById('theme-toggle');
+// const themeToggle = document.getElementById('theme-toggle'); // Removed
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('nav-menu');
 const roleText = document.querySelector('.role-text');
@@ -10,24 +10,9 @@ const contactForm = document.getElementById('contact-form');
 const activityTimeline = document.getElementById('activity-timeline');
 
 // Theme Management
-const currentTheme = localStorage.getItem('theme') || 'light';
-document.documentElement.setAttribute('data-theme', currentTheme);
-
-themeToggle.addEventListener('click', () => {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    
-    // Update icon
-    const icon = themeToggle.querySelector('i');
-    icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-});
-
-// Initialize theme icon
-const themeIcon = themeToggle.querySelector('i');
-themeIcon.className = currentTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+// Theme Management - REMOVED (Light theme deprecated)
+// const currentTheme = localStorage.getItem('theme') || 'light';
+// document.documentElement.setAttribute('data-theme', currentTheme);
 
 // Mobile Navigation
 hamburger.addEventListener('click', () => {
@@ -74,7 +59,7 @@ let isDeleting = false;
 
 function typeRole() {
     const currentRole = roles[roleIndex];
-    
+
     if (isDeleting) {
         roleText.textContent = currentRole.substring(0, charIndex - 1);
         charIndex--;
@@ -100,12 +85,12 @@ setTimeout(typeRole, 1000);
 // Animated Counters
 function animateCounters() {
     const counters = document.querySelectorAll('.stat-number');
-    
+
     counters.forEach(counter => {
         const target = parseInt(counter.getAttribute('data-count'));
         const count = parseInt(counter.textContent);
         const increment = target / 200;
-        
+
         if (count < target) {
             counter.textContent = Math.ceil(count + increment);
             setTimeout(() => animateCounters(), 10);
@@ -132,7 +117,7 @@ aboutSection.addEventListener("mousemove", (e) => {
 // Skill Bar Animation
 function animateSkillBars() {
     const skillBars = document.querySelectorAll('.skill-progress');
-    
+
     skillBars.forEach(bar => {
         const width = bar.getAttribute('data-width');
         bar.style.width = width + '%';
@@ -149,12 +134,12 @@ const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('aos-animate');
-            
+
             // Trigger specific animations
             if (entry.target.classList.contains('about-stats')) {
                 animateCounters();
             }
-            
+
             if (entry.target.classList.contains('skills-content')) {
                 setTimeout(animateSkillBars, 500);
             }
@@ -175,33 +160,33 @@ if (statsSection) observer.observe(statsSection);
 if (skillsSection) observer.observe(skillsSection);
 
 // Contact Form Handling
-contactForm.addEventListener('submit', function(e) {
+contactForm.addEventListener('submit', function (e) {
     e.preventDefault();
-    
+
     // Get form data
     const formData = new FormData(this);
     const name = formData.get('name');
     const email = formData.get('email');
     const subject = formData.get('subject');
     const message = formData.get('message');
-    
+
     // Simple validation
     if (!name || !email || !subject || !message) {
         showNotification('Please fill in all fields', 'error');
         return;
     }
-    
+
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
         showNotification('Please enter a valid email address', 'error');
         return;
     }
-    
+
     // Simulate form submission
     showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
     this.reset();
-    
+
     // Add to activity feed
     addActivity('contact', `New message received from ${name}`, new Date());
 });
@@ -211,7 +196,7 @@ function showNotification(message, type) {
     const notification = document.createElement('div');
     notification.className = `notification notification-${type}`;
     notification.textContent = message;
-    
+
     // Add styles
     Object.assign(notification.style, {
         position: 'fixed',
@@ -226,14 +211,14 @@ function showNotification(message, type) {
         transition: 'transform 0.3s ease',
         backgroundColor: type === 'success' ? '#10B981' : '#EF4444'
     });
-    
+
     document.body.appendChild(notification);
-    
+
     // Animate in
     setTimeout(() => {
         notification.style.transform = 'translateX(0)';
     }, 100);
-    
+
     // Remove after 5 seconds
     setTimeout(() => {
         notification.style.transform = 'translateX(400px)';
@@ -245,7 +230,7 @@ function showNotification(message, type) {
 
 // Activity Feed
 const activities = [
-    { type: 'skill', text: 'Acquired proficiency in the Django framework for front-end development using Python', time: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000) },
+    { type: 'project', text: 'Revamped Portfolio with "Pitch Black & Glass" theme, optimized typography, and enhanced profile visuals', time: new Date() },
     { type: 'project', text: 'Successfully deployed the Employee Leave Management System (ELMS) application on Render', time: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000) },
     { type: 'skill', text: 'Gained hands-on experience in backend development using Flask during the Employee Leave Management System project at Flipkart', time: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000) },
     { type: 'achievement', text: 'Selected for the prestigious Flipkart Launchpad Internship', time: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000) },
@@ -271,7 +256,7 @@ function getActivityIcon(type) {
 function formatTimeAgo(date) {
     const now = new Date();
     const diffInHours = Math.floor((now - date) / (1000 * 60 * 60));
-    
+
     if (diffInHours < 24) {
         return `${diffInHours} hours ago`;
     } else {
@@ -290,13 +275,13 @@ function addActivity(type, text, time) {
 
 function renderActivityFeed() {
     if (!activityTimeline) return;
-    
+
     activityTimeline.innerHTML = '';
-    
+
     activities.forEach(activity => {
         const activityItem = document.createElement('div');
         activityItem.className = 'activity-item';
-        
+
         activityItem.innerHTML = `
             <div class="activity-icon">
                 <i class="${getActivityIcon(activity.type)}"></i>
@@ -306,7 +291,7 @@ function renderActivityFeed() {
                 <div class="activity-time">${formatTimeAgo(activity.time)}</div>
             </div>
         `;
-        
+
         activityTimeline.appendChild(activityItem);
     });
 }
@@ -321,7 +306,7 @@ setInterval(renderActivityFeed, 60000);
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const shapes = document.querySelectorAll('.shape');
-    
+
     shapes.forEach((shape, index) => {
         const speed = 0.5 + (index * 0.1);
         shape.style.transform = `translateY(${scrolled * speed}px)`;
@@ -332,9 +317,9 @@ window.addEventListener('scroll', () => {
 function updateActiveNavLink() {
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
-    
+
     let current = '';
-    
+
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
@@ -342,7 +327,7 @@ function updateActiveNavLink() {
             current = section.getAttribute('id');
         }
     });
-    
+
     navLinks.forEach(link => {
         link.classList.remove('active');
         if (link.getAttribute('href') === `#${current}`) {
@@ -358,7 +343,7 @@ document.querySelectorAll('.floating-card').forEach((card, index) => {
     card.addEventListener('mouseenter', () => {
         card.style.transform = 'scale(1.1) translateY(-10px)';
     });
-    
+
     card.addEventListener('mouseleave', () => {
         card.style.transform = 'scale(1) translateY(0)';
     });
@@ -370,13 +355,13 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         document.body.classList.add('loaded');
     }, 100);
-    
+
     // Preload images if needed
     const imageUrls = [
         'https://drive.google.com/uc?export=view&id=1A0MmjRaGI1z7WsBGi7uRU7ZUbtGw-wE0'
         // Add any image URLs here for preloading
     ];
-    
+
     imageUrls.forEach(url => {
         const img = new Image();
         img.src = url;

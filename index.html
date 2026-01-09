@@ -1,17 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sankula Koteswara Rao - Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="assets/profile.jpg">
-    
+
 </head>
 
 <body>
+    <!-- 🌌 Ambient Background -->
+    <div class="ambient-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
@@ -39,9 +47,7 @@
                 </li>
             </ul>
             <div class="nav-actions">
-                <button class="theme-toggle" id="theme-toggle">
-                    <i class="fas fa-moon"></i>
-                </button>
+
                 <div class="hamburger" id="hamburger">
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -62,15 +68,18 @@
                         <span class="title-line role-text"></span>
                     </h1>
                     <p class="hero-description">
-                        Aspiring AI & ML Engineer passionate about creating innovative solutions through code. 
+                        Aspiring AI & ML Engineer passionate about creating innovative solutions through code.
                         Specializing in web development, Python programming, and AI automation.
                     </p>
                     <div class="hero-buttons">
-                        <a href="#projects" class="btn btn-primary">View My Work</a>
-                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                        <a href="assets/resume.pdf" target="_blank" class="btn btn-primary">
+                            <i class="fas fa-file-download" style="margin-right: 8px;"></i>Resume
+                        </a>
+                        <a href="#projects" class="btn btn-secondary">View Work</a>
                     </div>
                 </div>
                 <div class="hero-visual">
+                    <img src="assets/profile.jpg" alt="Profile" class="hero-image">
                     <div class="floating-elements">
                         <div class="floating-card" data-skill="JavaScript">
                             <i class="fab fa-js-square"></i>
@@ -95,77 +104,65 @@
         </div>
     </section>
 
-<!-- About Section -->
-<section id="about" class="about">
-    <!-- Floating Background Objects -->
-    <div class="bg-object obj-1"></div>
-    <div class="bg-object obj-2"></div>
-    <div class="bg-object obj-3"></div>
-    <div class="bg-object obj-4"></div>
-    <div class="bg-object obj-5"></div>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <!-- Floating Background Objects -->
+        <div class="bg-object obj-1"></div>
+        <div class="bg-object obj-2"></div>
+        <div class="bg-object obj-3"></div>
+        <div class="bg-object obj-4"></div>
+        <div class="bg-object obj-5"></div>
 
-    <div class="stars">
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-    </div>
-
-    <div class="container">
-        <div class="section-header">
-            <h2 class="section-title">About Me</h2>
-            <p class="section-subtitle">Passionate developer with a drive for innovation</p>
+        <div class="stars">
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
         </div>
 
-        <div class="about-content">
-            <!-- Text Content -->
-            <div class="about-text">
-                <p class="about-description">
-                    I'm an aspiring AI & ML Engineer with a strong foundation in web development and 
-                    artificial intelligence. Currently pursuing B.Tech in AI & ML at Chalapathi Institute 
-                    Of Engineering & Technology, I'm passionate about creating innovative solutions that 
-                    bridge the gap between technology and user experience.
-                </p>
-
-                <div class="about-stats">
-                    <div class="stat-item">
-                        <span class="stat-number" data-count="05">05</span>
-                        <span class="stat-label">Projects Completed</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-count="07">07</span>
-                        <span class="stat-label">Skills</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-count="03">03</span>
-                        <span class="stat-label">Years Learning</span>
-                    </div>
-                </div>
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">Passionate developer with a drive for innovation</p>
             </div>
 
-            <!-- Profile Card -->
-            <div class="about-visual">
-                <div class="profile-card">
-                    <img src="assets/profile.jpg" alt="Profile">
-                    <div class="profile-info">
-                        <h3>Sankula Koteswara Rao</h3>
-                        <p>AI & ML Engineering Student</p>
-                        <div class="profile-location">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Bapatla, Andhra Pradesh</span>
+            <div class="about-content">
+                <!-- Text Content -->
+                <div class="about-text">
+                    <p class="about-description">
+                        I'm an aspiring AI & ML Engineer with a strong foundation in web development and
+                        artificial intelligence. Currently pursuing B.Tech in AI & ML at Chalapathi Institute
+                        Of Engineering & Technology, I'm passionate about creating innovative solutions that
+                        bridge the gap between technology and user experience.
+                    </p>
+
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="05">05</span>
+                            <span class="stat-label">Projects Completed</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="07">07</span>
+                            <span class="stat-label">Skills</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="03">03</span>
+                            <span class="stat-label">Years Learning</span>
                         </div>
                     </div>
                 </div>
+
+                <!-- Profile Card -->
+
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
 
     <!-- Skills Section -->
@@ -228,15 +225,7 @@
                             </div>
                         </div>
 
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">Django</span>
-                                <span class="skill-percentage">60%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="60"></div>
-                            </div>
-                        </div>
+
 
                         <div class="skill-item">
                             <div class="skill-info">
@@ -280,148 +269,151 @@
             </div>
         </div>
     </section>
-<!-- Projects Section -->
-<section id="projects" class="projects">
-    <div class="container">
-        <div class="section-header">
-            <h2 class="section-title">Projects</h2>
-            <p class="section-subtitle">Showcasing my latest work and innovations</p>
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Projects</h2>
+                <p class="section-subtitle">Showcasing my latest work and innovations</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                            </div>
+                        </div>
+                        <div class="project-preview">
+                            <img src="assets/project-elms.png" alt="Employee Leave Management System">
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Employee Leave Management System</h3>
+                        <p class="project-description">
+                            A comprehensive system for managing employee leave requests and approvals.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">SQLAlchemy</span>
+                            <span class="tech-tag">Jinja2</span>
+                            <a href="https://elms-3.onrender.com/" target="_blank" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="project-card" data-aos="fade-up">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                            </div>
+                        </div>
+                        <div class="project-preview">
+                            <img src="assets/project-hospital.png" alt="Hospital Chatbot">
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Hospital Chatbot</h3>
+                        <p class="project-description">
+                            AI-powered chatbot for hospital information and assistance using Python and Streamlit.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Streamlit</span>
+                            <span class="tech-tag">AI</span>
+                            <a href="https://hospitalchatbot04.streamlit.app" target="_blank" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                            </div>
+                        </div>
+                        <div class="project-preview">
+                            <img src="assets/project-weather.png" alt="Weather Chatbot">
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Weather Chatbot</h3>
+                        <p class="project-description">
+                            AI-powered chatbot for providing weather updates and forecasts using Python and Streamlit.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Streamlit</span>
+                            <span class="tech-tag">AI</span>
+                            <a href="https://weatherchatbot04.streamlit.app/" target="_blank" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                            </div>
+                        </div>
+                        <div class="project-preview">
+                            <img src="assets/project-qr.png" alt="QR Code Generator">
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">QR Code Generator</h3>
+                        <p class="project-description">
+                            Dynamic QR code generation tool, will generate QR's using an URL.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Streamlit</span>
+                            <a href="https://qr-generator04.streamlit.app/" target="_blank" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                            </div>
+                        </div>
+                        <div class="project-preview">
+                            <img src="assets/project-inventory.png" alt="Inventory Management System">
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Inventory Management & Billing System</h3>
+                        <p class="project-description">
+                            A Python console application that manages product inventory, processes orders, and generates
+                            bills efficiently.
+                            Built with core Python libraries, it offers seamless product management, billing, and sales
+                            reporting.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <a href="https://github.com/rkotesh/inventory_management_and_billing_system.git"
+                                target="_blank" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-        <div class="projects-grid">
-            <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="project-image">
-                    <div class="project-overlay">
-                        <div class="project-links">
-                        </div>
-                    </div>
-                    <div class="project-preview">
-                        <img src="https://img.freepik.com/free-photo/portrait-professional-elegant-businessman_23-2150917138.jpg?t=st=1760797733~exp=1760801333~hmac=0840c9af1cca4bb81671dc4cc6cd9d4a2108d0f7a0cf23a906d7a6e51732f3e5&w=1480">
-                    </div>
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">Employee Leave Management System</h3>
-                    <p class="project-description">
-                        A comprehensive system for managing employee leave requests and approvals.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Flask</span>
-                        <span class="tech-tag">SQLAlchemy</span>
-                        <span class="tech-tag">Jinja2</span>
-                        <a href="https://elms-3.onrender.com/" target="_blank" class="project-link">
-                            <i class="fas fa-external-link-alt"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            
-
-            <div class="project-card" data-aos="fade-up">
-                <div class="project-image">
-                    <div class="project-overlay">
-                        <div class="project-links">
-                        </div>
-                    </div>
-                    <div class="project-preview">
-                        <img src="https://img.freepik.com/premium-photo/asian-female-doctor-is-consulting-patient-who-comes-discuss-taking-medication-health-care-treat-disease-with-medicine_928131-8189.jpg?ga=GA1.1.261609347.1760797702&semt=ais_hybrid&w=740&q=80">
-                    </div>
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">Hospital Chatbot</h3>
-                    <p class="project-description">
-                        AI-powered chatbot for hospital information and assistance using Python and Streamlit.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Streamlit</span>
-                        <span class="tech-tag">AI</span>
-                        <a href="https://hospitalchatbot04.streamlit.app" target="_blank" class="project-link">
-                            <i class="fas fa-external-link-alt"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="project-image">
-                    <div class="project-overlay">
-                        <div class="project-links">
-                        </div>
-                    </div>
-                    <div class="project-preview">
-                        <img src="https://img.freepik.com/free-photo/tree-desert-white-clouds-daytime_395237-190.jpg?ga=GA1.1.261609347.1760797702&semt=ais_hybrid&w=740&q=80">
-                    </div>
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">Weather Chatbot</h3>
-                    <p class="project-description">
-                        AI-powered chatbot for providing weather updates and forecasts using Python and Streamlit.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Streamlit</span>
-                        <span class="tech-tag">AI</span>
-                        <a href="https://weatherchatbot04.streamlit.app/" target="_blank" class="project-link">
-                            <i class="fas fa-external-link-alt"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="project-image">
-                    <div class="project-overlay">
-                        <div class="project-links">
-                        </div>
-                    </div>
-                    <div class="project-preview">
-                        <img src="https://img.freepik.com/premium-vector/black-white-sign-with-scan-qr-code_1147637-1499.jpg?ga=GA1.1.261609347.1760797702&semt=ais_hybrid&w=740&q=80">
-                    </div>
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">QR Code Generator</h3>
-                    <p class="project-description">
-                        Dynamic QR code generation tool, will generate QR's using an URL.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Streamlit</span>
-                        <a href="https://qr-generator04.streamlit.app/" target="_blank" class="project-link">
-                            <i class="fas fa-external-link-alt"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="project-image">
-                    <div class="project-overlay">
-                        <div class="project-links">
-                        </div>
-                    </div>
-                    <div class="project-preview">
-                        <img src="https://www.phpuncle.com/wp-content/uploads/billing-system.png">
-                    </div>
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">Inventory Management & Billing System</h3>
-                    <p class="project-description">
-                        A Python console application that manages product inventory, processes orders, and generates bills efficiently. 
-                        Built with core Python libraries, it offers seamless product management, billing, and sales reporting.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <a href="https://github.com/rkotesh/inventory_management_and_billing_system.git" target="_blank" class="project-link">
-                            <i class="fas fa-external-link-alt"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
+    </section>
 
 
     <!-- Education Section -->
@@ -437,7 +429,9 @@
                     <div class="timeline-content">
                         <h3>B.Tech in AI & ML</h3>
                         <h4>Chalapathi Institute Of Engineering & Technology, Lam</h4>
-                        <p>Currently pursuing Bachelor's degree in Artificial Intelligence and Machine Learning with a CGPA of 7.80. Focusing on advanced AI concepts, machine learning algorithms, and practical applications.</p>
+                        <p>Currently pursuing Bachelor's degree in Artificial Intelligence and Machine Learning with a
+                            CGPA of 7.80. Focusing on advanced AI concepts, machine learning algorithms, and practical
+                            applications.</p>
                         <div class="achievement-badge">
                             <i class="fas fa-trophy"></i>
                             <span>CGPA: 7.80</span>
@@ -449,7 +443,8 @@
                     <div class="timeline-content">
                         <h3>Intermediate (12th Grade)</h3>
                         <h4>Sri Saraswathi Jr College, Ongole</h4>
-                        <p>Completed intermediate education with excellent academic performance, laying a strong foundation for engineering studies.</p>
+                        <p>Completed intermediate education with excellent academic performance, laying a strong
+                            foundation for engineering studies.</p>
                         <div class="achievement-badge">
                             <i class="fas fa-medal"></i>
                             <span>90.07%</span>
@@ -461,7 +456,8 @@
                     <div class="timeline-content">
                         <h3>SSC (10th Grade)</h3>
                         <h4>Govt Z P H School, Vaidana</h4>
-                        <p>Completed secondary education with outstanding results, demonstrating strong academic fundamentals.</p>
+                        <p>Completed secondary education with outstanding results, demonstrating strong academic
+                            fundamentals.</p>
                         <div class="achievement-badge">
                             <i class="fas fa-star"></i>
                             <span>97.00%</span>
@@ -480,13 +476,14 @@
                 <p class="section-subtitle">My academic journey and accomplishments</p>
             </div>
             <div class="timeline">
-                
+
                 <div class="timeline-item" data-aos="fade-left">
                     <div class="timeline-date">2025</div>
                     <div class="timeline-content">
                         <h3>MERN Stack Training</h3>
                         <h4>Chalapathi Institute Of Engineering & Technology</h4>
-                        <p>Completed comprehensive training in MERN (MongoDB, Express.js, React, Node.js) stack technologies, enhancing full-stack development capabilities.</p>
+                        <p>Completed comprehensive training in MERN (MongoDB, Express.js, React, Node.js) stack
+                            technologies, enhancing full-stack development capabilities.</p>
                         <div class="achievement-badge">
                             <i class="fas fa-certificate"></i>
                             <span>Certified</span>
@@ -596,4 +593,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
