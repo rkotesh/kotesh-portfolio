@@ -114,6 +114,7 @@ class RollaAI {
             ],
 
             achievements: [
+                "AI & ML Engineer Certification (2026) - Freedom With AI",
                 "MERN Stack Training (2025) - Chalapathi Institute Of Engineering & Technology",
                 "05 Projects Completed",
                 "7 Technical Skills Mastered",
