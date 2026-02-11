@@ -110,6 +110,13 @@ class RollaAI {
                     description: "Enterprise pipeline for document classification, metadata extraction, and report generation.",
                     url: "https://github.com/rkotesh/Automation_System",
                     type: "automation"
+                },
+                {
+                    name: "Scroll-Synced 3D Motion Engine",
+                    tech: ["Three.js", "GSAP", "WebGL"],
+                    description: "A premium 3D interaction layer integrated into this portfolio. Features a scroll-driven cyber bike with physics-based damping and reactive lighting.",
+                    url: "#",
+                    type: "feature"
                 }
             ],
 
