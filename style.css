@@ -2145,3 +2145,538 @@
     .skill-card:nth-child(even) {
         animation-delay: 0.4s;
     }
+
+    /* ============================================
+       ROLLA AI ASSISTANT STYLES
+       ============================================ */
+
+    .rolla-widget {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        z-index: 9998;
+        font-family: var(--font-family);
+    }
+
+    /* Floating Action Button */
+    .rolla-fab {
+        position: relative;
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 8px 24px rgba(255, 77, 77, 0.4);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow: hidden;
+    }
+
+    .rolla-fab::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3), transparent);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .rolla-fab:hover {
+        transform: translateY(-4px) scale(1.05);
+        box-shadow: 0 12px 32px rgba(255, 77, 77, 0.6);
+    }
+
+    .rolla-fab:hover::before {
+        opacity: 1;
+    }
+
+    .rolla-fab:active {
+        transform: translateY(-2px) scale(1);
+    }
+
+    .rolla-fab-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        color: white;
+        animation: breathe 3s ease-in-out infinite;
+    }
+
+    @keyframes breathe {
+
+        0%,
+        100% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.08);
+        }
+    }
+
+    .rolla-fab-label {
+        position: absolute;
+        right: 76px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--bg-card);
+        backdrop-filter: var(--glass-blur);
+        color: var(--text-heading);
+        padding: 10px 16px;
+        border-radius: 8px;
+        white-space: nowrap;
+        font-size: 14px;
+        font-weight: 500;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+    }
+
+    .rolla-fab:hover .rolla-fab-label {
+        opacity: 1;
+        transform: translateY(-50%) translateX(-8px);
+    }
+
+    /* Chat Window */
+    .rolla-chat-window {
+        position: absolute;
+        bottom: 80px;
+        right: 0;
+        width: 420px;
+        max-width: calc(100vw - 48px);
+        height: 600px;
+        max-height: calc(100vh - 120px);
+        background: var(--bg-card);
+        backdrop-filter: var(--glass-blur);
+        -webkit-backdrop-filter: var(--glass-blur);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+        display: flex;
+        flex-direction: column;
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+        pointer-events: none;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .rolla-chat-window:not(.hidden) {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        pointer-events: all;
+    }
+
+    .rolla-chat-window.hidden {
+        display: flex !important;
+    }
+
+    /* Header */
+    .rolla-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 24px;
+        border-bottom: 1px solid var(--border);
+        background: rgba(0, 0, 0, 0.3);
+    }
+
+    .rolla-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--text-heading);
+        font-weight: 600;
+        font-size: 16px;
+    }
+
+    .rolla-status-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #10B981;
+        box-shadow: 0 0 12px #10B981;
+        animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+        0%,
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        50% {
+            opacity: 0.7;
+            transform: scale(0.9);
+        }
+    }
+
+    .rolla-close {
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        background: transparent;
+        border: none;
+        color: var(--text-body);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+    }
+
+    .rolla-close:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text-heading);
+    }
+
+    /* Messages Container */
+    .rolla-messages {
+        flex: 1;
+        overflow-y: auto;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .rolla-messages::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .rolla-messages::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 3px;
+    }
+
+    .rolla-messages::-webkit-scrollbar-thumb {
+        background: var(--primary);
+        border-radius: 3px;
+    }
+
+    /* Message Bubbles */
+    .rolla-message {
+        display: flex;
+        gap: 12px;
+        animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .rolla-message.user {
+        flex-direction: row-reverse;
+    }
+
+    .rolla-avatar {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        font-size: 18px;
+    }
+
+    .rolla-message.assistant .rolla-avatar {
+        background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+        color: white;
+    }
+
+    .rolla-message.user .rolla-avatar {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text-heading);
+    }
+
+    .rolla-bubble {
+        max-width: 75%;
+        padding: 12px 16px;
+        border-radius: 12px;
+        font-size: 14px;
+        line-height: 1.6;
+        word-wrap: break-word;
+    }
+
+    .rolla-message.assistant .rolla-bubble {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border);
+        color: var(--text-heading);
+    }
+
+    .rolla-message.user .rolla-bubble {
+        background: var(--primary);
+        color: white;
+    }
+
+    .rolla-bubble strong {
+        font-weight: 600;
+        color: var(--primary);
+    }
+
+    .rolla-message.user .rolla-bubble strong {
+        color: white;
+        opacity: 0.9;
+    }
+
+    .rolla-bubble ul,
+    .rolla-bubble ol {
+        margin: 8px 0;
+        padding-left: 20px;
+    }
+
+    .rolla-bubble li {
+        margin: 4px 0;
+    }
+
+    .rolla-bubble a {
+        color: var(--primary);
+        text-decoration: underline;
+    }
+
+    .rolla-message.user .rolla-bubble a {
+        color: white;
+    }
+
+    /* Typing Indicator */
+    .rolla-typing {
+        display: flex;
+        gap: 4px;
+        padding: 12px 16px;
+    }
+
+    .rolla-typing-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--text-body);
+        animation: typingDot 1.4s ease-in-out infinite;
+    }
+
+    .rolla-typing-dot:nth-child(1) {
+        animation-delay: 0s;
+    }
+
+    .rolla-typing-dot:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    .rolla-typing-dot:nth-child(3) {
+        animation-delay: 0.4s;
+    }
+
+    @keyframes typingDot {
+
+        0%,
+        60%,
+        100% {
+            transform: translateY(0);
+            opacity: 0.5;
+        }
+
+        30% {
+            transform: translateY(-8px);
+            opacity: 1;
+        }
+    }
+
+    /* Suggestions */
+    .rolla-suggestions {
+        padding: 12px 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        border-top: 1px solid var(--border);
+        background: rgba(0, 0, 0, 0.2);
+    }
+
+    .rolla-suggestion-chip {
+        padding: 8px 14px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        font-size: 13px;
+        color: var(--text-body);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+    }
+
+    .rolla-suggestion-chip:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: var(--primary);
+        color: var(--primary);
+        transform: translateY(-2px);
+    }
+
+    /* Input Area */
+    .rolla-input-area {
+        display: flex;
+        gap: 12px;
+        padding: 16px 20px;
+        border-top: 1px solid var(--border);
+        background: rgba(0, 0, 0, 0.3);
+    }
+
+    #rolla-input {
+        flex: 1;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 12px 16px;
+        color: var(--text-heading);
+        font-size: 14px;
+        font-family: var(--font-family);
+        outline: none;
+        transition: all 0.2s ease;
+    }
+
+    #rolla-input::placeholder {
+        color: var(--text-muted);
+    }
+
+    #rolla-input:focus {
+        border-color: var(--primary);
+        background: rgba(255, 255, 255, 0.08);
+    }
+
+    .rolla-voice {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border);
+        color: var(--text-body);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+        flex-shrink: 0;
+    }
+
+    .rolla-voice:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text-heading);
+    }
+
+    .rolla-voice.listening {
+        background: var(--primary);
+        color: white;
+        border-color: var(--primary);
+        animation: pulseMicrophone 1.5s infinite;
+    }
+
+    @keyframes pulseMicrophone {
+        0% {
+            transform: scale(1);
+            box-shadow: 0 0 0 0 rgba(255, 77, 77, 0.7);
+        }
+
+        70% {
+            transform: scale(1.05);
+            box-shadow: 0 0 0 10px rgba(255, 77, 77, 0);
+        }
+
+        100% {
+            transform: scale(1);
+            box-shadow: 0 0 0 0 rgba(255, 77, 77, 0);
+        }
+    }
+
+    .rolla-send {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        background: var(--primary);
+        border: none;
+        color: white;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+        flex-shrink: 0;
+    }
+
+    .rolla-send:hover {
+        background: var(--primary-hover);
+        transform: scale(1.05);
+    }
+
+    .rolla-send:active {
+        transform: scale(0.95);
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+        .rolla-widget {
+            bottom: 16px;
+            right: 16px;
+        }
+
+        .rolla-fab {
+            width: 56px;
+            height: 56px;
+        }
+
+        .rolla-fab-icon {
+            font-size: 24px;
+        }
+
+        .rolla-fab-label {
+            display: none;
+        }
+
+        .rolla-chat-window {
+            width: calc(100vw - 32px);
+            height: calc(100vh - 120px);
+            bottom: 76px;
+        }
+    }
+
+    /* Mode Badge */
+    .rolla-mode-badge {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 8px;
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-left: 8px;
+    }
+
+    .mode-quick {
+        background: rgba(59, 130, 246, 0.2);
+        color: #60A5FA;
+    }
+
+    .mode-technical {
+        background: rgba(139, 92, 246, 0.2);
+        color: #A78BFA;
+    }
+
+    .mode-recruiter {
+        background: rgba(16, 185, 129, 0.2);
+        color: #34D399;
+    }
+
+    .mode-casual {
+        background: rgba(251, 191, 36, 0.2);
+        color: #FBBF24;
+    }

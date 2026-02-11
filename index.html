@@ -411,6 +411,73 @@
                     </div>
                 </div>
 
+                <!-- Feedback Monitoring System -->
+                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/rkotesh/feedback_monitoring_system" target="_blank"
+                                    class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-preview">
+                            <img src="https://placehold.co/600x400/1a1a1a/FFF?text=Feedback+System"
+                                alt="Feedback Analyzer">
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Customer Feedback & Sentiment Analyzer</h3>
+                        <p class="project-description">
+                            A real-time Python automation system that reads customer feedback logs, performs sentiment
+                            analysis (+1/0/-1), and categorizes issues to generate daily reports and alerts.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Sentiment Analysis</span>
+                            <span class="tech-tag">Automation</span>
+                            <a href="https://github.com/rkotesh/feedback_monitoring_system" target="_blank"
+                                class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Automated Document Processing System -->
+                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/rkotesh/Automation_System" target="_blank"
+                                    class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-preview">
+                            <img src="https://placehold.co/600x400/1a1a1a/FFF?text=Doc+Automation"
+                                alt="Document Automation">
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Automated Document Processing System</h3>
+                        <p class="project-description">
+                            An enterprise automation pipeline designed to process documents (PDF, DOCX, XLSX),
+                            extract metadata, classify content, and generate professional PDF reports.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">PDF Processing</span>
+                            <span class="tech-tag">ReportLab</span>
+                            <a href="https://github.com/rkotesh/Automation_System" target="_blank" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -591,7 +658,44 @@
         </div>
     </footer>
 
+    <!-- Rolla AI Assistant -->
+    <div id="rolla-widget" class="rolla-widget">
+        <div id="rolla-chat-window" class="rolla-chat-window hidden">
+            <div class="rolla-header">
+                <div class="rolla-title">
+                    <div class="rolla-status-dot"></div>
+                    <span>Rolla AI</span>
+                </div>
+                <button id="rolla-close" class="rolla-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="rolla-messages" class="rolla-messages">
+                <!-- Messages will be injected here -->
+            </div>
+            <div class="rolla-suggestions" id="rolla-suggestions">
+                <!-- Suggestion chips will be injected here -->
+            </div>
+            <div class="rolla-input-area">
+                <input type="text" id="rolla-input" placeholder="Ask Rolla anything..." autocomplete="off">
+                <button id="rolla-voice" class="rolla-voice">
+                    <i class="fas fa-microphone"></i>
+                </button>
+                <button id="rolla-send" class="rolla-send">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+        <button id="rolla-fab" class="rolla-fab">
+            <div class="rolla-fab-icon">
+                <i class="fas fa-robot"></i>
+            </div>
+            <div class="rolla-fab-label">Chat with Rolla</div>
+        </button>
+    </div>
+
     <script src="script.js"></script>
+    <script src="rolla.js"></script>
 </body>
 
 </html>
