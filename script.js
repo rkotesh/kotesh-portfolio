@@ -230,6 +230,8 @@ function showNotification(message, type) {
 
 // Activity Feed
 const activities = [
+    { type: 'project', text: 'Started working with College Website', time: new Date() },
+    { type: 'achievement', text: 'Attended the AI Masterclass by Freedom With AI', time: new Date() },
     { type: 'project', text: 'Revamped Portfolio with "Pitch Black & Glass" theme, optimized typography, and enhanced profile visuals', time: new Date() },
     { type: 'project', text: 'Successfully deployed the Employee Leave Management System (ELMS) application on Render', time: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000) },
     { type: 'skill', text: 'Gained hands-on experience in backend development using Flask during the Employee Leave Management System project at Flipkart', time: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000) },
