@@ -43,6 +43,54 @@
 .
 ├── index.html
 ├── styles.css
+```
+├── README.md
+```
+
+For a cleaner, more concise version under 100 lines:
+
+# 🚀 Sankula Koteswara Rao
+
+> Modern personal portfolio showcasing projects, skills, and experience.
+
+## ✨ Features
+- Responsive design with dark mode toggle
+- Hero section with typing animation
+- Animated skill bars & project showcase
+- Contact form with validation
+- Education timeline
+
+## 🛠️ Tech Stack
+HTML5 • CSS3 • JavaScript • Font Awesome • Google Fonts
+
+## 📂 Structure
+```
+.
+├── index.html
+├── styles.css
+├── script.js
+├── assets/
+│   └── image.jpg
+└── README.md
+```
+
+## 🎯 Live Projects
+- [Hospital Chatbot](https://hospitalchatbot04.streamlit.app)
+- [QR Code Generator](https://qr-generator04.streamlit.app)
+
+## 🎓 Education
+- **B.Tech AI & ML** - CGPA: 7.80 (Chalapathi Institute)
+- **Intermediate** - 90.07% (Sri Saraswathi Jr College)
+- **MERN Stack Certification**
+
+## 📧 Contact
+- Email: srkotesh23@gmail.com
+- Phone: +91 9182015717
+- [LinkedIn](https://linkedin.com/in/sankula-koteswararao) • [GitHub](https://github.com/rkotesh)
+
+## 📜 License
+MIT License - Open Source
+
 ├── script.js
 ├── assets/
 │   └── image.jpg
