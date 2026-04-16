@@ -467,245 +467,293 @@
         }
 
         // ==================== THREE.JS BACKGROUND ====================
-        const canvas = document.getElementById('three-bg');
-        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.z = 30;
-
-        // Particles - white/gray
-        const particleCount = 2000;
-        const particleGeometry = new THREE.BufferGeometry();
-        const positions = new Float32Array(particleCount * 3);
-        const velocities = new Float32Array(particleCount * 3);
-        const sizes = new Float32Array(particleCount);
-
-        for (let i = 0; i < particleCount; i++) {
-            positions[i * 3] = (Math.random() - 0.5) * 100;
-            positions[i * 3 + 1] = (Math.random() - 0.5) * 100;
-            positions[i * 3 + 2] = (Math.random() - 0.5) * 100;
-            velocities[i * 3] = (Math.random() - 0.5) * 0.015;
-            velocities[i * 3 + 1] = (Math.random() - 0.5) * 0.015;
-            velocities[i * 3 + 2] = (Math.random() - 0.5) * 0.015;
-            sizes[i] = Math.random() * 2 + 0.3;
+        if (window.initNatureBackground) {
+            window.initNatureBackground();
         }
 
-        particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-        particleGeometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
-
-        const particleMaterial = new THREE.ShaderMaterial({
-            vertexShader: `
-    attribute float size;
-    varying float vAlpha;
-    void main() {
-      vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
-      gl_PointSize = size * (200.0 / -mvPosition.z);
-      gl_Position = projectionMatrix * mvPosition;
-      vAlpha = size / 2.3;
-    }
-  `,
-            fragmentShader: `
-    varying float vAlpha;
-    void main() {
-      float d = length(gl_PointCoord - vec2(0.5));
-      if (d > 0.5) discard;
-      float alpha = smoothstep(0.5, 0.0, d) * vAlpha * 0.4;
-      gl_FragColor = vec4(1.0, 1.0, 1.0, alpha);
-    }
-  `,
-            transparent: true,
-            depthWrite: false,
-            blending: THREE.AdditiveBlending
-        });
-
-        const particles = new THREE.Points(particleGeometry, particleMaterial);
-        scene.add(particles);
-
-        // Lines
-        const lineGeometry = new THREE.BufferGeometry();
-        const lineMaterial = new THREE.LineBasicMaterial({
-            color: 0xffffff,
-            transparent: true,
-            opacity: 0.03,
-            blending: THREE.AdditiveBlending
-        });
-        const linesMesh = new THREE.LineSegments(lineGeometry, lineMaterial);
-        scene.add(linesMesh);
-
-        // Geometric shapes - wireframe white
-        const shapes = [];
-        const shapeMaterials = [];
-        for (let i = 0; i < 10; i++) {
-            let geo;
-            const r = Math.random();
-            if (r < 0.25) geo = new THREE.IcosahedronGeometry(Math.random() * 2.5 + 0.8, 0);
-            else if (r < 0.5) geo = new THREE.OctahedronGeometry(Math.random() * 2 + 0.8, 0);
-            else if (r < 0.75) geo = new THREE.TetrahedronGeometry(Math.random() * 2 + 0.8, 0);
-            else geo = new THREE.BoxGeometry(Math.random() * 2 + 0.6, Math.random() * 2 + 0.6, Math.random() * 2 + 0.6);
-
-            const mat = new THREE.MeshBasicMaterial({
-                color: 0xffffff,
-                wireframe: true,
-                transparent: true,
-                opacity: 0.04 + Math.random() * 0.04
-            });
-            shapeMaterials.push(mat);
-
-            const mesh = new THREE.Mesh(geo, mat);
-            mesh.position.set(
-                (Math.random() - 0.5) * 60,
-                (Math.random() - 0.5) * 60,
-                (Math.random() - 0.5) * 40
-            );
-            mesh.userData = {
-                rotSpeed: { x: (Math.random() - 0.5) * 0.008, y: (Math.random() - 0.5) * 0.008 },
-                floatSpeed: Math.random() * 0.004 + 0.001,
-                floatOffset: Math.random() * Math.PI * 2,
-                origY: mesh.position.y,
-                origX: mesh.position.x
-            };
-            scene.add(mesh);
-            shapes.push(mesh);
-        }
-
-        // Mouse
-        let mouseX = 0, mouseY = 0, targetMouseX = 0, targetMouseY = 0;
-        document.addEventListener('mousemove', (e) => {
-            targetMouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-            targetMouseY = (e.clientY / window.innerHeight - 0.5) * 2;
-        });
-
-        function updateLines() {
-            const posArr = particleGeometry.attributes.position.array;
-            const linePositions = [];
-            const maxDist = 7;
-            for (let i = 0; i < Math.min(particleCount, 250); i++) {
-                for (let j = i + 1; j < Math.min(particleCount, 250); j++) {
-                    const dx = posArr[i * 3] - posArr[j * 3];
-                    const dy = posArr[i * 3 + 1] - posArr[j * 3 + 1];
-                    const dz = posArr[i * 3 + 2] - posArr[j * 3 + 2];
-                    const dist = dx * dx + dy * dy + dz * dz;
-                    if (dist < maxDist * maxDist) {
-                        linePositions.push(posArr[i * 3], posArr[i * 3 + 1], posArr[i * 3 + 2]);
-                        linePositions.push(posArr[j * 3], posArr[j * 3 + 1], posArr[j * 3 + 2]);
-                    }
-                }
-            }
-            lineGeometry.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
-        }
-
-        let time = 0;
-        let frameCount = 0;
-        function animate() {
-            requestAnimationFrame(animate);
-            time += 0.008;
-            frameCount++;
-
-            mouseX += (targetMouseX - mouseX) * 0.04;
-            mouseY += (targetMouseY - mouseY) * 0.04;
-
-            const posArr = particleGeometry.attributes.position.array;
-            for (let i = 0; i < particleCount; i++) {
-                posArr[i * 3] += velocities[i * 3];
-                posArr[i * 3 + 1] += velocities[i * 3 + 1];
-                posArr[i * 3 + 2] += velocities[i * 3 + 2];
-                if (Math.abs(posArr[i * 3]) > 50) velocities[i * 3] *= -1;
-                if (Math.abs(posArr[i * 3 + 1]) > 50) velocities[i * 3 + 1] *= -1;
-                if (Math.abs(posArr[i * 3 + 2]) > 50) velocities[i * 3 + 2] *= -1;
-            }
-            particleGeometry.attributes.position.needsUpdate = true;
-
-            if (frameCount % 4 === 0) updateLines();
-
-            particles.rotation.y += 0.0003;
-            particles.rotation.x = mouseY * 0.08;
-            particles.rotation.y += mouseX * 0.0005;
-
-            shapes.forEach(s => {
-                s.rotation.x += s.userData.rotSpeed.x;
-                s.rotation.y += s.userData.rotSpeed.y;
-                s.position.y = s.userData.origY + Math.sin(time * 2 + s.userData.floatOffset) * 2.5;
-                s.position.x = s.userData.origX + Math.cos(time * 1.5 + s.userData.floatOffset) * 1.5;
-            });
-
-            camera.position.x += (mouseX * 4 - camera.position.x) * 0.02;
-            camera.position.y += (-mouseY * 4 - camera.position.y) * 0.02;
-            camera.lookAt(scene.position);
-
-            renderer.render(scene, camera);
-        }
-        animate();
-
-        // ==================== ABOUT CANVAS 3D ====================
+        // ==================== STORM SCENES ====================
         const aboutCanvas = document.getElementById('about-canvas');
-        const aboutRenderer = new THREE.WebGLRenderer({ canvas: aboutCanvas, alpha: true, antialias: true });
-        const aboutScene = new THREE.Scene();
-        const aboutCamera = new THREE.PerspectiveCamera(60, aboutCanvas.clientWidth / aboutCanvas.clientHeight, 0.1, 100);
-        aboutCamera.position.z = 5;
+        const cloudCanvas = document.getElementById('cloud-canvas');
+        const rainCanvas = document.getElementById('rain-canvas');
 
-        function resizeAbout() {
-            const w = aboutCanvas.clientWidth;
-            const h = aboutCanvas.clientHeight;
-            aboutRenderer.setSize(w, h);
-            aboutRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-            aboutCamera.aspect = w / h;
-            aboutCamera.updateProjectionMatrix();
+        function initOrbitScene(canvas) {
+            if (!canvas || typeof THREE === 'undefined') return null;
+
+            const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(60, canvas.clientWidth / canvas.clientHeight, 0.1, 100);
+            camera.position.z = 5;
+
+            function resize() {
+                const w = canvas.clientWidth;
+                const h = canvas.clientHeight;
+                renderer.setSize(w, h);
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+                camera.aspect = w / h;
+                camera.updateProjectionMatrix();
+            }
+            resize();
+
+            const torusKnotGeo = new THREE.TorusKnotGeometry(1.2, 0.4, 128, 32);
+            const torusKnotMat = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true, transparent: true, opacity: 0.2 });
+            const torusKnot = new THREE.Mesh(torusKnotGeo, torusKnotMat);
+            scene.add(torusKnot);
+
+            const sphereGeo = new THREE.SphereGeometry(0.8, 32, 32);
+            const sphereMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.03 });
+            const sphere = new THREE.Mesh(sphereGeo, sphereMat);
+            scene.add(sphere);
+
+            const orbitGroup = new THREE.Group();
+            for (let i = 0; i < 60; i++) {
+                const dotGeo = new THREE.SphereGeometry(0.025, 8, 8);
+                const dotMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.6 });
+                const dot = new THREE.Mesh(dotGeo, dotMat);
+                const angle = Math.random() * Math.PI * 2;
+                const radius = 1.8 + Math.random() * 0.6;
+                const yOff = (Math.random() - 0.5) * 2.5;
+                dot.position.set(Math.cos(angle) * radius, yOff, Math.sin(angle) * radius);
+                dot.userData = { angle, radius, yOff, speed: 0.003 + Math.random() * 0.008 };
+                orbitGroup.add(dot);
+            }
+            scene.add(orbitGroup);
+
+            const ringGeo = new THREE.TorusGeometry(2.2, 0.01, 16, 100);
+            const ringMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.08 });
+            const ring = new THREE.Mesh(ringGeo, ringMat);
+            ring.rotation.x = Math.PI / 2;
+            scene.add(ring);
+
+            let time = 0;
+            function animate() {
+                requestAnimationFrame(animate);
+                time += 0.01;
+                torusKnot.rotation.x += 0.004;
+                torusKnot.rotation.y += 0.006;
+                sphere.scale.setScalar(1 + Math.sin(time * 3) * 0.1);
+                ring.rotation.z += 0.002;
+
+                orbitGroup.children.forEach(d => {
+                    d.userData.angle += d.userData.speed;
+                    d.position.x = Math.cos(d.userData.angle) * d.userData.radius;
+                    d.position.z = Math.sin(d.userData.angle) * d.userData.radius;
+                });
+
+                renderer.render(scene, camera);
+            }
+            animate();
+
+            return { resize };
         }
-        resizeAbout();
 
-        // Torus Knot — white wireframe
-        const torusKnotGeo = new THREE.TorusKnotGeometry(1.2, 0.4, 128, 32);
-        const torusKnotMat = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true, transparent: true, opacity: 0.2 });
-        const torusKnot = new THREE.Mesh(torusKnotGeo, torusKnotMat);
-        aboutScene.add(torusKnot);
+        const aboutScene = initOrbitScene(aboutCanvas);
 
-        // Inner sphere
-        const sphereGeo = new THREE.SphereGeometry(0.8, 32, 32);
-        const sphereMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.03 });
-        const sphere = new THREE.Mesh(sphereGeo, sphereMat);
-        aboutScene.add(sphere);
-
-        // Orbiting dots - white
-        const orbitGroup = new THREE.Group();
-        for (let i = 0; i < 60; i++) {
-            const dotGeo = new THREE.SphereGeometry(0.025, 8, 8);
-            const dotMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.6 });
-            const dot = new THREE.Mesh(dotGeo, dotMat);
-            const angle = Math.random() * Math.PI * 2;
-            const radius = 1.8 + Math.random() * 0.6;
-            const yOff = (Math.random() - 0.5) * 2.5;
-            dot.position.set(Math.cos(angle) * radius, yOff, Math.sin(angle) * radius);
-            dot.userData = { angle, radius, yOff, speed: 0.003 + Math.random() * 0.008 };
-            orbitGroup.add(dot);
+        function createCanvasContext(canvas) {
+            return canvas ? canvas.getContext('2d') : null;
         }
-        aboutScene.add(orbitGroup);
 
-        // Outer ring
-        const ringGeo = new THREE.TorusGeometry(2.2, 0.01, 16, 100);
-        const ringMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.08 });
-        const ring = new THREE.Mesh(ringGeo, ringMat);
-        ring.rotation.x = Math.PI / 2;
-        aboutScene.add(ring);
+        function buildCloudLayer(width, height, variant) {
+            const clouds = [];
+            const count = variant === 'hero' ? 3 : 5;
+            for (let i = 0; i < count; i++) {
+                const spread = variant === 'hero' ? 0.28 : 0.2;
+                clouds.push({
+                    x: width * (0.14 + i * spread) + (Math.random() * 46 - 23),
+                    y: height * (variant === 'hero' ? 0.42 : 0.34) + (i % 2 === 0 ? -14 : 18) + Math.random() * 12,
+                    scale: (variant === 'hero' ? 0.85 : 1.2) + Math.random() * (variant === 'hero' ? 0.3 : 0.6),
+                    speed: (variant === 'hero' ? 8 : 12) + Math.random() * (variant === 'hero' ? 5 : 8),
+                    phase: Math.random() * Math.PI * 2,
+                    alpha: variant === 'hero' ? 0.9 : 1
+                });
+            }
+            return clouds;
+        }
 
-        function animateAbout() {
-            requestAnimationFrame(animateAbout);
-            torusKnot.rotation.x += 0.004;
-            torusKnot.rotation.y += 0.006;
-            sphere.scale.setScalar(1 + Math.sin(time * 3) * 0.1);
-            ring.rotation.z += 0.002;
-
-            orbitGroup.children.forEach(d => {
-                d.userData.angle += d.userData.speed;
-                d.position.x = Math.cos(d.userData.angle) * d.userData.radius;
-                d.position.z = Math.sin(d.userData.angle) * d.userData.radius;
+        function drawCloudShape(ctx, cloud, now, state, variant) {
+            const sway = Math.sin(now * 0.00032 + cloud.phase) * (variant === 'hero' ? 10 : 18);
+            const bob = Math.cos(now * 0.00024 + cloud.phase * 1.3) * (variant === 'hero' ? 5 : 10);
+            ctx.save();
+            ctx.translate(cloud.x + sway, cloud.y + bob);
+            ctx.scale(cloud.scale, cloud.scale);
+            ctx.globalAlpha = cloud.alpha;
+            ctx.shadowColor = 'rgba(255, 255, 255, 0.16)';
+            ctx.shadowBlur = variant === 'hero' ? 18 : 28;
+            const fill = ctx.createLinearGradient(-160, -80, 160, 100);
+            fill.addColorStop(0, 'rgba(250, 252, 255, 0.96)');
+            fill.addColorStop(0.55, 'rgba(221, 228, 236, 0.82)');
+            fill.addColorStop(1, 'rgba(144, 155, 167, 0.3)');
+            ctx.fillStyle = fill;
+            const puffs = variant === 'hero'
+                ? [[-44, 8, 40], [-4, -10, 48], [34, 6, 38], [2, 18, 42]]
+                : [[-78, 18, 56], [-28, -8, 72], [24, 12, 64], [68, 2, 50], [6, 28, 70]];
+            puffs.forEach(([px, py, radius]) => {
+                ctx.beginPath();
+                ctx.arc(px, py, radius, 0, Math.PI * 2);
+                ctx.fill();
             });
-
-            aboutRenderer.render(aboutScene, aboutCamera);
+            ctx.shadowBlur = 0;
+            ctx.globalAlpha = cloud.alpha * (variant === 'hero' ? 0.55 : 0.75);
+            ctx.fillStyle = 'rgba(104, 117, 130, 0.32)';
+            ctx.beginPath();
+            ctx.ellipse(0, variant === 'hero' ? 44 : 56, variant === 'hero' ? 85 : 128, variant === 'hero' ? 18 : 26, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.restore();
         }
-        animateAbout();
+
+        function mountCloudScene(canvas, variant) {
+            const ctx = createCanvasContext(canvas);
+            if (!canvas || !ctx) return null;
+            const state = { width: 0, height: 0, dpr: 1, clouds: [], variant, lastTime: 0 };
+
+            function resize() {
+                if (!resizeSurface(canvas, ctx, state)) return;
+                state.clouds = buildCloudLayer(state.width, state.height, variant);
+            }
+
+            function render(now) {
+                if (!state.width || !state.height) resize();
+                const delta = state.lastTime ? Math.min((now - state.lastTime) / 1000, 0.033) : 0.016;
+                state.lastTime = now;
+
+                const sky = ctx.createLinearGradient(0, 0, 0, state.height);
+                sky.addColorStop(0, variant === 'hero' ? '#0d121b' : '#081019');
+                sky.addColorStop(0.55, variant === 'hero' ? '#0b1018' : '#060b12');
+                sky.addColorStop(1, '#05070c');
+                ctx.fillStyle = sky;
+                ctx.fillRect(0, 0, state.width, state.height);
+
+                const mist = ctx.createRadialGradient(state.width * 0.5, state.height * 0.12, 0, state.width * 0.5, state.height * 0.12, state.width * 0.68);
+                mist.addColorStop(0, variant === 'hero' ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.05)');
+                mist.addColorStop(1, 'rgba(255,255,255,0)');
+                ctx.fillStyle = mist;
+                ctx.fillRect(0, 0, state.width, state.height);
+
+                state.clouds.forEach((cloud, index) => {
+                    cloud.x += (cloud.speed + index * 0.8) * delta * 10;
+                    if (cloud.x - state.width * 0.2 > state.width + 180) {
+                        cloud.x = -160 - index * 100;
+                    }
+                    drawCloudShape(ctx, cloud, now, state, variant);
+                });
+
+                ctx.save();
+                ctx.globalAlpha = variant === 'hero' ? 0.18 : 0.24;
+                ctx.fillStyle = 'rgba(170, 184, 198, 0.14)';
+                ctx.fillRect(0, state.height * 0.74, state.width, state.height * 0.26);
+                ctx.restore();
+
+                requestAnimationFrame(render);
+            }
+
+            resize();
+            requestAnimationFrame(render);
+            return { resize };
+        }
+
+        function buildRainDrops(width, height) {
+            const count = Math.max(180, Math.round((width * height) / 2600));
+            return Array.from({ length: count }, () => ({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                len: 14 + Math.random() * 24,
+                speed: 260 + Math.random() * 420,
+                width: 0.9 + Math.random() * 1.4,
+                alpha: 0.35 + Math.random() * 0.5,
+                phase: Math.random() * Math.PI * 2,
+                sway: 0.8 + Math.random() * 1.8
+            }));
+        }
+
+        function mountRainScene(canvas) {
+            const ctx = createCanvasContext(canvas);
+            if (!canvas || !ctx) return null;
+            const state = { width: 0, height: 0, dpr: 1, drops: [], lastTime: 0 };
+
+            function resize() {
+                if (!resizeSurface(canvas, ctx, state)) return;
+                state.drops = buildRainDrops(state.width, state.height);
+            }
+
+            function render(now) {
+                if (!state.width || !state.height) resize();
+                const delta = state.lastTime ? Math.min((now - state.lastTime) / 1000, 0.033) : 0.016;
+                state.lastTime = now;
+
+                const sky = ctx.createLinearGradient(0, 0, 0, state.height);
+                sky.addColorStop(0, '#0d131a');
+                sky.addColorStop(0.46, '#091018');
+                sky.addColorStop(1, '#05070c');
+                ctx.fillStyle = sky;
+                ctx.fillRect(0, 0, state.width, state.height);
+
+                ctx.save();
+                ctx.globalAlpha = 0.22;
+                ctx.shadowColor = 'rgba(255, 255, 255, 0.1)';
+                ctx.shadowBlur = 42;
+                ctx.fillStyle = 'rgba(224, 232, 240, 0.08)';
+                const cloudBands = [
+                    [state.width * 0.16, state.height * 0.16, 96, 38],
+                    [state.width * 0.44, state.height * 0.1, 140, 52],
+                    [state.width * 0.76, state.height * 0.18, 110, 42]
+                ];
+                cloudBands.forEach(([x, y, rx, ry], index) => {
+                    ctx.beginPath();
+                    ctx.ellipse(x + Math.sin(now * 0.00015 + index) * 10, y, rx, ry, 0, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+                ctx.restore();
+
+                ctx.save();
+                ctx.globalCompositeOperation = 'screen';
+                ctx.lineCap = 'round';
+                state.drops.forEach((drop) => {
+                    drop.y += drop.speed * delta;
+                    drop.x += Math.sin(now * 0.001 + drop.phase) * drop.sway * delta * 18;
+                    if (drop.y > state.height + drop.len) {
+                        drop.y = -drop.len - Math.random() * state.height * 0.2;
+                        drop.x = Math.random() * state.width;
+                        drop.speed = 260 + Math.random() * 420;
+                        drop.len = 14 + Math.random() * 24;
+                        drop.width = 0.9 + Math.random() * 1.4;
+                        drop.alpha = 0.35 + Math.random() * 0.5;
+                    }
+
+                    ctx.globalAlpha = drop.alpha;
+                    ctx.strokeStyle = 'rgba(241, 246, 255, 0.94)';
+                    ctx.lineWidth = drop.width;
+                    ctx.beginPath();
+                    ctx.moveTo(drop.x, drop.y);
+                    ctx.lineTo(drop.x + 0.45, drop.y + drop.len);
+                    ctx.stroke();
+
+                    if (drop.y > state.height - 16) {
+                        ctx.globalAlpha = drop.alpha * 0.45;
+                        ctx.fillStyle = 'rgba(234, 242, 255, 0.95)';
+                        ctx.beginPath();
+                        ctx.ellipse(drop.x, state.height - 8, 1.8 + drop.width, 0.8 + drop.width * 0.3, 0, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                });
+                ctx.restore();
+
+                requestAnimationFrame(render);
+            }
+
+            resize();
+            requestAnimationFrame(render);
+            return { resize };
+        }
+
+        const showcaseClouds = mountCloudScene(cloudCanvas, 'showcase');
+        const rainScene = mountRainScene(rainCanvas);
+
+        function resizeStormScenes() {
+            if (aboutScene) aboutScene.resize();
+            if (showcaseClouds) showcaseClouds.resize();
+            if (rainScene) rainScene.resize();
+        }
+
+        resizeStormScenes();
 
         // ==================== CUSTOM CURSOR ====================
         const cursor = document.getElementById('cursor');
@@ -984,10 +1032,7 @@
 
         // ==================== RESIZE ====================
         window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            resizeAbout();
+            resizeStormScenes();
         });
 
         // ==================== PARALLAX SECTIONS ====================
