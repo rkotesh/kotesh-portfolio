@@ -1,0 +1,27 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="140" y1="100" x2="1080" y2="700">
+      <stop stop-color="#081018"/>
+      <stop offset="1" stop-color="#10161D"/>
+    </linearGradient>
+    <filter id="blur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="24"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="800" rx="44" fill="url(#bg)"/>
+  <circle cx="230" cy="180" r="120" fill="#7CB4FF" fill-opacity=".14" filter="url(#blur)"/>
+  <rect x="138" y="132" width="924" height="540" rx="34" fill="#111922" stroke="rgba(255,255,255,.10)"/>
+  <rect x="168" y="166" width="864" height="50" rx="18" fill="#0D141A"/>
+  <circle cx="203" cy="191" r="10" fill="#FF6A6A"/><circle cx="231" cy="191" r="10" fill="#FFC86B"/><circle cx="259" cy="191" r="10" fill="#4EE0A1"/>
+  <rect x="200" y="250" width="372" height="318" rx="26" fill="#0D141A" stroke="rgba(255,255,255,.08)"/>
+  <rect x="602" y="250" width="390" height="318" rx="26" fill="#0D141A" stroke="rgba(255,255,255,.08)"/>
+  <path d="M242 304h284M242 350h236M242 396h270M242 442h190M242 488h248" stroke="#7CB4FF" stroke-width="12" stroke-linecap="round"/>
+  <rect x="644" y="292" width="170" height="28" rx="14" fill="#5AD3C7" fill-opacity=".22"/>
+  <rect x="644" y="342" width="266" height="18" rx="9" fill="#8CA0AE" fill-opacity=".28"/>
+  <rect x="644" y="378" width="210" height="18" rx="9" fill="#8CA0AE" fill-opacity=".20"/>
+  <rect x="644" y="426" width="100" height="86" rx="20" fill="#5AD3C7" fill-opacity=".18"/>
+  <rect x="760" y="426" width="100" height="86" rx="20" fill="#7CB4FF" fill-opacity=".18"/>
+  <rect x="876" y="426" width="90" height="86" rx="20" fill="#5AD3C7" fill-opacity=".12"/>
+  <text x="170" y="96" fill="#EAF2F5" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">inventory_management_and_billing_system</text>
+  <text x="170" y="126" fill="#8CA0AE" font-family="Arial, Helvetica, sans-serif" font-size="16">Console-based inventory, orders, and billing workflow.</text>
+</svg>

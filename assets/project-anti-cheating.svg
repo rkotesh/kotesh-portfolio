@@ -1,0 +1,27 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="150" y1="90" x2="1050" y2="730">
+      <stop stop-color="#081018"/>
+      <stop offset="1" stop-color="#121721"/>
+    </linearGradient>
+    <filter id="blur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="26"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="800" rx="44" fill="url(#bg)"/>
+  <circle cx="950" cy="175" r="140" fill="#7CB4FF" fill-opacity=".12" filter="url(#blur)"/>
+  <rect x="128" y="120" width="944" height="560" rx="34" fill="#111922" stroke="rgba(255,255,255,.10)"/>
+  <rect x="160" y="154" width="880" height="50" rx="18" fill="#0D141A"/>
+  <circle cx="195" cy="179" r="10" fill="#FF6A6A"/><circle cx="223" cy="179" r="10" fill="#FFC86B"/><circle cx="251" cy="179" r="10" fill="#4EE0A1"/>
+  <rect x="210" y="250" width="780" height="320" rx="26" fill="#0D141A" stroke="rgba(255,255,255,.08)"/>
+  <path d="M600 302c110 0 196 72 196 108 0 36-86 108-196 108-110 0-196-72-196-108 0-36 86-108 196-108Z" fill="#7CB4FF" fill-opacity=".18" stroke="#7CB4FF" stroke-opacity=".5" stroke-width="6"/>
+  <circle cx="600" cy="410" r="76" fill="#0B1117" stroke="#5AD3C7" stroke-width="10"/>
+  <circle cx="600" cy="410" r="26" fill="#5AD3C7"/>
+  <path d="M464 410h272" stroke="#5AD3C7" stroke-width="12" stroke-linecap="round"/>
+  <rect x="236" y="590" width="220" height="16" rx="8" fill="#5AD3C7" fill-opacity=".28"/>
+  <rect x="236" y="620" width="330" height="16" rx="8" fill="#8CA0AE" fill-opacity=".26"/>
+  <rect x="650" y="590" width="220" height="16" rx="8" fill="#7CB4FF" fill-opacity=".28"/>
+  <rect x="650" y="620" width="130" height="16" rx="8" fill="#8CA0AE" fill-opacity=".26"/>
+  <text x="170" y="96" fill="#EAF2F5" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">anti_cheating_detection_system</text>
+  <text x="170" y="126" fill="#8CA0AE" font-family="Arial, Helvetica, sans-serif" font-size="16">Computer vision and AI powered exam integrity monitoring.</text>
+</svg>

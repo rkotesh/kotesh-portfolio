@@ -1,0 +1,44 @@
+<svg width="1200" height="700" viewBox="0 0 1200 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="700" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0C1217"/>
+      <stop offset="1" stop-color="#16232E"/>
+    </linearGradient>
+    <linearGradient id="card" x1="170" y1="110" x2="1030" y2="590" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#121B24"/>
+      <stop offset="1" stop-color="#0B141B"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="330" y1="170" x2="920" y2="560" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5ED7CF"/>
+      <stop offset="1" stop-color="#8AE8E1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="700" rx="42" fill="url(#bg)"/>
+  <circle cx="940" cy="165" r="140" fill="#5ED7CF" fill-opacity="0.07"/>
+  <circle cx="255" cy="540" r="150" fill="#5ED7CF" fill-opacity="0.05"/>
+  <rect x="120" y="95" width="960" height="510" rx="34" fill="url(#card)" stroke="#29404B" stroke-opacity="0.7"/>
+  <circle cx="600" cy="350" r="150" fill="#5ED7CF" fill-opacity="0.08" stroke="#5ED7CF" stroke-opacity="0.7"/>
+  <circle cx="600" cy="350" r="74" fill="#5ED7CF" fill-opacity="0.18" stroke="#8AE8E1" stroke-opacity="0.8" stroke-width="2"/>
+  <circle cx="600" cy="350" r="22" fill="#DCECEF"/>
+  <g stroke="url(#accent)" stroke-width="4" stroke-linecap="round">
+    <line x1="600" y1="350" x2="472" y2="266"/>
+    <line x1="600" y1="350" x2="452" y2="350"/>
+    <line x1="600" y1="350" x2="472" y2="434"/>
+    <line x1="600" y1="350" x2="728" y2="266"/>
+    <line x1="600" y1="350" x2="748" y2="350"/>
+    <line x1="600" y1="350" x2="728" y2="434"/>
+  </g>
+  <g fill="#DDE7ED">
+    <circle cx="472" cy="266" r="22" fill="#5ED7CF" fill-opacity="0.2" stroke="#5ED7CF"/>
+    <circle cx="452" cy="350" r="22" fill="#5ED7CF" fill-opacity="0.2" stroke="#5ED7CF"/>
+    <circle cx="472" cy="434" r="22" fill="#5ED7CF" fill-opacity="0.2" stroke="#5ED7CF"/>
+    <circle cx="728" cy="266" r="22" fill="#5ED7CF" fill-opacity="0.2" stroke="#5ED7CF"/>
+    <circle cx="748" cy="350" r="22" fill="#5ED7CF" fill-opacity="0.2" stroke="#5ED7CF"/>
+    <circle cx="728" cy="434" r="22" fill="#5ED7CF" fill-opacity="0.2" stroke="#5ED7CF"/>
+  </g>
+  <rect x="210" y="174" width="170" height="42" rx="21" fill="#5ED7CF" fill-opacity="0.14" stroke="#5ED7CF" stroke-opacity="0.5"/>
+  <rect x="814" y="174" width="170" height="42" rx="21" fill="#5ED7CF" fill-opacity="0.14" stroke="#5ED7CF" stroke-opacity="0.5"/>
+  <rect x="210" y="486" width="220" height="42" rx="21" fill="#5ED7CF" fill-opacity="0.10" stroke="#5ED7CF" stroke-opacity="0.35"/>
+  <rect x="770" y="486" width="214" height="42" rx="21" fill="#5ED7CF" fill-opacity="0.10" stroke="#5ED7CF" stroke-opacity="0.35"/>
+  <text x="180" y="560" fill="#DDE7ED" fill-opacity="0.92" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="3">AI SYSTEMS</text>
+</svg>

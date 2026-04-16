@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sankula Koteswara Rao | Portfolio</title>
+    <meta name="description" content="Portfolio of Sankula Koteswara Rao, an aspiring AI & ML Engineer showcasing web projects, Python automation, AI work, achievements, and contact details.">
+    <meta property="og:title" content="Sankula Koteswara Rao | Portfolio">
+    <meta property="og:description" content="AI & ML portfolio with projects, resume, achievements, and contact information.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rkotesh.github.io/kotesh-portfolio/">
+    <meta property="og:image" content="https://github.com/rkotesh.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sankula Koteswara Rao | Portfolio">
+    <meta name="twitter:description" content="AI & ML portfolio with projects, resume, achievements, and contact information.">
+    <meta name="theme-color" content="#5ed7cf">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Grain overlay -->
+    <div class="grain-overlay"></div>
+
+    <!-- LOADER -->
+    <div id="loader">
+        <div class="loader-text">
+            <span style="animation-delay:0.1s">S</span>
+            <span style="animation-delay:0.15s">K</span>
+            <span style="animation-delay:0.2s">R</span>
+        </div>
+        <div class="loader-line"></div>
+        <div class="loader-counter" id="loaderCounter">000</div>
+        <div class="loader-subtitle">Loading Portfolio</div>
+        <div class="loader-blocks">
+            <div class="loader-block"></div>
+            <div class="loader-block"></div>
+            <div class="loader-block"></div>
+            <div class="loader-block"></div>
+            <div class="loader-block"></div>
+            <div class="loader-block"></div>
+            <div class="loader-block"></div>
+        </div>
+    </div>
+
+    <!-- Curtain reveal -->
+    <div class="curtain" id="c1"></div>
+    <div class="curtain" id="c2"></div>
+    <div class="curtain" id="c3"></div>
+    <div class="curtain" id="c4"></div>
+    <div class="curtain" id="c5"></div>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="cursor"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+
+    <!-- 3D Background -->
+    <canvas id="three-bg"></canvas>
+
+    <!-- NAV -->
+        <nav id="navbar">
+        <a href="#hero" class="nav-logo">SKR.</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#hero" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger" onclick="toggleMobile()">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero">
+        <div class="hero-content">
+            <p class="hero-greeting"><span>Hello, I'm</span></p>
+            <h1 class="hero-name">
+                <span class="name-line"><span>Sankula</span></span>
+                <span class="name-line"><span>Koteswara</span></span>
+                <span class="name-line"><span>Rao</span></span>
+            </h1>
+            <p class="hero-title"><span></span></p>
+            <p class="hero-desc">Aspiring AI & ML Engineer passionate about creating innovative solutions through code.
+                Specializing in web development, Python programming, and AI automation.</p>
+            <div class="hero-buttons">
+                <a href="./assets/Sankula_Koteswararao_Resume.pdf" class="btn-primary magnetic" download>
+                    <svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+                        <path
+                            d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+                        <path
+                            d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
+                    </svg>
+                    Download Resume
+                </a>
+                <a href="#projects" class="btn-outline magnetic">View Work →</a>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="profile-container">
+                <div class="profile-glow"></div>
+                <div class="profile-ring-2"></div>
+                <div class="profile-ring"></div>
+                <div class="profile-image">
+                    <span class="initials" data-sign="s ram k">s ram k</span>
+                </div>
+                <div class="floating-icon fi-1">JS</div>
+                <div class="floating-icon fi-2">⚛</div>
+                <div class="floating-icon fi-3">PY</div>
+                <div class="floating-icon fi-4">⚙</div>
+                <div class="floating-icon fi-5">◁</div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <span class="scroll-text">Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee-section">
+        <div class="marquee-track">
+            <span>Developer — Designer — Creator — Innovator — </span>
+            <span>Developer — Designer — Creator — Innovator — </span>
+            <span>Developer — Designer — Creator — Innovator — </span>
+            <span>Developer — Designer — Creator — Innovator — </span>
+        </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <span class="section-label reveal">01 — About</span>
+        <h2 class="section-title reveal">About Me</h2>
+        <div class="section-divider reveal"></div>
+        <div class="about-content">
+            <div class="about-text reveal-left">
+                <p>I'm an <strong>aspiring AI & ML Engineer</strong> with a strong foundation in web development and
+                    artificial intelligence. I enjoy building projects that bridge the gap between technology and
+                    user experience.</p>
+                <p>Currently pursuing <strong>B.Tech in AI & ML</strong> at Chalapathi Institute Of Engineering &
+                    Technology, I focus on <strong>Python programming</strong>, <strong>web development</strong>, and
+                    practical AI applications.</p>
+                <div class="about-stats stagger">
+                    <div class="stat-card">
+                        <div class="stat-number" data-count="12">0</div>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" data-count="7">0</div>
+                        <div class="stat-label">Skills</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" data-count="2">0</div>
+                        <div class="stat-label">Years Learning</div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-3d reveal-right">
+                <canvas id="about-canvas"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+        <span class="section-label reveal">02 — Skills</span>
+        <h2 class="section-title reveal">Skills & Expertise</h2>
+        <div class="section-divider reveal"></div>
+        <div class="skills-grid stagger">
+            <div class="skill-category">
+                <span class="skill-category-icon">🌐</span>
+                <h3>Frontend Development</h3>
+                <div class="skill-items">
+                    <span class="skill-tag">HTML/CSS</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Bootstrap</span>
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">Tailwind CSS</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <span class="skill-category-icon">⚙️</span>
+                <h3>Programming & AI</h3>
+                <div class="skill-items">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Flask</span>
+                    <span class="skill-tag">Django</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">AI Tools</span>
+                    <span class="skill-tag">TensorFlow</span>
+                    <span class="skill-tag">OpenCV</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <span class="skill-category-icon">🗄️</span>
+                <h3>Tools & Design</h3>
+                <div class="skill-items">
+                    <span class="skill-tag">VS Code</span>
+                    <span class="skill-tag">AI Tools</span>
+                    <span class="skill-tag">Canva</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">GitHub</span>
+                    <span class="skill-tag">MySQL</span>
+                    <span class="skill-tag">MongoDB</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+        <span class="section-label reveal">03 — Work</span>
+        <h2 class="section-title reveal">Featured Projects</h2>
+        <div class="section-divider reveal"></div>
+        <div class="project-groups">
+            <div class="project-group">
+                <div class="project-group-header reveal">
+                    <span>Web</span>
+                    <h3>Web Projects</h3>
+                </div>
+                <div class="projects-grid stagger">
+                    <div class="project-card">
+                        <div class="project-preview">
+                            <img src="./assets/project-kotesh-portfolio.png" alt="kotesh portfolio preview" loading="lazy" decoding="async">
+                            <span class="project-number">01</span>
+                        </div>
+                        <div class="project-info">
+                            <h3>kotesh-portfolio</h3>
+                            <p>Personal portfolio showcasing projects, skills, and experience with modern web technologies.</p>
+                            <div class="project-tech">
+                                <span>CSS</span>
+                                <span>HTML</span>
+                                <span>JavaScript</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/rkotesh/kotesh-portfolio" target="_blank" rel="noreferrer" class="project-link">GitHub ↗</a>
+                                <a href="https://rkotesh.github.io/kotesh-portfolio/" target="_blank" rel="noreferrer" class="project-link">Live Demo ↗</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-preview">
+                            <img src="./assets/project-ciet-erp.png" alt="college erp preview" loading="lazy" decoding="async">
+                            <span class="project-number">02</span>
+                        </div>
+                        <div class="project-info">
+                            <h3>ciet_erp</h3>
+                            <p>College ERP portal for managing academic operations and student data.</p>
+                            <div class="project-tech">
+                                <span>HTML</span>
+                                <span>JavaScript</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/rkotesh/ciet_erp" target="_blank" rel="noreferrer" class="project-link">GitHub ↗</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-preview">
+                            <img src="./assets/project-asset-management.png" alt="asset management preview" loading="lazy" decoding="async">
+                            <span class="project-number">05</span>
+                        </div>
+                        <div class="project-info">
+                            <h3>asset_management</h3>
+                            <p>A web application for tracking and managing digital and physical assets within an organization.</p>
+                            <div class="project-tech">
+                                <span>JavaScript</span>
+                                <span>Web App</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/rkotesh/asset_management" target="_blank" rel="noreferrer" class="project-link">GitHub ↗</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-group">
+                <div class="project-group-header reveal">
+                    <span>Python</span>
+                    <h3>Python Projects</h3>
+                </div>
+                <div class="projects-grid stagger">
+                    <div class="project-card">
+                        <div class="project-preview">
+                            <img src="./assets/project-inventory.png" alt="inventory management preview" loading="lazy" decoding="async">
+                            <span class="project-number">03</span>
+                        </div>
+                        <div class="project-info">
+                            <h3>inventory_management_and_billing_system</h3>
+                            <p>A console-based Python application that manages product inventory, processes customer orders, and generates bills.</p>
+                            <div class="project-tech">
+                                <span>Python</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/rkotesh/inventory_management_and_billing_system" target="_blank" rel="noreferrer" class="project-link">GitHub ↗</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-preview">
+                            <img src="./assets/project-weather-forecast.png" alt="weather forecast preview" loading="lazy" decoding="async">
+                            <span class="project-number">10</span>
+                        </div>
+                        <div class="project-info">
+                            <h3>weather_forecast</h3>
+                            <p>Application that fetches real-time weather data from open APIs to display local forecasts.</p>
+                            <div class="project-tech">
+                                <span>Python</span>
+                                <span>API</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/rkotesh/weather_forecast" target="_blank" rel="noreferrer" class="project-link">GitHub ↗</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-preview">
+                            <img src="./assets/project-qr-generator.png" alt="qr generator preview" loading="lazy" decoding="async">
+                            <span class="project-number">12</span>
+                        </div>
+                        <div class="project-info">
+                            <h3>QR-Generator</h3>
+                            <p>A simple utility to generate customizable QR codes for URLs, text, and contact information.</p>
+                            <div class="project-tech">
+                                <span>Python</span>
+                                <span>Utility</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/rkotesh/QR-Generator" target="_blank" rel="noreferrer" class="project-link">GitHub ↗</a>
+                                <a href="https://qr-generator04.streamlit.app" target="_blank" rel="noreferrer" class="project-link">Live Demo ↗</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-group">
+                <div class="project-group-header reveal">
+                    <span>AI</span>
+                    <h3>AI Projects</h3>
+                </div>
+                <div class="projects-grid stagger">
+                    <div class="project-card">
+                        <div class="project-preview">
+                            <img src="./assets/project-anti-cheating.png" alt="anti cheating detection preview" loading="lazy" decoding="async">
+                            <span class="project-number">06</span>
+                        </div>
+                        <div class="project-info">
+                            <h3>anti_cheating_detection_system</h3>
+                            <p>A system utilizing computer vision and AI techniques to detect cheating behaviors during online examinations.</p>
+                            <div class="project-tech">
+                                <span>JavaScript</span>
+                                <span>AI</span>
+                                <span>Computer Vision</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/rkotesh/anti_cheating_detection_system" target="_blank" rel="noreferrer" class="project-link">GitHub ↗</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-preview">
+                            <img src="./assets/project-automation-researcher.png" alt="automation researcher preview" loading="lazy" decoding="async">
+                            <span class="project-number">07</span>
+                        </div>
+                        <div class="project-info">
+                            <h3>Automation-Researcher</h3>
+                            <p>A Gen AI project focused on automated research and data synthesis powered by large language models.</p>
+                            <div class="project-tech">
+                                <span>Python</span>
+                                <span>GenAI</span>
+                                <span>LLM</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/rkotesh/Automation-Researcher" target="_blank" rel="noreferrer" class="project-link">GitHub ↗</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-preview">
+                            <img src="./assets/project-hospital-chatbot.png" alt="hospital chatbot preview" loading="lazy" decoding="async">
+                            <span class="project-number">11</span>
+                        </div>
+                        <div class="project-info">
+                            <h3>hospital_chatbot</h3>
+                            <p>AI-driven conversational agent to assist patients with booking appointments and basic medical queries.</p>
+                            <div class="project-tech">
+                                <span>Python</span>
+                                <span>AI</span>
+                                <span>Chatbot</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/rkotesh/hospital_chatbot" target="_blank" rel="noreferrer" class="project-link">GitHub ↗</a>
+                                <a href="https://hospitalchatbot04.streamlit.app" target="_blank" rel="noreferrer" class="project-link">Live Demo ↗</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-group">
+                <div class="project-group-header reveal">
+                    <span>Automation</span>
+                    <h3>Automation Projects</h3>
+                </div>
+                <div class="projects-grid stagger">
+                    <div class="project-card">
+                        <div class="project-preview">
+                            <img src="./assets/project-automation-system.png" alt="automation system preview" loading="lazy" decoding="async">
+                            <span class="project-number">04</span>
+                        </div>
+                        <div class="project-info">
+                            <h3>Automation_System</h3>
+                            <p>An automated system designed to streamline repetitive tasks and improve operational efficiency.</p>
+                            <div class="project-tech">
+                                <span>Python</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/rkotesh/Automation_System" target="_blank" rel="noreferrer" class="project-link">GitHub ↗</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-preview">
+                            <img src="./assets/project-feedback-monitoring.png" alt="feedback monitoring preview" loading="lazy" decoding="async">
+                            <span class="project-number">08</span>
+                        </div>
+                        <div class="project-info">
+                            <h3>feedback_monitoring_system</h3>
+                            <p>A system for collecting, analyzing, and reporting on user feedback to drive product improvements.</p>
+                            <div class="project-tech">
+                                <span>Python</span>
+                                <span>Analytics</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/rkotesh/feedback_monitoring_system" target="_blank" rel="noreferrer" class="project-link">GitHub ↗</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-preview">
+                            <img src="./assets/project-elms.png" alt="elms preview" loading="lazy" decoding="async">
+                            <span class="project-number">09</span>
+                        </div>
+                        <div class="project-info">
+                            <h3>elms</h3>
+                            <p>Electronic Leave Management System to digitize and manage employee leave applications.</p>
+                            <div class="project-tech">
+                                <span>Python</span>
+                                <span>Management</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/rkotesh/elms" target="_blank" rel="noreferrer" class="project-link">GitHub ↗</a>
+                                <a href="https://elms-3.onrender.com" target="_blank" rel="noreferrer" class="project-link">Live Demo ↗</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARQUEE 2 -->
+    <div class="marquee-section">
+        <div class="marquee-track" style="animation-direction: reverse;">
+            <span>Python — React — AI — Machine Learning — Web Dev — Django</span>
+            <span>Python — React — AI — Machine Learning — Web Dev — Django</span>
+            <span>Python — React — AI — Machine Learning — Web Dev — Django</span>
+            <span>Python — React — AI — Machine Learning — Web Dev — Django</span>
+        </div>
+    </div>
+
+    <!-- EDUCATION -->
+    <section id="education">
+        <span class="section-label reveal">04 — Education</span>
+        <h2 class="section-title reveal">Education</h2>
+        <div class="section-divider reveal"></div>
+        <div class="timeline reveal">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <span class="timeline-year">2023 – 2027</span>
+                    <h3>B.Tech in AI & ML</h3>
+                    <h4>Chalapathi Institute Of Engineering & Technology, Lam</h4>
+                    <p>Currently pursuing Bachelor's degree in Artificial Intelligence and Machine Learning with a CGPA
+                        of 7.80. Focusing on advanced AI concepts, machine learning algorithms, and practical
+                        applications.</p>
+                    <p><strong>CGPA:</strong> 7.80</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <span class="timeline-year">2021 – 2023</span>
+                    <h3>Intermediate (12th Grade)</h3>
+                    <h4>Sri Saraswathi Jr College, Ongole</h4>
+                    <p>Completed intermediate education with excellent academic performance, laying a strong foundation
+                        for engineering studies.</p>
+                    <p><strong>90.07%</strong></p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <span class="timeline-year">2020 – 2021</span>
+                    <h3>SSC (10th Grade)</h3>
+                    <h4>Govt Z P H School, Vaidana</h4>
+                    <p>Completed secondary education with outstanding results, demonstrating strong academic
+                        fundamentals.</p>
+                    <p><strong>97.00%</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACHIEVEMENTS -->
+    <section id="achievements">
+        <span class="section-label reveal">05 — Achievements</span>
+        <h2 class="section-title reveal">Achievements</h2>
+        <div class="section-divider reveal"></div>
+        <div class="timeline reveal">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <span class="timeline-year">2026</span>
+                    <h3>AI & ML Engineer</h3>
+                    <h4><a href="https://drive.google.com/file/d/1PmJORyp81X0l6YSr2I9ZS0bQXb_VP2Vf/view?usp=drivesdk" target="_blank" rel="noreferrer" style="color: var(--primary); text-decoration: none;">View Certificate ↗</a></h4>
+                    <p>Professional certification achieved from <b>Freedom With AI</b> as an AI & ML Engineer and learned AI tools.</p>
+                    <p><strong>Verified</strong></p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <span class="timeline-year">2025</span>
+                    <h3>MERN Stack Training</h3>
+                    <h4>Chalapathi Institute Of Engineering & Technology</h4>
+                    <p>Completed comprehensive training in MERN (MongoDB, Express.js, React, Node.js) stack
+                        technologies, enhancing full-stack development capabilities.</p>
+                    <p><strong>Certified</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+`    <!-- CONTACT -->
+    <section id="contact">
+        <div class="contact-content">
+            <span class="section-label reveal">06 — Contact</span>
+            <h2 class="section-title reveal">Get In Touch</h2>
+            <div class="section-divider reveal" style="margin-left:auto;margin-right:auto;"></div>
+            <p class="contact-subtitle reveal">Let's discuss opportunities and collaborate</p>
+            <div class="contact-cta reveal stagger">
+                <a href="mailto:srkotesh23@gmail.com" class="btn-primary magnetic">Let's Work Together</a>
+                <a href="./assets/Sankula_Koteswararao_Resume.pdf" class="btn-outline magnetic" download>Download Resume</a>
+            </div>
+            <div class="contact-grid reveal stagger">
+                <a class="contact-card" href="mailto:srkotesh23@gmail.com">
+                    <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+                    <h4>Email</h4>
+                    <p>srkotesh23@gmail.com</p>
+                </a>
+                <a class="contact-card" href="tel:+919182015717">
+                    <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+                    <h4>Phone</h4>
+                    <p>+91 9182015717</p>
+                </a>
+                <a class="contact-card" href="https://maps.google.com/?q=Bapatla,+Andhra+Pradesh,+523303" target="_blank" rel="noreferrer">
+                    <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+                    <h4>Location</h4>
+                    <p>Bapatla, Andhra Pradesh, 523303</p>
+                </a>
+                <a class="contact-card" href="https://github.com/rkotesh" target="_blank" rel="noreferrer">
+                    <div class="contact-icon"><i class="fa-brands fa-github"></i></div>
+                    <h4>GitHub</h4>
+                    <p>github.com/rkotesh</p>
+                </a>
+                <a class="contact-card" href="https://www.linkedin.com/in/sankula-koteswararao" target="_blank" rel="noreferrer">
+                    <div class="contact-icon"><i class="fa-brands fa-linkedin-in"></i></div>
+                    <h4>LinkedIn</h4>
+                    <p>Connect with me</p>
+                </a>
+            </div>
+
+            <form class="contact-form reveal" onsubmit="handleSubmit(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Subject">
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Your Message..." required></textarea>
+                </div>
+                <button type="submit" class="btn-primary btn-submit magnetic">Send Message →</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-left">
+            <p class="footer-tagline">AI & ML Engineering Student | Web Developer | Python Programmer</p>
+            <p>© 2024 Sankula Koteswara Rao. All rights reserved.</p>
+        </div>
+        <div class="social-links">
+            <a href="https://github.com/rkotesh" target="_blank" rel="noreferrer" class="social-link magnetic"><i class="fa-brands fa-github"></i><span>GitHub</span></a>
+            <a href="https://www.linkedin.com/in/sankula-koteswararao" target="_blank" rel="noreferrer" class="social-link magnetic"><i class="fa-brands fa-linkedin-in"></i><span>LinkedIn</span></a>
+        </div>
+    </footer>
+
+    <div id="project-modal" class="project-modal" aria-hidden="true">
+        <div class="project-modal-backdrop" data-project-modal-close></div>
+        <div class="project-modal-panel" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
+            <button class="project-modal-close" type="button" aria-label="Close project details" data-project-modal-close>✕</button>
+            <div class="project-modal-media">
+                <img id="project-modal-image" src="" alt="">
+                <div class="project-modal-number" id="project-modal-number"></div>
+            </div>
+            <div class="project-modal-content">
+                <div class="project-modal-kicker" id="project-modal-kicker"></div>
+                <h3 id="project-modal-title"></h3>
+                <p id="project-modal-description"></p>
+                <div class="project-modal-tech" id="project-modal-tech"></div>
+                <div class="project-modal-links" id="project-modal-links"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ROLLA AI ASSISTANT -->
+    <button id="rolla-fab" class="rolla-fab magnetic" type="button" aria-label="Open Rolla AI Assistant">
+        <span>R</span>
+    </button>
+
+    <aside id="rolla-chat-window" class="rolla-panel" aria-label="Rolla AI Assistant">
+        <div class="rolla-header">
+            <div class="rolla-brand">
+                <div class="rolla-avatar">R</div>
+                <div class="rolla-title">
+                    <strong>Rolla AI</strong>
+                    <span>Portfolio assistant</span>
+                </div>
+            </div>
+            <button id="rolla-close" class="rolla-close" type="button" aria-label="Close assistant">✕</button>
+        </div>
+
+        <div class="rolla-meta">
+            <div class="rolla-meta-card">
+                <span>Projects</span>
+                <strong>12</strong>
+            </div>
+            <div class="rolla-meta-card">
+                <span>Skills</span>
+                <strong>7</strong>
+            </div>
+            <div class="rolla-meta-card">
+                <span>Achievement</span>
+                <strong>MERN</strong>
+            </div>
+        </div>
+
+        <div class="rolla-actions">
+            <button type="button" class="rolla-action" data-rolla-action="projects">Projects</button>
+            <button type="button" class="rolla-action" data-rolla-action="resume">Resume</button>
+            <button type="button" class="rolla-action" data-rolla-action="contact">Contact</button>
+        </div>
+
+        <div id="rolla-messages" class="rolla-messages"></div>
+        <div id="rolla-suggestions" class="rolla-suggestions"></div>
+
+        <div class="rolla-inputbar">
+            <input id="rolla-input" type="text" placeholder="Ask Rolla anything..." autocomplete="off">
+            <button id="rolla-voice" class="rolla-voice" type="button" aria-label="Voice input">🎤</button>
+            <button id="rolla-send" class="rolla-send" type="button" aria-label="Send message">➤</button>
+        </div>
+    </aside>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
+

@@ -1,0 +1,30 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="170" y1="80" x2="1060" y2="740">
+      <stop stop-color="#091016"/>
+      <stop offset="1" stop-color="#121922"/>
+    </linearGradient>
+    <filter id="blur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="24"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="800" rx="44" fill="url(#bg)"/>
+  <circle cx="950" cy="160" r="120" fill="#5AD3C7" fill-opacity=".12" filter="url(#blur)"/>
+  <rect x="136" y="122" width="928" height="556" rx="34" fill="#111922" stroke="rgba(255,255,255,.10)"/>
+  <rect x="168" y="156" width="864" height="50" rx="18" fill="#0D141A"/>
+  <circle cx="203" cy="181" r="10" fill="#FF6A6A"/><circle cx="231" cy="181" r="10" fill="#FFC86B"/><circle cx="259" cy="181" r="10" fill="#4EE0A1"/>
+  <rect x="200" y="250" width="240" height="320" rx="22" fill="#0D141A" stroke="rgba(255,255,255,.08)"/>
+  <rect x="472" y="250" width="290" height="320" rx="22" fill="#0D141A" stroke="rgba(255,255,255,.08)"/>
+  <rect x="794" y="250" width="218" height="320" rx="22" fill="#0D141A" stroke="rgba(255,255,255,.08)"/>
+  <rect x="230" y="286" width="180" height="28" rx="14" fill="#5AD3C7" fill-opacity=".24"/>
+  <rect x="230" y="332" width="132" height="132" rx="26" fill="#7CB4FF" fill-opacity=".18"/>
+  <rect x="230" y="484" width="170" height="18" rx="9" fill="#8CA0AE" fill-opacity=".32"/>
+  <rect x="502" y="286" width="208" height="18" rx="9" fill="#EAF2F5" fill-opacity=".78"/>
+  <rect x="502" y="320" width="238" height="14" rx="7" fill="#8CA0AE" fill-opacity=".32"/>
+  <rect x="502" y="352" width="180" height="14" rx="7" fill="#8CA0AE" fill-opacity=".24"/>
+  <rect x="502" y="410" width="208" height="82" rx="18" fill="#5AD3C7" fill-opacity=".16"/>
+  <rect x="824" y="286" width="126" height="126" rx="26" fill="#0B1117" stroke="#5AD3C7" stroke-opacity=".5"/>
+  <rect x="850" y="312" width="74" height="74" rx="18" fill="none" stroke="#5AD3C7" stroke-width="12" stroke-dasharray="16 12"/>
+  <text x="170" y="96" fill="#EAF2F5" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">asset_management</text>
+  <text x="170" y="126" fill="#8CA0AE" font-family="Arial, Helvetica, sans-serif" font-size="16">Web app for tracking digital and physical assets.</text>
+</svg>
