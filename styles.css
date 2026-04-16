@@ -47,11 +47,7 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background:
-                radial-gradient(circle at 50% 14%, rgba(173, 189, 204, 0.14), transparent 24%),
-                radial-gradient(circle at 20% 18%, rgba(112, 127, 143, 0.1), transparent 18%),
-                radial-gradient(circle at 80% 8%, rgba(255, 255, 255, 0.05), transparent 16%),
-                var(--black);
+            background: var(--black);
             color: var(--white);
             overflow-x: hidden;
             cursor: default;
@@ -65,10 +61,9 @@
             pointer-events: none;
             z-index: 0;
             background:
-                radial-gradient(circle at 50% 14%, rgba(240, 244, 249, 0.08), transparent 24%),
-                radial-gradient(circle at 18% 22%, rgba(158, 171, 184, 0.08), transparent 22%),
-                radial-gradient(circle at 82% 20%, rgba(140, 151, 163, 0.06), transparent 20%),
-                linear-gradient(180deg, rgba(4, 6, 10, 0.18) 0%, rgba(6, 9, 14, 0.52) 42%, rgba(3, 5, 8, 0.92) 100%);
+                radial-gradient(circle at 50% 18%, rgba(255, 255, 255, 0.07), transparent 28%),
+                radial-gradient(circle at 20% 24%, rgba(255, 255, 255, 0.035), transparent 22%),
+                linear-gradient(180deg, rgba(7, 10, 14, 0.18) 0%, rgba(7, 10, 14, 0.34) 42%, rgba(7, 10, 14, 0.72) 100%);
         }
 
         /* ==================== LOADER ==================== */

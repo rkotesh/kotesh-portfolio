@@ -466,11 +466,6 @@
             }, 600);
         }
 
-        // ==================== THREE.JS BACKGROUND ====================
-        if (window.initNatureBackground) {
-            window.initNatureBackground();
-        }
-
         // ==================== STORM SCENES ====================
         const aboutCanvas = document.getElementById('about-canvas');
         const cloudCanvas = document.getElementById('cloud-canvas');
