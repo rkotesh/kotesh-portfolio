@@ -1049,3 +1049,320 @@ footer a { color: var(--text); text-decoration: none; font-weight: 500; }
         justify-content: center;
     }
 }
+
+/* ---- AI ASSISTANT STYLING ---- */
+.rolla-fab {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--highlight);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(153, 102, 255, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.2);
+    z-index: 9999;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+}
+.rolla-fab:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 15px 35px rgba(153, 102, 255, 0.6), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+}
+.rolla-fab-icon svg {
+    width: 26px;
+    height: 26px;
+    transition: transform 0.3s ease;
+}
+.rolla-fab:hover .rolla-fab-icon svg {
+    transform: scale(1.05);
+}
+.rolla-notification {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #EA4335;
+    border: 2px solid #fff;
+    animation: pulseNotification 2s infinite;
+    display: none;
+}
+@keyframes pulseNotification {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(234, 67, 53, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(234, 67, 53, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(234, 67, 53, 0); }
+}
+
+.rolla-chat-window {
+    position: fixed;
+    bottom: 6.5rem;
+    right: 2rem;
+    width: 400px;
+    height: 580px;
+    max-height: calc(100vh - 9rem);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(226, 226, 230, 0.6);
+    border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    z-index: 9998;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    pointer-events: none;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.rolla-chat-window.open {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: all;
+}
+
+.rolla-chat-header {
+    padding: 1.25rem 1.5rem;
+    background: rgba(255, 255, 255, 0.5);
+    border-bottom: 1px solid rgba(226, 226, 230, 0.6);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.rolla-header-info {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+.rolla-avatar-wrapper {
+    position: relative;
+    width: 40px;
+    height: 40px;
+}
+.rolla-header-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1.5px solid var(--border);
+}
+.rolla-status-dot {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #34A853;
+    border: 2px solid #fff;
+}
+.rolla-header-info h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+}
+.rolla-header-info p {
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+}
+.rolla-close-btn {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--text-secondary);
+    cursor: pointer;
+    line-height: 1;
+    padding: 0.2rem;
+    transition: color 0.2s;
+}
+.rolla-close-btn:hover {
+    color: var(--text);
+}
+
+.rolla-messages {
+    flex: 1;
+    padding: 1.5rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.rolla-message {
+    display: flex;
+    gap: 0.8rem;
+    max-width: 85%;
+}
+.rolla-message.assistant {
+    align-self: flex-start;
+}
+.rolla-message.user {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+    max-width: 80%;
+}
+.rolla-msg-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--tag-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+    border: 1px solid var(--border);
+    overflow: hidden;
+}
+.rolla-msg-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.rolla-bubble {
+    padding: 0.8rem 1.1rem;
+    border-radius: 18px;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+.rolla-message.assistant .rolla-bubble {
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--text);
+    border: 1px solid rgba(226, 226, 230, 0.5);
+    border-top-left-radius: 4px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.01);
+}
+.rolla-message.user .rolla-bubble {
+    background: var(--highlight);
+    color: #fff;
+    border-top-right-radius: 4px;
+    box-shadow: 0 4px 15px rgba(153, 102, 255, 0.15);
+}
+.rolla-bubble a {
+    color: inherit;
+    text-decoration: underline;
+    font-weight: 500;
+}
+.rolla-bubble strong {
+    font-weight: 600;
+}
+
+.rolla-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    padding: 0.5rem 1.5rem 1rem;
+    background: transparent;
+}
+.rolla-suggestion-chip {
+    padding: 0.45rem 0.85rem;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(226, 226, 230, 0.8);
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.rolla-suggestion-chip:hover {
+    background: var(--highlight);
+    border-color: var(--highlight);
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(153, 102, 255, 0.15);
+}
+
+.rolla-typing {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0.6rem 1rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 18px;
+    border: 1px solid rgba(226, 226, 230, 0.5);
+    border-top-left-radius: 4px;
+}
+.rolla-typing-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--text-secondary);
+    border-radius: 50%;
+    opacity: 0.4;
+    animation: rollaTypingAnimation 1.4s infinite ease-in-out;
+}
+.rolla-typing-dot:nth-child(1) { animation-delay: 200ms; }
+.rolla-typing-dot:nth-child(2) { animation-delay: 350ms; }
+.rolla-typing-dot:nth-child(3) { animation-delay: 500ms; }
+
+@keyframes rollaTypingAnimation {
+    0%, 100% { transform: translateY(0); opacity: 0.4; }
+    50% { transform: translateY(-4px); opacity: 1; }
+}
+
+.rolla-input-area {
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.7);
+    border-top: 1px solid rgba(226, 226, 230, 0.6);
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+.rolla-input-area input {
+    flex: 1;
+    padding: 0.75rem 1.1rem;
+    border: 1px solid rgba(226, 226, 230, 0.8);
+    border-radius: 100px;
+    font-size: 0.85rem;
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+}
+.rolla-input-area input:focus {
+    border-color: var(--highlight);
+    background: #fff;
+}
+.rolla-send-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--highlight);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+}
+.rolla-send-btn:hover {
+    transform: scale(1.05);
+    background: var(--highlight-dark);
+}
+.rolla-send-btn svg {
+    width: 16px;
+    height: 16px;
+    margin-left: 2px;
+}
+
+@media (max-width: 480px) {
+    .rolla-chat-window {
+        right: 1rem;
+        left: 1rem;
+        bottom: 5.5rem;
+        width: auto;
+        height: calc(100vh - 7rem);
+    }
+    .rolla-fab {
+        bottom: 1rem;
+        right: 1rem;
+    }
+}

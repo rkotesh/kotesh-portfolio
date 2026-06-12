@@ -41,6 +41,7 @@
     </div>
 </nav>
 
+
 <!-- HERO -->
 <section class="hero">
     <div class="hero-content">
@@ -429,7 +430,7 @@
                 </a>
                 <a href="https://github.com/rkotesh" target="_blank" class="social-link reveal-item">
                     <span class="s-icon">⌨</span>
-                    <div>
+                    <div>   
                         <div class="s-name">GitHub</div>
                         <div class="s-handle">@rkotesh</div>
                     </div>
@@ -504,6 +505,45 @@
             </div>
         </div>
     </div>
+</div>
+
+<!-- AI Assistant Widget -->
+<button class="rolla-fab" id="rollaFab" aria-label="Open AI Assistant" aria-expanded="false">
+    <div class="rolla-fab-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+    </div>
+    <span class="rolla-notification" id="rollaNotification"></span>
+</button>
+
+<div class="rolla-chat-window" id="rollaChatWindow" aria-hidden="true">
+    <div class="rolla-chat-header">
+        <div class="rolla-header-info">
+            <div class="rolla-avatar-wrapper">
+                <img src="assets/profile.jpg" alt="Kotesh AI Avatar" class="rolla-header-avatar">
+                <span class="rolla-status-dot"></span>
+            </div>
+            <div>
+                <h4>Kotesh AI</h4>
+                <p>Virtual Assistant • Online</p>
+            </div>
+        </div>
+        <button class="rolla-close-btn" id="rollaCloseBtn" aria-label="Close Assistant">&times;</button>
+    </div>
+    
+    <div class="rolla-messages" id="rollaMessages">
+        <!-- Messages will be injected here -->
+    </div>
+    
+    <div class="rolla-suggestions" id="rollaSuggestions">
+        <!-- Suggestion chips will be injected here -->
+    </div>
+    
+    <form class="rolla-input-area" id="rollaInputArea">
+        <input type="text" id="rollaInput" placeholder="Ask me anything..." autocomplete="off" required>
+        <button type="submit" class="rolla-send-btn" id="rollaSendBtn" aria-label="Send Message">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+        </button>
+    </form>
 </div>
 
 <script src="script.js"></script>
