@@ -289,4 +289,54 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeModal();
     });
+
+    // Stats count up animation
+    const stats = document.querySelectorAll('.stat h3');
+    const animateStats = () => {
+        stats.forEach(stat => {
+            const text = stat.textContent;
+            const isPlus = text.includes('+');
+            const targetVal = parseFloat(text.replace('+', ''));
+            const isFloat = text.includes('.');
+            
+            const duration = 1500; // 1.5s
+            const start = performance.now();
+            
+            const step = (now) => {
+                const progress = Math.min((now - start) / duration, 1);
+                // Easing out quad
+                const ease = progress * (2 - progress);
+                const currentVal = ease * targetVal;
+                
+                if (isFloat) {
+                    stat.textContent = currentVal.toFixed(2) + (isPlus ? '+' : '');
+                } else {
+                    stat.textContent = Math.floor(currentVal) + (isPlus ? '+' : '');
+                }
+                
+                if (progress < 1) {
+                    requestAnimationFrame(step);
+                } else {
+                    stat.textContent = text; // safety reset to initial text
+                }
+            };
+            requestAnimationFrame(step);
+        });
+    };
+    
+    // Trigger when stats section enters view
+    const heroStatsContainer = document.querySelector('.hero-stats');
+    if (heroStatsContainer && 'IntersectionObserver' in window) {
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        statsObserver.observe(heroStatsContainer);
+    } else {
+        animateStats(); // fallback
+    }
 });

@@ -23,20 +23,22 @@
 
 <!-- NAV -->
 <nav id="navbar">
-    <a href="#" class="nav-logo">
-        <img src="assets/profile.jpg" alt="Sankula Koteswara Rao">
-        Sankula <span>Koteswara Rao</span>
-    </a>
-    <div class="nav-links" id="navLinks">
-        <a href="#about">About</a>
-        <a href="#education">Education</a>
-        <a href="#brands">Technologies</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact" class="nav-cta">Contact</a>
+    <div class="nav-container">
+        <a href="#" class="nav-logo">
+            <img src="assets/profile.jpg" alt="Sankula Koteswara Rao">
+            Sankula <span>Koteswara Rao</span>
+        </a>
+        <div class="nav-links" id="navLinks">
+            <a href="#about">About</a>
+            <a href="#education">Education</a>
+            <a href="#brands">Technologies</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact" class="nav-cta">Contact</a>
+        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
     </div>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-        <span></span><span></span><span></span>
-    </button>
 </nav>
 
 <!-- HERO -->
@@ -106,26 +108,40 @@
             <p>
                 Currently pursuing my <strong>B.Tech in AI &amp; ML</strong> at Chalapathi Institute Of Engineering &amp; Technology, I focus on Python programming, full stack development, and practical machine learning applications.
             </p>
-            <p>
-                I'm certified as an <strong>AI &amp; ML Engineer</strong> from Freedom With AI, and I have completed comprehensive training in the <strong>MERN Stack</strong> (MongoDB, Express, React, Node.js). I'm passionate about automation, data analytics, and developer tools.
-            </p>
-            <div class="skills-grid stagger-reveal">
-                <span class="skill-tag reveal-item">HTML</span>
-                <span class="skill-tag reveal-item">CSS</span>
-                <span class="skill-tag reveal-item">JavaScript</span>
-                <span class="skill-tag reveal-item">Python</span>
-                <span class="skill-tag reveal-item">MySQL</span>
-                <span class="skill-tag reveal-item">Prompt Engineering</span>
-                <span class="skill-tag reveal-item">Bootstrap</span>
-                <span class="skill-tag reveal-item">Streamlit</span>
-                <span class="skill-tag reveal-item">Flask</span>
-                <span class="skill-tag reveal-item">Django</span>
-                <span class="skill-tag reveal-item">VS Code</span>
-                <span class="skill-tag reveal-item">Git</span>
-                <span class="skill-tag reveal-item">GitHub</span>
-                <span class="skill-tag reveal-item">Canva</span>
-                <span class="skill-tag reveal-item">AI Tools</span>
+            
+            <div class="skills-categories stagger-reveal">
+                <div class="skills-category reveal-item">
+                    <h5>Languages</h5>
+                    <div class="skills-tags">
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">MySQL</span>
+                    </div>
+                </div>
+                <div class="skills-category reveal-item">
+                    <h5>Web Frameworks</h5>
+                    <div class="skills-tags">
+                        <span class="skill-tag">Bootstrap</span>
+                        <span class="skill-tag">Streamlit</span>
+                        <span class="skill-tag">Flask</span>
+                        <span class="skill-tag">Django</span>
+                    </div>
+                </div>
+                <div class="skills-category reveal-item">
+                    <h5>Tools & Specializations</h5>
+                    <div class="skills-tags">
+                        <span class="skill-tag">Prompt Engineering</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitHub</span>
+                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">Canva</span>
+                        <span class="skill-tag">AI Tools</span>
+                    </div>
+                </div>
             </div>
+        </div>
     </div>
     <div class="about-highlights stagger-reveal" style="margin-top: 4rem;">
         <div class="highlight-card reveal-item">
@@ -171,8 +187,6 @@
                 <p>Currently pursuing Bachelor's degree in Artificial Intelligence and Machine Learning. Focusing on advanced AI concepts, data structures, machine learning algorithms, and practical applications.</p>
                 <div class="education-tags">
                     <span>AI & ML</span>
-                    <span>Data Structures</span>
-                    <span>Algorithms</span>
                     <span>CGPA: 7.80</span>
                 </div>
             </div>
@@ -187,7 +201,6 @@
                 <p>Professional certification in artificial intelligence and machine learning. Learned state-of-the-art AI tools, prompt engineering, and automation workflows.</p>
                 <div class="education-tags">
                     <span>AI Tools</span>
-                    <span>Machine Learning</span>
                     <span>Automation</span>
                     <span>Certification</span>
                 </div>
@@ -206,7 +219,6 @@
                     <span>Node.js</span>
                     <span>Express.js</span>
                     <span>MongoDB</span>
-                    <span>MERN</span>
                 </div>
             </div>
         </div>
@@ -219,8 +231,6 @@
                 <h4>Intermediate (12th Grade)</h4>
                 <p>Completed senior secondary education with focus on Mathematics, Physics, and Chemistry, establishing strong quantitative foundations.</p>
                 <div class="education-tags">
-                    <span>PCM</span>
-                    <span>Mathematics</span>
                     <span>90.07%</span>
                 </div>
             </div>
@@ -234,8 +244,6 @@
                 <h4>SSC (10th Grade)</h4>
                 <p>Completed secondary education with excellent grades, demonstrating strong academic fundamentals in science, mathematics, and languages.</p>
                 <div class="education-tags">
-                    <span>SSC</span>
-                    <span>Secondary Education</span>
                     <span>97.00%</span>
                 </div>
             </div>
@@ -318,7 +326,6 @@
                 <p>A simple utility to generate customizable QR codes for URLs, text, and contact information.</p>
                 <div class="project-tags">
                     <span>Python</span>
-                    <span>Utility</span>
                     <span>Streamlit</span>
                 </div>
                 <div class="project-links">
@@ -333,8 +340,7 @@
                 <p>Electronic Leave Management System to digitize and manage employee leave applications.</p>
                 <div class="project-tags">
                     <span>Python</span>
-                    <span>Django/Flask</span>
-                    <span>Management</span>
+                    <span>Flask</span>
                 </div>
                 <div class="project-links">
                     <a href="https://github.com/rkotesh/elms" target="_blank" class="project-link">GitHub ↗</a>
@@ -347,10 +353,8 @@
                 <h4>College ERP Portal</h4>
                 <p>ERP system built for managing college academic operations, student attendance, and administrative records.</p>
                 <div class="project-tags">
-                    <span>HTML</span>
-                    <span>CSS</span>
-                    <span>JavaScript</span>
-                    <span>ERP</span>
+                    <span>Python</span>
+                    <span>Django</span>
                 </div>
                 <div class="project-links">
                     <a href="https://github.com/rkotesh/ciet_erp" target="_blank" class="project-link">GitHub ↗</a>
@@ -363,8 +367,6 @@
                 <p>A console-based Python application that manages product inventory, processes customer orders, and generates bills.</p>
                 <div class="project-tags">
                     <span>Python</span>
-                    <span>SQLite</span>
-                    <span>CLI Tool</span>
                 </div>
                 <div class="project-links">
                     <a href="https://github.com/rkotesh/inventory_management_and_billing_system" target="_blank" class="project-link">GitHub ↗</a>
@@ -378,7 +380,6 @@
                 <div class="project-tags">
                     <span>Python</span>
                     <span>Automation</span>
-                    <span>Scripts</span>
                 </div>
                 <div class="project-links">
                     <a href="https://github.com/rkotesh/Automation_System" target="_blank" class="project-link">GitHub ↗</a>
@@ -394,11 +395,11 @@
         <p class="otw-label">Open to Opportunities</p>
         <h2>Let's build something<br>intelligent together.</h2>
         <div class="otw-roles">
-            <span class="otw-role">AI & ML Engineer</span>
-            <span class="otw-role">Frontend Developer</span>
             <span class="otw-role">Python Programmer</span>
+            <span class="otw-role">Frontend Developer</span>
             <span class="otw-role">Web Developer</span>
             <span class="otw-role">Full Stack Developer</span>
+            <span class="otw-role">AI Tools Specialist</span>
         </div>
         <a href="mailto:srkotesh23@gmail.com" class="otw-cta">Reach Out →</a>
     </div>
