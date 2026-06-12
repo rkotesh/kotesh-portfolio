@@ -115,7 +115,8 @@ nav.scrolled .nav-container { padding: 0.9rem 4rem; }
 /* ---- HERO ---- */
 .hero {
     min-height: 100vh; display: flex; align-items: center;
-    padding: 6rem 4rem 2rem;
+    padding: 6rem 2.5rem 2rem;
+    max-width: 1200px; margin: 0 auto;
     position: relative;
 }
 .hero-content {
@@ -388,7 +389,7 @@ nav.scrolled .nav-container { padding: 0.9rem 4rem; }
 }
 
 /* ---- SECTIONS ---- */
-section { padding: 6rem 4rem; width: 100%; }
+section { padding: 6rem 2.5rem; max-width: 1200px; margin: 0 auto; }
 
 .section-header {
     display: flex; justify-content: space-between; align-items: flex-end;
@@ -535,8 +536,9 @@ section { padding: 6rem 4rem; width: 100%; }
     padding-right: 0;
 }
 #brands .section-header {
-    margin-bottom: 3.5rem;
-    padding: 0 4rem;
+    max-width: 1200px;
+    margin: 0 auto 3.5rem;
+    padding: 0 2.5rem;
 }
 @media (max-width: 1024px) {
     #brands .section-header {
@@ -743,8 +745,9 @@ section { padding: 6rem 4rem; width: 100%; }
 
 /* ---- FOOTER ---- */
 footer {
-    padding: 3rem 4rem;
+    padding: 3rem 2.5rem;
     border-top: 1px solid var(--border);
+    max-width: 1200px; margin: 0 auto;
     display: flex; justify-content: space-between; align-items: center;
 }
 footer p { font-size: 0.8rem; color: var(--text-secondary); }
