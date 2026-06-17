@@ -207,6 +207,16 @@ nav.scrolled .nav-container { padding: 0.9rem 4rem; }
     z-index: 1;
     animation: morphBlob 10s ease-in-out infinite;
     transition: border-color 0.3s, box-shadow 0.5s ease;
+    
+    /* Fix Safari overflow-hidden border-radius clipping bug with morphing animations */
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: -webkit-radial-gradient(white, black);
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    isolation: isolate;
+    will-change: border-radius;
 }
 
 .hero-image-card img {
@@ -216,9 +226,11 @@ nav.scrolled .nav-container { padding: 0.9rem 4rem; }
     border-radius: inherit;
     position: relative;
     z-index: 1;
-    transform: scale(1.08); /* slightly scaled up to offset blob crop movement */
+    transform: scale(1.08) translate3d(0, 0, 0); /* added translate3d for hardware acceleration */
+    -webkit-transform: scale(1.08) translate3d(0, 0, 0);
     transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
     filter: grayscale(12%) contrast(102%);
+    will-change: border-radius, transform;
 }
 
 .hero-image-card::before {
