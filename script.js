@@ -133,6 +133,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Project detail data
     const projectDb = {
+        rolla_ai: {
+            title: "Rolla AI — Digital Agency",
+            tags: ["MERN Stack", "Django", "Next.js", "Tailwind CSS", "SEO & Analytics"],
+            description: "A premium, professional digital web agency and custom software development platform. Built with sub-second page performance, modern glassmorphic designs, responsive UI/UX architectures, and highly optimized SEO structures.",
+            highlights: [
+                "Features an agency-grade web development framework optimized for loading speeds and Core Web Vitals.",
+                "Custom interactive micro-animations and responsive components built entirely from scratch.",
+                "Complete headless CMS (Sanity) and secure payment gateway (Stripe) integration readiness.",
+                "Built to attract and engage clients with modern typography, smooth color palettes, and SEO configurations."
+            ],
+            liveLink: "https://rolla-ai.vercel.app/",
+            githubLink: "https://github.com/rkotesh"
+        },
         hospital_chatbot: {
             title: "Hospital Chatbot",
             tags: ["Python", "AI", "Streamlit", "NLP"],
@@ -393,6 +406,14 @@ class KoteshAI {
             },
             projects: [
                 {
+                    id: 'rolla_ai',
+                    title: 'Rolla AI — Custom Web Agency',
+                    tech: ['MERN Stack', 'Django', 'Next.js', 'Tailwind CSS'],
+                    description: 'A premium, professional digital web agency and custom software development platform featuring sub-second page performance, modern glassmorphic designs, responsive UI/UX, and highly optimized SEO structures.',
+                    live: 'https://rolla-ai.vercel.app/',
+                    github: 'https://github.com/rkotesh'
+                },
+                {
                     id: 'hospital_chatbot',
                     title: 'Hospital Chatbot',
                     tech: ['Python', 'AI', 'Streamlit', 'Chatbot'],
@@ -618,38 +639,48 @@ class KoteshAI {
         }
         // Projects List
         else if (this.containsAny(lowerQuery, ['projects', 'project', 'work', 'built', 'showcase'])) {
-            response = `I have completed **9+ projects** in AI & ML, Python, and Full-Stack web dev. Some of my favorites are:\n\n` +
-                       `1. **Hospital Chatbot** — An AI agent for patient inquiries & appointments.\n` +
-                       `2. **QR Code Generator** — High-res, customizable QR code generator.\n` +
-                       `3. **ELMS** — Full-stack Employee Leave Management System.\n` +
-                       `4. **College ERP Portal** — Academic portal for course operations.\n\n` +
-                       `Ask me about any specific project (e.g. "tell me about ELMS") or ask for live demo links!`;
-            suggestions = ['Hospital Chatbot details 🤖', 'ELMS details 📄', 'Give me live demo links 🔗', 'Get contact info 📞'];
+            response = `I have completed **10+ projects** in AI & ML, Python, and Full-Stack web dev. Some of my favorites are:\n\n` +
+                       `1. **Rolla AI** — A custom web agency & SaaS development platform.\n` +
+                       `2. **Hospital Chatbot** — An AI agent for patient inquiries & appointments.\n` +
+                       `3. **QR Code Generator** — High-res, customizable QR code generator.\n` +
+                       `4. **ELMS** — Full-stack Employee Leave Management System.\n\n` +
+                       `Ask me about any specific project (e.g. "tell me about Rolla AI") or ask for live demo links!`;
+            suggestions = ['Rolla AI details ✨', 'Hospital Chatbot details 🤖', 'Give me live demo links 🔗', 'Get contact info 📞'];
             shouldScrollTo = 'projects';
         }
-        // Specific Project: Hospital Chatbot
-        else if (this.containsAny(lowerQuery, ['hospital chatbot', 'hospital', 'medical chatbot'])) {
+        // Specific Project: Rolla AI
+        else if (this.containsAny(lowerQuery, ['rolla', 'rolla ai', 'agency', 'web agency'])) {
             const p = this.portfolioData.projects[0];
             response = `**${p.title}**:\n${p.description}\n\n` +
                        `• **Tech**: ${p.tech.join(', ')}\n` +
                        `• [Live Demo](${p.live})\n` +
-                       `• [GitHub Repository](${p.github})`;
-            suggestions = ['ELMS details 📄', 'QR Code Generator details 📱', 'Show other projects 🚀'];
+                       `• [GitHub Profile](${p.github})`;
+            suggestions = ['Hospital Chatbot details 🤖', 'ELMS details 📄', 'Show other projects 🚀'];
             shouldScrollTo = 'projects';
         }
-        // Specific Project: QR Code Generator
-        else if (this.containsAny(lowerQuery, ['qr code generator', 'qr generator', 'qr code'])) {
+        // Specific Project: Hospital Chatbot
+        else if (this.containsAny(lowerQuery, ['hospital chatbot', 'hospital', 'medical chatbot'])) {
             const p = this.portfolioData.projects[1];
             response = `**${p.title}**:\n${p.description}\n\n` +
                        `• **Tech**: ${p.tech.join(', ')}\n` +
                        `• [Live Demo](${p.live})\n` +
                        `• [GitHub Repository](${p.github})`;
-            suggestions = ['Hospital Chatbot details 🤖', 'ELMS details 📄', 'Show other projects 🚀'];
+            suggestions = ['Rolla AI details ✨', 'ELMS details 📄', 'QR Code Generator details 📱', 'Show other projects 🚀'];
+            shouldScrollTo = 'projects';
+        }
+        // Specific Project: QR Code Generator
+        else if (this.containsAny(lowerQuery, ['qr code generator', 'qr generator', 'qr code'])) {
+            const p = this.portfolioData.projects[2];
+            response = `**${p.title}**:\n${p.description}\n\n` +
+                       `• **Tech**: ${p.tech.join(', ')}\n` +
+                       `• [Live Demo](${p.live})\n` +
+                       `• [GitHub Repository](${p.github})`;
+            suggestions = ['Rolla AI details ✨', 'Hospital Chatbot details 🤖', 'ELMS details 📄', 'Show other projects 🚀'];
             shouldScrollTo = 'projects';
         }
         // Specific Project: ELMS
         else if (this.containsAny(lowerQuery, ['elms', 'leave management', 'leave'])) {
-            const p = this.portfolioData.projects[2];
+            const p = this.portfolioData.projects[3];
             response = `**${p.title}**:\n${p.description}\n\n` +
                        `• **Tech**: ${p.tech.join(', ')}\n` +
                        `• [Live Demo](${p.live})\n` +
@@ -659,20 +690,21 @@ class KoteshAI {
         }
         // Specific Project: ERP Portal
         else if (this.containsAny(lowerQuery, ['erp portal', 'erp', 'college erp', 'portal'])) {
-            const p = this.portfolioData.projects[3];
+            const p = this.portfolioData.projects[4];
             response = `**${p.title}**:\n${p.description}\n\n` +
                        `• **Tech**: ${p.tech.join(', ')}\n` +
                        `• [GitHub Repository](${p.github})`;
-            suggestions = ['ELMS details 📄', 'Show other projects 🚀'];
+            suggestions = ['Rolla AI details ✨', 'ELMS details 📄', 'Show other projects 🚀'];
             shouldScrollTo = 'projects';
         }
         // Live links
         else if (this.containsAny(lowerQuery, ['live demo', 'live links', 'demos', 'links'])) {
             response = `Here are my live links:\n\n` +
+                       `• [Rolla AI Agency](https://rolla-ai.vercel.app/)\n` +
                        `• [Hospital Chatbot](https://hospitalchatbot04.streamlit.app)\n` +
                        `• [QR Code Generator](https://qr-generator04.streamlit.app)\n` +
                        `• [ELMS](https://elms-3.onrender.com)`;
-            suggestions = ['Hospital Chatbot details 🤖', 'ELMS details 📄', 'Show other projects 🚀'];
+            suggestions = ['Rolla AI details ✨', 'Hospital Chatbot details 🤖', 'Show other projects 🚀'];
         }
         // Education
         else if (this.containsAny(lowerQuery, ['education', 'college', 'study', 'timeline', 'cgpa', 'ciet', 'university'])) {
