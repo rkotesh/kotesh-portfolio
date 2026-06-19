@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Interactive 3D Perspective Card Tilt Effect & Card Spotlight hover tracker
-    const tiltElements = document.querySelectorAll('.project-card, .highlight-card, .education-card, .social-link, .hero-image-wrapper');
+    const tiltElements = document.querySelectorAll('.project-card, .highlight-card, .education-card, .experience-card, .social-link, .hero-image-wrapper');
     tiltElements.forEach(el => {
         el.addEventListener('mousemove', e => {
             const rect = el.getBoundingClientRect();
@@ -217,7 +217,47 @@ document.addEventListener('DOMContentLoaded', () => {
             ],
             liveLink: "",
             githubLink: "https://github.com/rkotesh/Automation_System"
-        }
+        },
+        asset_management_spa: {
+            title: "Asset Management Spa",
+            tags: ["JavaScript", "Utility"],
+            description: "An open-source repository for Asset Management Spa built to solve development challenges.",
+            highlights: [
+                "Implemented robust application structures.",
+                "Fully configured for easy deployment and local testing.",
+                "Built using JavaScript."
+            ],
+            liveLink: "",
+            githubLink: "https://github.com/rkotesh/asset-management-spa"
+        },
+        
+        feedback_monitoring_system: {
+            title: "Feedback Monitoring System",
+            tags: ["Python", "Utility"],
+            description: "An open-source repository for Feedback Monitoring System built to solve development challenges.",
+            highlights: [
+                "Implemented robust application structures.",
+                "Fully configured for easy deployment and local testing.",
+                "Built using Python."
+            ],
+            liveLink: "",
+            githubLink: "https://github.com/rkotesh/feedback_monitoring_system"
+        },
+        
+        weather_forecast: {
+            title: "Weather Forecast",
+            tags: ["Python", "Utility"],
+            description: "An open-source repository for Weather Forecast built to solve development challenges.",
+            highlights: [
+                "Implemented robust application structures.",
+                "Fully configured for easy deployment and local testing.",
+                "Built using Python."
+            ],
+            liveLink: "",
+            githubLink: "https://github.com/rkotesh/weather_forecast"
+        },
+        
+        /* AUTO_PROJECT_DB_MARKER */
     };
 
     // Modal DOM Elements
@@ -399,6 +439,30 @@ class KoteshAI {
                     details: 'Completed secondary education with 97.00%.'
                 }
             ],
+            experiences: [
+                {
+                    role: 'Coordinator',
+                    company: 'Techno Future India',
+                    period: 'May 2026 – Present',
+                    location: 'Guntur, AP',
+                    details: 'Accomplished end-to-end mentorship of internship cohorts by guiding students through MERN Stack concepts and real-world development practices. Accomplished structured learning delivery by designing industry-focused sessions.'
+                },
+                {
+                    role: 'Founder',
+                    company: 'Rolla',
+                    period: 'May 2026 – Present',
+                    location: 'Remote',
+                    details: 'Rolla is a custom web development agency offering Django & MERN stack solutions. As an AI Tools Specialist, I integrate advanced AI workflows and prompt engineering to design and deploy SaaS platforms, client portals, e-commerce stores, and secure API integrations.'
+                },
+                {
+                    role: 'Python Developer Intern',
+                    company: 'Flipkart',
+                    period: 'Sep 2025 – Feb 2026',
+                    location: 'Remote',
+                    details: 'Accomplished full-stack delivery of a Flask web application by designing RESTful backend APIs and integrating user-facing features from scratch. Accomplished a 3x reduction in repetitive manual workflows by building 3 Python automation console tools.'
+                },
+                /* AUTO_CHATBOT_EXPERIENCES_MARKER */
+            ],
             skills: {
                 languages: ['HTML', 'CSS', 'JavaScript', 'Python', 'MySQL'],
                 frameworks: ['Bootstrap', 'Streamlit', 'Flask', 'Django', 'React (MERN Stack)'],
@@ -457,10 +521,35 @@ class KoteshAI {
                     tech: ['Python', 'Automation'],
                     description: 'An automated system designed to streamline repetitive tasks and improve operational efficiency.',
                     github: 'https://github.com/rkotesh/Automation_System'
-                }
+                },
+                {
+                    id: 'asset_management_spa',
+                    title: 'Asset Management Spa',
+                    tech: ['JavaScript', 'Utility'],
+                    description: 'An open-source repository for Asset Management Spa built to solve development challenges.',
+                    github: 'https://github.com/rkotesh/asset-management-spa'
+                },
+                
+                {
+                    id: 'feedback_monitoring_system',
+                    title: 'Feedback Monitoring System',
+                    tech: ['Python', 'Utility'],
+                    description: 'An open-source repository for Feedback Monitoring System built to solve development challenges.',
+                    github: 'https://github.com/rkotesh/feedback_monitoring_system'
+                },
+                
+                {
+                    id: 'weather_forecast',
+                    title: 'Weather Forecast',
+                    tech: ['Python', 'Utility'],
+                    description: 'An open-source repository for Weather Forecast built to solve development challenges.',
+                    github: 'https://github.com/rkotesh/weather_forecast'
+                },
+                
+                /* AUTO_CHATBOT_PROJECTS_MARKER */
             ],
             certifications: [
-                'Certified AI & ML Engineer (2026) - Freedom With AI',
+                'Certified AI & ML Engineer (2025) - Freedom With AI',
                 'MERN Stack Training (2025) - Chalapathi Institute Of Engineering & Technology'
             ]
         };
@@ -637,8 +726,21 @@ class KoteshAI {
             suggestions = ['Show your projects 🚀', 'Tell me about achievements 🏆', 'Get contact info 📞'];
             shouldScrollTo = 'brands'; // the Tech stack section id is "brands"
         }
+        // Experience / Work / Internship
+        else if (this.containsAny(lowerQuery, ['experience', 'work', 'job', 'internship', 'intern', 'flipkart', 'rolla', 'techno future'])) {
+            response = `Here is a summary of my work experience:\n\n` +
+                       `• **Coordinator** at **Techno Future India** (May 2026 - Present)\n` +
+                       `  Guiding student cohorts through MERN Stack concepts and software development practices.\n\n` +
+                       `• **Founder** at **Rolla** (May 2026 - Present)\n` +
+                       `  Managing custom Django & MERN stack web development solutions integrated with AI workflows.\n\n` +
+                       `• **Python Developer Intern** at **Flipkart** (Sep 2025 - Feb 2026)\n` +
+                       `  Built Flask RESTful APIs and optimized manual operations using Python console automation tools.\n\n` +
+                       `You can find more detail in the Work Experience timeline on my page.`;
+            suggestions = ['Download resume 📄', 'Show your projects 🚀', 'Get contact info 📞'];
+            shouldScrollTo = 'experience';
+        }
         // Projects List
-        else if (this.containsAny(lowerQuery, ['projects', 'project', 'work', 'built', 'showcase'])) {
+        else if (this.containsAny(lowerQuery, ['projects', 'project', 'built', 'showcase', 'portfolio'])) {
             response = `I have completed **10+ projects** in AI & ML, Python, and Full-Stack web dev. Some of my favorites are:\n\n` +
                        `1. **Rolla AI** — A custom web agency & SaaS development platform.\n` +
                        `2. **Hospital Chatbot** — An AI agent for patient inquiries & appointments.\n` +
@@ -736,7 +838,7 @@ class KoteshAI {
         // Achievements / Certifications
         else if (this.containsAny(lowerQuery, ['achievements', 'achievement', 'certifications', 'certification', 'certified', 'awards'])) {
             response = `Here are my key achievements & certifications:\n\n` +
-                       `• **Certified AI & ML Engineer** (2026) — Issued by Freedom With AI\n` +
+                       `• **Certified AI & ML Engineer** (2025) — Issued by Freedom With AI\n` +
                        `• **MERN Stack Training Certificate** (2025) — Chalapathi Institute Of Engineering & Technology\n` +
                        `• Completed 9+ practical projects in Python and Javascript.\n` +
                        `• Maintained a B.Tech CGPA of 7.80.`;
