@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Interactive 3D Perspective Card Tilt Effect & Card Spotlight hover tracker
-    const tiltElements = document.querySelectorAll('.project-card, .highlight-card, .education-card, .experience-card, .social-link, .hero-image-wrapper');
+    const tiltElements = document.querySelectorAll('.project-card, .highlight-card, .education-card, .experience-card, .certificate-card, .social-link, .hero-image-wrapper');
     tiltElements.forEach(el => {
         el.addEventListener('mousemove', e => {
             const rect = el.getBoundingClientRect();
@@ -455,11 +455,11 @@ class KoteshAI {
                     details: 'Rolla is a custom web development agency offering Django & MERN stack solutions. As an AI Tools Specialist, I integrate advanced AI workflows and prompt engineering to design and deploy SaaS platforms, client portals, e-commerce stores, and secure API integrations.'
                 },
                 {
-                    role: 'Python Developer Intern',
+                    role: 'Python Development Intern',
                     company: 'Flipkart',
-                    period: 'Sep 2025 – Feb 2026',
-                    location: 'Remote',
-                    details: 'Accomplished full-stack delivery of a Flask web application by designing RESTful backend APIs and integrating user-facing features from scratch. Accomplished a 3x reduction in repetitive manual workflows by building 3 Python automation console tools.'
+                    period: 'Aug 2025 – Jan 2026',
+                    location: 'Remote (Bengaluru, India)',
+                    details: 'Completed the 6-Month Launchpad Student Internship Programme at Flipkart in the Python Development domain, organised by Corvyx. Worked on Python development projects in an e-commerce environment and gained hands-on experience in software development practices.'
                 },
                 /* AUTO_CHATBOT_EXPERIENCES_MARKER */
             ],
@@ -733,8 +733,8 @@ class KoteshAI {
                        `  Guiding student cohorts through MERN Stack concepts and software development practices.\n\n` +
                        `• **Founder** at **Rolla** (May 2026 - Present)\n` +
                        `  Managing custom Django & MERN stack web development solutions integrated with AI workflows.\n\n` +
-                       `• **Python Developer Intern** at **Flipkart** (Sep 2025 - Feb 2026)\n` +
-                       `  Built Flask RESTful APIs and optimized manual operations using Python console automation tools.\n\n` +
+                       `• **Python Development Intern** at **Flipkart** (Aug 2025 - Jan 2026)\n` +
+                       `  Completed the Launchpad Student Internship Programme by Corvyx x Flipkart in the Python Development domain.\n\n` +
                        `You can find more detail in the Work Experience timeline on my page.`;
             suggestions = ['Download resume 📄', 'Show your projects 🚀', 'Get contact info 📞'];
             shouldScrollTo = 'experience';

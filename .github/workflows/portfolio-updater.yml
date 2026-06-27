@@ -39,8 +39,9 @@ jobs:
           if [[ -n "$(git status --porcelain index.html script.js)" ]]; then
             git add index.html script.js
             git commit -m "auto: update portfolio content from github and issues [skip ci]"
-            git push
-            print("Changes pushed successfully!")
+            git pull --rebase origin main
+            git push origin HEAD:main
+            echo "Changes pushed successfully!"
           else
             echo "No changes detected."
           fi
