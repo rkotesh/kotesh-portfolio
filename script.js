@@ -257,6 +257,19 @@ document.addEventListener('DOMContentLoaded', () => {
             githubLink: "https://github.com/rkotesh/weather_forecast"
         },
         
+        college_website: {
+            title: "College Website",
+            tags: ["Python", "Utility"],
+            description: "An open-source repository for College Website built to solve development challenges.",
+            highlights: [
+                "Implemented robust application structures.",
+                "Fully configured for easy deployment and local testing.",
+                "Built using Python."
+            ],
+            liveLink: "",
+            githubLink: "https://github.com/rkotesh/college_website"
+        },
+        
         /* AUTO_PROJECT_DB_MARKER */
     };
 
@@ -544,6 +557,14 @@ class KoteshAI {
                     tech: ['Python', 'Utility'],
                     description: 'An open-source repository for Weather Forecast built to solve development challenges.',
                     github: 'https://github.com/rkotesh/weather_forecast'
+                },
+                
+                {
+                    id: 'college_website',
+                    title: 'College Website',
+                    tech: ['Python', 'Utility'],
+                    description: 'An open-source repository for College Website built to solve development challenges.',
+                    github: 'https://github.com/rkotesh/college_website'
                 },
                 
                 /* AUTO_CHATBOT_PROJECTS_MARKER */
