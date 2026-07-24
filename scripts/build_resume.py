@@ -20,7 +20,7 @@ PDF_PATH = ROOT / "assets" / "Sankula_Koteswara_Rao_Resume.pdf"
 
 RESUME = {
     "name": "Sankula Koteswara Rao",
-    "headline": "Software Developer | Python & Django Developer | Full-Stack Web Developer",
+    "headline": "Python & Django Developer | Full-Stack Web Developer",
     "contact": (
         "Bapatla, Andhra Pradesh, India | +91 9182015717 | "
         "srkotesh23@gmail.com | linkedin.com/in/sankula-koteswararao | github.com/rkotesh | "
@@ -28,21 +28,19 @@ RESUME = {
     ),
     "summary": (
         "Software developer and final-year B.Tech Artificial Intelligence and Machine Learning student "
-        "with hands-on experience building Python, Django, Flask, REST API, React, TypeScript, Java, "
-        "Spring Boot, Express.js, MongoDB, and Streamlit applications. Completed a 6-month Python "
-        "Development internship with Flipkart Launchpad and built public projects across employee leave "
-        "management, ERP portals, secure asset management, AI chatbots, automation tools, and responsive "
-        "web platforms. Strong fit for entry-level software developer, "
-        "Python developer, backend developer, frontend developer, and full-stack developer roles."
+        "with hands-on experience building Python, Django, Flask, REST API, React, JavaScript, MERN stack, "
+        "MongoDB, Streamlit, and responsive web applications. Currently coordinating MERN stack internship "
+        "cohorts at Techno Future India and building Rolla AI, a custom web development agency platform. "
+        "Completed a 6-month Python Development internship with Flipkart Launchpad and built public projects "
+        "across employee leave management, ERP portals, AI chatbots, automation tools, and portfolio platforms."
     ),
     "skills": [
-        "Languages: Python, JavaScript, TypeScript, Java, HTML5, CSS3",
-        "Backend: Django, Flask, REST APIs, Spring Boot, Express.js, Node.js, JWT authentication, API integration",
-        "Frontend: React.js, Vite, Tailwind CSS, responsive UI, Bootstrap, DOM manipulation",
-        "Databases and Tools: MongoDB, MongoDB Atlas, Mongoose, SQLite, Git, GitHub, Docker, Vercel, Render, Streamlit",
-        "AI and Automation: AI tools, prompt engineering workflows, chatbot development, Python automation",
+        "Languages: Python, JavaScript, HTML5, CSS3",
+        "Backend: Django, Flask, REST APIs, Express.js, Node.js",
+        "Frontend: React.js, Vite, Tailwind CSS",
     ],
     "experience": [
+        
         {
             "title": "Python Development Intern",
             "company": "Flipkart Launchpad Student Internship Programme",
@@ -56,6 +54,7 @@ RESUME = {
         },
     ],
     "projects": [
+        
         {
             "name": "Employee Leave Management System (ELMS)",
             "tech": "Python, Flask, REST APIs, HTML, CSS, JavaScript",
@@ -66,21 +65,21 @@ RESUME = {
             ],
         },
         {
-            "name": "CIET ERP - College Website",
-            "tech": "React, TypeScript, Vite, Java, Spring Boot, Spring Security, JWT, MongoDB Atlas, Docker",
+            "name": "College Website",
+            "tech": "Python, Django, TypeScript, Vite, Vercel",
             "link": "github.com/rkotesh/college_website | college-website-omega-flax.vercel.app",
             "bullets": [
-                "Built a role-based college ERP platform for Students, Faculty, Mentors, HODs, and Admins with dedicated dashboards and protected routing.",
-                "Implemented backend APIs with Spring Boot, JWT authentication, MongoDB repositories, OTP verification, announcements, mentorship tracking, portfolio modules, and accreditation tools.",
+                "Built college-focused web platforms for academic operations, student information, attendance, and administrative records.",
+                "Maintained a deployed TypeScript college website and Django ERP project as part of an active academic software portfolio.",
             ],
         },
         {
-            "name": "Secure Vault Asset Management SPA",
-            "tech": "React, Vite, Tailwind CSS, Express.js, MongoDB, Mongoose, JWT, AWS S3, Docker",
+            "name": "Asset Management SPA",
+            "tech": "React, Vite, Tailwind CSS, Express.js, MongoDB",
             "link": "github.com/rkotesh/asset-management-spa",
             "bullets": [
-                "Built a secure asset browser with role-based access, asset upload, search, category filters, preview/download flows, and admin analytics dashboards.",
-                "Implemented Express/Mongoose APIs for JWT auth, file metadata, duplicate detection, signed upload/download URLs, thumbnail optimization, support tickets, workflow automation, and Docker Compose deployment.",
+                "Built a single-page asset management application for organizing and browsing digital assets.",
+                "Implemented a full-stack project structure with modern frontend tooling and backend data management.",
             ],
         },
         {
@@ -256,6 +255,8 @@ def add_pdf_bullet(story, styles, text):
 
 
 def add_pdf():
+    PDF_PATH.parent.mkdir(parents=True, exist_ok=True)
+
     doc = SimpleDocTemplate(
         str(PDF_PATH),
         pagesize=letter,
