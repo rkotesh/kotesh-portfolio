@@ -1,5 +1,5 @@
 from pathlib import Path
-from textwrap import wrap
+from xml.sax.saxutils import escape
 
 from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
@@ -10,7 +10,7 @@ from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import inch
-from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer
+from reportlab.platypus import HRFlowable, Paragraph, SimpleDocTemplate, Spacer
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -27,17 +27,15 @@ RESUME = {
         "kotesh-portfolio-nine.vercel.app"
     ),
     "summary": (
-        "Software developer and final-year B.Tech Artificial Intelligence and Machine Learning student "
-        "with hands-on experience building Python, Django, Flask, REST API, React, JavaScript, MERN stack, "
-        "MongoDB, Streamlit, and responsive web applications. Currently coordinating MERN stack internship "
-        "cohorts at Techno Future India and building Rolla AI, a custom web development agency platform. "
-        "Completed a 6-month Python Development internship with Flipkart Launchpad and built public projects "
-        "across employee leave management, ERP portals, AI chatbots, automation tools, and portfolio platforms."
+        "Final-year B.Tech AI and ML student and Python/Django developer with hands-on experience in "
+        "Flask, REST APIs, React, JavaScript, MERN stack, MongoDB, Streamlit, and responsive web apps. "
+        "Completed a 6-month Flipkart Launchpad Python Development internship and built deployed projects "
+        "across leave management, college websites, asset management, and portfolio platforms."
     ),
     "skills": [
-        "Languages: Python, JavaScript, HTML5, CSS3",
-        "Backend: Django, Flask, REST APIs, Express.js, Node.js",
-        "Frontend: React.js, Vite, Tailwind CSS",
+        "Languages: Python, JavaScript, HTML5, CSS3, MySQL",
+        "Backend: Django, Flask, REST APIs, Express.js, Node.js, MongoDB",
+        "Frontend and Tools: React.js, Vite, Tailwind CSS, Streamlit, Git, GitHub, Vercel, Render",
     ],
     "experience": [
         
@@ -48,8 +46,7 @@ RESUME = {
             "location": "Remote",
             "bullets": [
                 "Completed a 6-month Python Development internship organized by Corvyx and Flipkart.",
-                "Built and practiced Python software development tasks in an e-commerce-oriented learning environment.",
-                "Applied debugging, programming fundamentals, and software development practices across internship assignments.",
+                "Applied Python programming, debugging, and software development practices in an e-commerce learning environment.",
             ],
         },
     ],
@@ -60,8 +57,7 @@ RESUME = {
             "tech": "Python, Flask, REST APIs, HTML, CSS, JavaScript",
             "link": "github.com/rkotesh/elms | elms-3.onrender.com",
             "bullets": [
-                "Built a full-stack leave management system with employee and manager workflows, authentication, and responsive screens.",
-                "Implemented REST API patterns to digitize leave requests, approvals, and status tracking.",
+                "Built a full-stack leave management system with authentication, employee/manager workflows, and REST API-based leave tracking.",
             ],
         },
         {
@@ -70,7 +66,6 @@ RESUME = {
             "link": "github.com/rkotesh/college_website | college-website-omega-flax.vercel.app",
             "bullets": [
                 "Built college-focused web platforms for academic operations, student information, attendance, and administrative records.",
-                "Maintained a deployed TypeScript college website and Django ERP project as part of an active academic software portfolio.",
             ],
         },
         {
@@ -78,8 +73,7 @@ RESUME = {
             "tech": "React, Vite, Tailwind CSS, Express.js, MongoDB",
             "link": "github.com/rkotesh/asset-management-spa",
             "bullets": [
-                "Built a single-page asset management application for organizing and browsing digital assets.",
-                "Implemented a full-stack project structure with modern frontend tooling and backend data management.",
+                "Built a single-page asset management application with modern frontend tooling and backend data management.",
             ],
         },
         {
@@ -242,12 +236,13 @@ def add_docx():
 
 
 def pdf_paragraph(text, style):
-    return Paragraph(text.replace("&", "&amp;"), style)
+    return Paragraph(escape(text), style)
 
 
 def add_pdf_section(story, styles, title):
-    story.append(Spacer(1, 5))
+    story.append(Spacer(1, 3.5))
     story.append(pdf_paragraph(title.upper(), styles["section"]))
+    story.append(HRFlowable(width="100%", thickness=0.45, color=colors.black, spaceBefore=0, spaceAfter=2.6))
 
 
 def add_pdf_bullet(story, styles, text):
@@ -260,10 +255,10 @@ def add_pdf():
     doc = SimpleDocTemplate(
         str(PDF_PATH),
         pagesize=letter,
-        rightMargin=0.62 * inch,
-        leftMargin=0.62 * inch,
-        topMargin=0.48 * inch,
-        bottomMargin=0.48 * inch,
+        rightMargin=0.46 * inch,
+        leftMargin=0.46 * inch,
+        topMargin=0.35 * inch,
+        bottomMargin=0.35 * inch,
     )
 
     base = getSampleStyleSheet()
@@ -272,45 +267,42 @@ def add_pdf():
             "Name",
             parent=base["Normal"],
             fontName="Helvetica-Bold",
-            fontSize=16,
-            leading=18,
+            fontSize=15.3,
+            leading=16.8,
             alignment=1,
-            spaceAfter=1,
+            spaceAfter=0.5,
         ),
         "headline": ParagraphStyle(
             "Headline",
             parent=base["Normal"],
             fontName="Helvetica-Bold",
-            fontSize=9.6,
-            leading=11,
+            fontSize=9.0,
+            leading=10,
             alignment=1,
-            spaceAfter=1,
+            spaceAfter=0.5,
         ),
         "contact": ParagraphStyle(
             "Contact",
             parent=base["Normal"],
             fontName="Helvetica",
-            fontSize=7.7,
-            leading=9,
+            fontSize=7.25,
+            leading=8.2,
             alignment=1,
-            spaceAfter=5,
+            spaceAfter=2,
         ),
-        "body": ParagraphStyle("Body", parent=base["Normal"], fontName="Helvetica", fontSize=8.5, leading=10.1, spaceAfter=2),
+        "body": ParagraphStyle("Body", parent=base["Normal"], fontName="Helvetica", fontSize=8.05, leading=9.0, spaceAfter=1.2),
         "section": ParagraphStyle(
             "Section",
             parent=base["Normal"],
             fontName="Helvetica-Bold",
-            fontSize=9.5,
-            leading=11,
-            borderWidth=0.35,
-            borderColor=colors.HexColor("#BFBFBF"),
-            borderPadding=1.2,
-            spaceBefore=3,
-            spaceAfter=3,
+            fontSize=8.7,
+            leading=9.2,
+            spaceBefore=0,
+            spaceAfter=0,
         ),
-        "role": ParagraphStyle("Role", parent=base["Normal"], fontName="Helvetica-Bold", fontSize=8.8, leading=10.2, spaceAfter=1),
-        "link": ParagraphStyle("Link", parent=base["Normal"], fontName="Helvetica", fontSize=7.6, leading=8.5, textColor=colors.HexColor("#404040"), spaceAfter=0),
-        "bullet": ParagraphStyle("Bullet", parent=base["Normal"], fontName="Helvetica", fontSize=8.25, leading=9.6, leftIndent=10, firstLineIndent=-6, spaceAfter=0.8),
+        "role": ParagraphStyle("Role", parent=base["Normal"], fontName="Helvetica-Bold", fontSize=8.15, leading=9.0, spaceAfter=0.2),
+        "link": ParagraphStyle("Link", parent=base["Normal"], fontName="Helvetica", fontSize=7.3, leading=8.0, textColor=colors.HexColor("#333333"), spaceAfter=0.2),
+        "bullet": ParagraphStyle("Bullet", parent=base["Normal"], fontName="Helvetica", fontSize=7.8, leading=8.7, leftIndent=9, firstLineIndent=-5.5, spaceAfter=0.2),
     }
 
     story = [
