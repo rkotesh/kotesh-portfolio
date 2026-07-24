@@ -28,32 +28,21 @@ RESUME = {
     ),
     "summary": (
         "Software developer and final-year B.Tech Artificial Intelligence and Machine Learning student "
-        "with hands-on experience building Python, Django, Flask, REST API, React, JavaScript, and "
-        "Streamlit applications. Completed a 6-month Python Development internship with Flipkart "
-        "Launchpad and built public projects across employee leave management, ERP portals, AI chatbots, "
-        "automation tools, and responsive web platforms. Strong fit for entry-level software developer, "
+        "with hands-on experience building Python, Django, Flask, REST API, React, TypeScript, Java, "
+        "Spring Boot, Express.js, MongoDB, and Streamlit applications. Completed a 6-month Python "
+        "Development internship with Flipkart Launchpad and built public projects across employee leave "
+        "management, ERP portals, secure asset management, AI chatbots, automation tools, and responsive "
+        "web platforms. Strong fit for entry-level software developer, "
         "Python developer, backend developer, frontend developer, and full-stack developer roles."
     ),
     "skills": [
-        "Languages: Python, JavaScript, TypeScript, HTML5, CSS3",
-        "Backend: Django, Flask, REST APIs, authentication, API integration, server-side application logic",
-        "Frontend: React.js, responsive UI, Bootstrap, Tailwind CSS, DOM manipulation, accessibility basics",
-        "Databases and Tools: SQLite, Git, GitHub, Vercel, Render, Streamlit, VS Code",
+        "Languages: Python, JavaScript, TypeScript, Java, HTML5, CSS3",
+        "Backend: Django, Flask, REST APIs, Spring Boot, Express.js, Node.js, JWT authentication, API integration",
+        "Frontend: React.js, Vite, Tailwind CSS, responsive UI, Bootstrap, DOM manipulation",
+        "Databases and Tools: MongoDB, MongoDB Atlas, Mongoose, SQLite, Git, GitHub, Docker, Vercel, Render, Streamlit",
         "AI and Automation: AI tools, prompt engineering workflows, chatbot development, Python automation",
-        "Software Practices: debugging, clean code, version control, deployment, documentation, teamwork",
     ],
     "experience": [
-        {
-            "title": "Coordinator",
-            "company": "Techno Future India",
-            "date": "May 2026 - Present",
-            "location": "Guntur, Andhra Pradesh",
-            "bullets": [
-                "Mentor internship cohorts on MERN Stack fundamentals, software development workflow, debugging, and project execution.",
-                "Design structured learning sessions covering frontend development, backend concepts, teamwork, and practical implementation.",
-                "Guide students through real-world development practices to improve project completion quality and technical confidence.",
-            ],
-        },
         {
             "title": "Python Development Intern",
             "company": "Flipkart Launchpad Student Internship Programme",
@@ -77,38 +66,21 @@ RESUME = {
             ],
         },
         {
-            "name": "College ERP Portal",
-            "tech": "Django, Python, HTML, CSS, JavaScript",
-            "link": "github.com/rkotesh/ciet_erp",
+            "name": "CIET ERP - College Website",
+            "tech": "React, TypeScript, Vite, Java, Spring Boot, Spring Security, JWT, MongoDB Atlas, Docker",
+            "link": "github.com/rkotesh/college_website | college-website-omega-flax.vercel.app",
             "bullets": [
-                "Developed an academic ERP portal for student attendance, records, assignments, and administrative workflows.",
-                "Created structured dashboard screens and data-management flows for college operations.",
+                "Built a role-based college ERP platform for Students, Faculty, Mentors, HODs, and Admins with dedicated dashboards and protected routing.",
+                "Implemented backend APIs with Spring Boot, JWT authentication, MongoDB repositories, OTP verification, announcements, mentorship tracking, portfolio modules, and accreditation tools.",
             ],
         },
         {
-            "name": "Rolla AI Digital Agency Platform",
-            "tech": "MERN Stack, Django, Next.js, Tailwind CSS",
-            "link": "github.com/rkotesh/rolla-ai | rolla-ai.vercel.app",
+            "name": "Secure Vault Asset Management SPA",
+            "tech": "React, Vite, Tailwind CSS, Express.js, MongoDB, Mongoose, JWT, AWS S3, Docker",
+            "link": "github.com/rkotesh/asset-management-spa",
             "bullets": [
-                "Built a responsive digital agency and SaaS development platform with modern UI, SEO structure, and deployment-ready pages.",
-                "Designed reusable web sections for service positioning, client acquisition, and software product presentation.",
-            ],
-        },
-        {
-            "name": "Hospital Chatbot",
-            "tech": "Python, AI, Streamlit, Chatbot",
-            "link": "github.com/rkotesh/hospital_chatbot | hospitalchatbot04.streamlit.app",
-            "bullets": [
-                "Created an AI chatbot prototype to answer patient queries and support appointment-related interactions.",
-                "Built a Streamlit interface for fast browser-based use and live demonstration.",
-            ],
-        },
-        {
-            "name": "QR Code Generator",
-            "tech": "Python, Streamlit",
-            "link": "github.com/rkotesh/QR-Generator | qr-generator04.streamlit.app",
-            "bullets": [
-                "Developed a web utility that generates downloadable QR codes for URLs, text, and common input formats.",
+                "Built a secure asset browser with role-based access, asset upload, search, category filters, preview/download flows, and admin analytics dashboards.",
+                "Implemented Express/Mongoose APIs for JWT auth, file metadata, duplicate detection, signed upload/download URLs, thumbnail optimization, support tickets, workflow automation, and Docker Compose deployment.",
             ],
         },
         {
@@ -122,13 +94,10 @@ RESUME = {
     ],
     "education": [
         "B.Tech in Artificial Intelligence and Machine Learning, Chalapathi Institute of Engineering and Technology, 2023 - 2027 | CGPA: 8.03",
-        "Intermediate, Sri Saraswathi Jr College, 2021 - 2023 | 90.07%",
-        "SSC, Govt Z Z P H School, 2020 - 2021 | 97.00%",
     ],
     "certifications": [
         "Flipkart Launchpad Internship Programme - Python Development, Jan 2026",
         "Freedom With AI Master Class - AI Tools and Prompt Engineering Workflows, Jun 2025",
-        "MERN Stack Training - Chalapathi Institute of Engineering and Technology, 2025",
     ],
     "achievements": [
         "Published 12 public GitHub repositories across Python, JavaScript, HTML/CSS, and TypeScript.",
