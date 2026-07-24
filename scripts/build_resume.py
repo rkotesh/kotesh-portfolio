@@ -14,7 +14,7 @@ from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DOCX_PATH = ROOT / "Sankula_Koteswara_Rao_ATS_Resume.docx"
+DOCX_PATH = ROOT / "Sankula_Koteswara_Rao_Resume.docx"
 PDF_PATH = ROOT / "assets" / "Sankula_Koteswara_Rao_Resume.pdf"
 
 
