@@ -17,14 +17,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const toggle = document.getElementById('navToggle');
     const links = document.getElementById('navLinks');
     if (toggle && links) {
+        toggle.setAttribute('aria-expanded', 'false');
         toggle.addEventListener('click', () => {
-            links.classList.toggle('open');
+            const isOpen = links.classList.toggle('open');
+            toggle.classList.toggle('open', isOpen);
+            toggle.setAttribute('aria-expanded', String(isOpen));
         });
 
         // Close mobile nav when clicking a link
         links.querySelectorAll('a').forEach(a => {
             a.addEventListener('click', () => {
                 links.classList.remove('open');
+                toggle.classList.remove('open');
+                toggle.setAttribute('aria-expanded', 'false');
             });
         });
     }
@@ -208,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Built to attract and engage clients with modern typography, smooth color palettes, and SEO configurations."
             ],
             liveLink: "https://rolla-ai.vercel.app/",
-            githubLink: "https://github.com/rkotesh"
+            githubLink: "https://github.com/rkotesh/rolla-ai"
         },
         hospital_chatbot: {
             title: "Hospital Chatbot",
@@ -256,7 +261,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Includes an interactive assistant that answers questions about skills, projects, resume, and contact details."
             ],
             liveLink: "https://kotesh-portfolio-nine.vercel.app/",
-            githubLink: "https://github.com/rkotesh"
+            githubLink: "https://github.com/rkotesh/kotesh-portfolio"
         },
         ciet_erp: {
             title: "College ERP Portal",
@@ -335,14 +340,14 @@ document.addEventListener('DOMContentLoaded', () => {
         
         college_website: {
             title: "College Website",
-            tags: ["Python", "Utility"],
-            description: "An open-source repository for College Website built to solve development challenges.",
+            tags: ["TypeScript", "Vercel"],
+            description: "A deployed college website repository built with TypeScript and maintained as one of the most active recent GitHub projects.",
             highlights: [
-                "Implemented robust application structures.",
-                "Fully configured for easy deployment and local testing.",
-                "Built using Python."
+                "Deployed on Vercel with a public live site.",
+                "Maintained through frequent recent GitHub pushes.",
+                "Organized as part of a growing public repository portfolio."
             ],
-            liveLink: "",
+            liveLink: "https://college-website-omega-flax.vercel.app",
             githubLink: "https://github.com/rkotesh/college_website"
         },
         
@@ -511,7 +516,20 @@ class KoteshAI {
             portfolio: 'https://kotesh-portfolio-nine.vercel.app/',
             linkedinStats: {
                 followers: '735',
-                connections: '500+'
+                connections: '500+',
+                handle: 'sankula-koteswararao',
+                service: 'Web Development',
+                focus: 'Python and Django development, AI tools learning, project updates, and recruiter-facing career posts'
+            },
+            githubStats: {
+                username: 'rkotesh',
+                publicRepos: '12',
+                followers: '3',
+                following: '8',
+                recentPushEvents: '42',
+                recentPullRequestEvents: '4',
+                activeRepos: ['college_website', 'ciet_erp', 'kotesh-portfolio', 'asset-management-spa'],
+                focus: 'Python, Django, REST APIs, React, MERN, and practical portfolio deployments'
             },
             services: ['Web Development'],
             articles: [
@@ -575,7 +593,7 @@ class KoteshAI {
                     tech: ['MERN Stack', 'Django', 'Next.js', 'Tailwind CSS'],
                     description: 'A premium, professional digital web agency and custom software development platform featuring sub-second page performance, modern glassmorphic designs, responsive UI/UX, and highly optimized SEO structures.',
                     live: 'https://rolla-ai.vercel.app/',
-                    github: 'https://github.com/rkotesh'
+                    github: 'https://github.com/rkotesh/rolla-ai'
                 },
                 {
                     id: 'hospital_chatbot',
@@ -607,7 +625,7 @@ class KoteshAI {
                     tech: ['HTML', 'CSS', 'JavaScript', 'Vercel'],
                     description: 'A personal developer portfolio deployed on Vercel to showcase projects, skills, education, certifications, contact details, and an interactive portfolio assistant.',
                     live: 'https://kotesh-portfolio-nine.vercel.app/',
-                    github: 'https://github.com/rkotesh'
+                    github: 'https://github.com/rkotesh/kotesh-portfolio'
                 },
                 {
                     id: 'ciet_erp',
@@ -657,8 +675,9 @@ class KoteshAI {
                 {
                     id: 'college_website',
                     title: 'College Website',
-                    tech: ['Python', 'Utility'],
-                    description: 'An open-source repository for College Website built to solve development challenges.',
+                    tech: ['TypeScript', 'Vercel'],
+                    description: 'A deployed college website repository built with TypeScript and maintained as one of the most active recent GitHub projects.',
+                    live: 'https://college-website-omega-flax.vercel.app',
                     github: 'https://github.com/rkotesh/college_website'
                 },
                 
@@ -676,10 +695,11 @@ class KoteshAI {
             skills: ['skills', 'skill', 'languages', 'technologies', 'technology', 'tech', 'stack', 'frameworks', 'tools', 'python', 'django', 'react', 'javascript'],
             experience: ['experience', 'work', 'job', 'internship', 'intern', 'flipkart', 'rolla', 'techno future', 'coordinator', 'founder'],
             projects: ['projects', 'project', 'built', 'showcase', 'portfolio', 'work samples', 'case study'],
+            github: ['github', 'git hub', 'repositories', 'repository', 'repos', 'repo', 'contribution', 'contributions', 'commits', 'push events', 'pull request', 'pull requests', 'open source'],
             linkedin: ['linkedin', 'followers', 'connections', 'articles', 'article', 'posts', 'profile', 'service', 'services'],
             links: ['live demo', 'live links', 'demos', 'links', 'website', 'open project', 'view project'],
             education: ['education', 'college', 'study', 'timeline', 'cgpa', 'ciet', 'university', 'degree', 'btech'],
-            contact: ['contact', 'email', 'phone', 'reach', 'github', 'socials', 'call', 'message'],
+            contact: ['contact', 'email', 'phone', 'reach', 'socials', 'call', 'message'],
             resume: ['resume', 'cv', 'download resume', 'download cv', 'profile'],
             achievements: ['achievements', 'achievement', 'certifications', 'certification', 'certified', 'awards', 'certificate'],
             hire: ['why hire', 'hire you', 'available', 'open to work', 'strength', 'fit', 'role']
@@ -748,8 +768,8 @@ class KoteshAI {
         this.showSuggestions([
             'Give me a quick pitch',
             'Best projects for hiring',
-            'Show live demos',
-            'Contact Kotesh'
+            'LinkedIn profile',
+            'GitHub contributions',
         ]);
     }
     
@@ -920,12 +940,12 @@ class KoteshAI {
         // Help / greetings
         if (intent === 'greeting') {
             response = `Hello! I can help you scan Kotesh's portfolio fast. Ask for a **quick pitch**, **best projects**, **skills**, **resume**, or **contact details**.`;
-            suggestions = ['Give me a quick pitch', 'Best projects for hiring', 'Show your skills'];
+            suggestions = ['Give me a quick pitch', 'LinkedIn profile', 'GitHub contributions'];
         }
         // About / Who are you
         else if (intent === 'about') {
-            response = `**Sankula Koteswara Rao** is a final-year **B.Tech AI & ML** student, aspiring **Python & Django Developer**, and web development service provider focused on Python, Flask/Django, React, REST APIs, and practical AI tooling.\n\nQuick snapshot:\n• CIET student with 8.03 CGPA\n• ${this.portfolioData.linkedinStats.followers} LinkedIn followers and ${this.portfolioData.linkedinStats.connections} connections\n• Flipkart Python Development internship\n• Builds projects across AI, automation, and full-stack web`;
-            suggestions = ['Best projects for hiring', 'LinkedIn profile', 'Show skills'];
+            response = `**Sankula Koteswara Rao** is a final-year **B.Tech AI & ML** student, aspiring **Python & Django Developer**, and web development service provider focused on Python, Flask/Django, React, REST APIs, and practical AI tooling.\n\nQuick snapshot:\n• CIET student with 8.03 CGPA\n• ${this.portfolioData.linkedinStats.followers} LinkedIn followers and ${this.portfolioData.linkedinStats.connections} connections\n• ${this.portfolioData.githubStats.publicRepos} public GitHub repositories at @${this.portfolioData.githubStats.username}\n• Flipkart Python Development internship\n• Builds projects across AI, automation, and full-stack web`;
+            suggestions = ['LinkedIn profile', 'GitHub contributions', 'Show skills'];
             shouldScrollTo = 'about';
         }
         // Skills / Tech Stack
@@ -941,14 +961,28 @@ class KoteshAI {
         // LinkedIn profile / articles / services
         else if (intent === 'linkedin') {
             response = `LinkedIn profile highlights:\n\n` +
-                       `• **Profile**: [sankula-koteswararao](${this.portfolioData.linkedin})\n` +
+                       `• **Profile**: [${this.portfolioData.linkedinStats.handle}](${this.portfolioData.linkedin})\n` +
                        `• **Followers**: ${this.portfolioData.linkedinStats.followers}\n` +
                        `• **Connections**: ${this.portfolioData.linkedinStats.connections}\n` +
-                       `• **Service listed**: ${this.portfolioData.services.join(', ')}\n` +
+                       `• **Service listed**: ${this.portfolioData.linkedinStats.service}\n` +
                        `• **Website links**: [Portfolio](${this.portfolioData.portfolio}), [GitHub](${this.portfolioData.github}), [Rolla AI](https://rolla-ai.vercel.app/)\n\n` +
+                       `Content focus: ${this.portfolioData.linkedinStats.focus}.\n\n` +
                        `Recent article topics include AI tools workshops, AI masterclass learning, and interview integrity in modern hiring.`;
-            suggestions = ['Show live demos', 'Best projects for hiring', 'Contact Kotesh'];
-            shouldScrollTo = 'contact';
+            suggestions = ['GitHub contributions', 'Best projects for hiring', 'Contact Kotesh'];
+            shouldScrollTo = 'linkedin';
+        }
+        // GitHub / Contributions
+        else if (intent === 'github') {
+            response = `GitHub snapshot for **@${this.portfolioData.githubStats.username}**:\n\n` +
+                       `• **Profile**: [github.com/rkotesh](${this.portfolioData.github})\n` +
+                       `• **Public repositories**: ${this.portfolioData.githubStats.publicRepos}\n` +
+                       `• **Recent public push events**: ${this.portfolioData.githubStats.recentPushEvents}\n` +
+                       `• **Recent pull request events**: ${this.portfolioData.githubStats.recentPullRequestEvents}\n` +
+                       `• **Followers / following**: ${this.portfolioData.githubStats.followers} / ${this.portfolioData.githubStats.following}\n` +
+                       `• **Active repos**: ${this.portfolioData.githubStats.activeRepos.join(', ')}\n\n` +
+                       `Main contribution focus: ${this.portfolioData.githubStats.focus}.`;
+            suggestions = ['Best projects for hiring', 'Show live demos', 'Contact Kotesh'];
+            shouldScrollTo = 'github';
         }
         // Experience / Work / Internship
         else if (intent === 'experience') {
@@ -969,9 +1003,9 @@ class KoteshAI {
                        `• Python and full-stack project practice\n` +
                        `• Real internship exposure through Flipkart Launchpad\n` +
                        `• AI & ML academic background\n` +
-                       `• Hands-on projects with live demos and GitHub links\n\n` +
+                       `• ${this.portfolioData.githubStats.publicRepos} public GitHub repositories with recent contribution activity\n\n` +
                        `For a recruiter, I would start with Rolla AI, ELMS, Personal Developer Portfolio, Hospital Chatbot, and QR Code Generator.`;
-            suggestions = ['Best projects for hiring', 'Download resume', 'Contact Kotesh'];
+            suggestions = ['LinkedIn profile', 'GitHub contributions', 'Contact Kotesh'];
             shouldScrollTo = 'projects';
         }
         // Specific Project
@@ -986,10 +1020,10 @@ class KoteshAI {
                        `1. **Rolla AI** — Custom web agency and SaaS development platform.\n` +
                        `2. **ELMS** — Flask and REST API leave management system built during the Flipkart internship.\n` +
                        `3. **Personal Developer Portfolio** — Vercel-deployed HTML/CSS/JS portfolio.\n` +
-                       `4. **Hospital Chatbot** — AI assistant for patient inquiries and appointments.\n` +
-                       `5. **QR Code Generator** — Practical Streamlit utility with a live demo.\n\n` +
+                       `4. **College Website** — TypeScript deployed college website from the current GitHub activity.\n` +
+                       `5. **Hospital Chatbot** — AI assistant for patient inquiries and appointments.\n\n` +
                        `You can ask about a specific project by name, or ask for all live demo links.`;
-            suggestions = ['Rolla AI details', 'Hospital Chatbot details', 'Show live demos', 'Contact Kotesh'];
+            suggestions = ['Rolla AI details', 'GitHub contributions', 'Show live demos', 'Contact Kotesh'];
             shouldScrollTo = 'projects';
         }
         // Live links
@@ -1015,8 +1049,9 @@ class KoteshAI {
                        `• **LinkedIn**: [LinkedIn Profile](${this.portfolioData.linkedin})\n` +
                        `• **GitHub**: [GitHub Profile](${this.portfolioData.github})\n` +
                        `• **Location**: Bapatla, AP, India\n` +
-                       `• **LinkedIn audience**: ${this.portfolioData.linkedinStats.followers} followers, ${this.portfolioData.linkedinStats.connections} connections`;
-            suggestions = ['Download resume', 'Show projects', 'What are your skills?'];
+                       `• **LinkedIn audience**: ${this.portfolioData.linkedinStats.followers} followers, ${this.portfolioData.linkedinStats.connections} connections\n` +
+                       `• **GitHub repos**: ${this.portfolioData.githubStats.publicRepos} public repositories`;
+            suggestions = ['Download resume', 'GitHub contributions', 'What are your skills?'];
             shouldScrollTo = 'contact';
         }
         // Resume / CV
@@ -1031,7 +1066,7 @@ class KoteshAI {
             response = `Here are my key achievements & certifications:\n\n` +
                        `• **Certified AI & ML Engineer** (2025) — Issued by Freedom With AI\n` +
                        `• **MERN Stack Training Certificate** (2025) — Chalapathi Institute Of Engineering & Technology\n` +
-                       `• Completed 10+ practical projects in Python and JavaScript.\n` +
+                       `• Published ${this.portfolioData.githubStats.publicRepos} public GitHub repositories across Python, JavaScript, HTML/CSS, and TypeScript.\n` +
                        `• Maintained a B.Tech CGPA of 8.03.`;
             suggestions = ['What are your skills?', 'Show projects', 'Education details'];
             shouldScrollTo = 'certificates';
