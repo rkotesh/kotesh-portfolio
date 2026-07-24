@@ -2,6 +2,7 @@ from pathlib import Path
 from xml.sax.saxutils import escape
 
 from docx import Document
+from docx.enum.text import WD_TAB_ALIGNMENT
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
@@ -10,7 +11,7 @@ from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import inch
-from reportlab.platypus import HRFlowable, Paragraph, SimpleDocTemplate, Spacer
+from reportlab.platypus import HRFlowable, Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -113,19 +114,19 @@ def style_doc(doc):
     section = doc.sections[0]
     section.page_width = Inches(8.5)
     section.page_height = Inches(11)
-    section.top_margin = Inches(0.55)
-    section.bottom_margin = Inches(0.55)
-    section.left_margin = Inches(0.65)
-    section.right_margin = Inches(0.65)
+    section.top_margin = Inches(0.42)
+    section.bottom_margin = Inches(0.42)
+    section.left_margin = Inches(0.55)
+    section.right_margin = Inches(0.55)
 
     styles = doc.styles
     normal = styles["Normal"]
     normal.font.name = "Arial"
     normal._element.rPr.rFonts.set(qn("w:ascii"), "Arial")
     normal._element.rPr.rFonts.set(qn("w:hAnsi"), "Arial")
-    normal.font.size = Pt(9.4)
-    normal.paragraph_format.space_after = Pt(2)
-    normal.paragraph_format.line_spacing = 1.04
+    normal.font.size = Pt(9)
+    normal.paragraph_format.space_after = Pt(0)
+    normal.paragraph_format.line_spacing = 1.0
 
     for style_name, size in [("Heading 1", 11), ("Heading 2", 10)]:
         style = styles[style_name]
@@ -135,8 +136,8 @@ def style_doc(doc):
         style.font.size = Pt(size)
         style.font.bold = True
         style.font.color.rgb = RGBColor(0, 0, 0)
-        style.paragraph_format.space_before = Pt(6)
-        style.paragraph_format.space_after = Pt(2)
+        style.paragraph_format.space_before = Pt(5)
+        style.paragraph_format.space_after = Pt(1)
 
 
 def add_bottom_border(paragraph):
@@ -154,18 +155,31 @@ def add_bottom_border(paragraph):
 def add_section(doc, title):
     p = doc.add_paragraph()
     p.style = doc.styles["Heading 1"]
-    run = p.add_run(title.upper())
-    set_run_font(run, size=10.5, bold=True)
+    run = p.add_run(title)
+    set_run_font(run, size=10, bold=True)
     add_bottom_border(p)
 
 
 def add_bullet(doc, text):
     p = doc.add_paragraph(style="List Bullet")
-    p.paragraph_format.left_indent = Inches(0.18)
+    p.paragraph_format.left_indent = Inches(0.22)
     p.paragraph_format.first_line_indent = Inches(-0.18)
-    p.paragraph_format.space_after = Pt(1.4)
+    p.paragraph_format.space_after = Pt(0)
     run = p.add_run(text)
-    set_run_font(run, size=9.2)
+    set_run_font(run, size=8.7)
+
+
+def add_docx_line(doc, left, right="", bold_left=False, italic_left=False, size=9):
+    p = doc.add_paragraph()
+    p.paragraph_format.tab_stops.add_tab_stop(Inches(7.2), WD_TAB_ALIGNMENT.RIGHT)
+    left_run = p.add_run(left)
+    set_run_font(left_run, size=size, bold=bold_left)
+    left_run.italic = italic_left
+    if right:
+        right_run = p.add_run(f"\t{right}")
+        set_run_font(right_run, size=size)
+    p.paragraph_format.space_after = Pt(0)
+    return p
 
 
 def add_docx():
@@ -174,59 +188,52 @@ def add_docx():
 
     name = doc.add_paragraph()
     name.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    run = name.add_run(RESUME["name"].upper())
-    set_run_font(run, size=17, bold=True)
-    name.paragraph_format.space_after = Pt(1)
+    run = name.add_run(RESUME["name"])
+    set_run_font(run, size=20, bold=False)
+    name.paragraph_format.space_after = Pt(0)
 
     headline = doc.add_paragraph()
     headline.alignment = WD_ALIGN_PARAGRAPH.CENTER
     run = headline.add_run(RESUME["headline"])
-    set_run_font(run, size=10.5, bold=True)
-    headline.paragraph_format.space_after = Pt(1)
+    set_run_font(run, size=9.5)
+    headline.paragraph_format.space_after = Pt(0)
 
     contact = doc.add_paragraph()
     contact.alignment = WD_ALIGN_PARAGRAPH.CENTER
     run = contact.add_run(RESUME["contact"])
-    set_run_font(run, size=8.4)
-    contact.paragraph_format.space_after = Pt(5)
+    set_run_font(run, size=8)
+    contact.paragraph_format.space_after = Pt(4)
 
-    add_section(doc, "Professional Summary")
-    p = doc.add_paragraph()
-    p.add_run(RESUME["summary"])
-    set_run_font(p.runs[0], size=9.2)
+    add_section(doc, "Education")
+    add_docx_line(
+        doc,
+        "Chalapathi Institute of Engineering and Technology",
+        "2023 - 2027",
+        bold_left=True,
+        size=9,
+    )
+    add_docx_line(doc, "B.Tech in Artificial Intelligence and Machine Learning | CGPA: 8.03", "", italic_left=True, size=8.8)
 
-    add_section(doc, "Technical Skills")
-    for item in RESUME["skills"]:
-        add_bullet(doc, item)
-
-    add_section(doc, "Professional Experience")
+    add_section(doc, "Experience")
     for role in RESUME["experience"]:
-        p = doc.add_paragraph()
-        set_run_font(p.add_run(role["title"]), size=9.6, bold=True)
-        set_run_font(p.add_run(f" | {role['company']} | {role['date']} | {role['location']}"), size=9.3)
-        p.paragraph_format.space_after = Pt(1)
+        add_docx_line(doc, role["title"], role["date"], bold_left=True, size=9)
+        add_docx_line(doc, f"{role['company']} | {role['location']}", "", italic_left=True, size=8.8)
         for bullet in role["bullets"]:
             add_bullet(doc, bullet)
 
     add_section(doc, "Projects")
     for project in RESUME["projects"]:
-        p = doc.add_paragraph()
-        set_run_font(p.add_run(project["name"]), size=9.6, bold=True)
-        set_run_font(p.add_run(f" | {project['tech']}"), size=9.2)
-        p.paragraph_format.space_after = Pt(0)
-        link = doc.add_paragraph()
-        set_run_font(link.add_run(project["link"]), size=8.4, color="404040")
-        link.paragraph_format.space_after = Pt(0)
+        add_docx_line(doc, f"{project['name']} | {project['tech']}", project["link"], bold_left=True, size=8.8)
         for bullet in project["bullets"]:
             add_bullet(doc, bullet)
 
-    add_section(doc, "Education")
-    for item in RESUME["education"]:
-        add_bullet(doc, item)
+    add_section(doc, "Technical Skills")
+    for item in RESUME["skills"]:
+        add_docx_line(doc, item, "", size=8.8)
 
     add_section(doc, "Certifications")
     for item in RESUME["certifications"]:
-        add_bullet(doc, item)
+        add_docx_line(doc, item, "", size=8.8)
 
     add_section(doc, "Achievements")
     for item in RESUME["achievements"]:
@@ -239,14 +246,38 @@ def pdf_paragraph(text, style):
     return Paragraph(escape(text), style)
 
 
+def pdf_markup(markup, style):
+    return Paragraph(markup, style)
+
+
 def add_pdf_section(story, styles, title):
-    story.append(Spacer(1, 3.5))
-    story.append(pdf_paragraph(title.upper(), styles["section"]))
-    story.append(HRFlowable(width="100%", thickness=0.45, color=colors.black, spaceBefore=0, spaceAfter=2.6))
+    story.append(Spacer(1, 3.2))
+    story.append(pdf_paragraph(title, styles["section"]))
+    story.append(HRFlowable(width="100%", thickness=0.45, color=colors.black, spaceBefore=0, spaceAfter=1.8))
 
 
 def add_pdf_bullet(story, styles, text):
     story.append(pdf_paragraph(f"- {text}", styles["bullet"]))
+
+
+def add_pdf_row(story, left, right, styles, left_style="entry"):
+    table = Table(
+        [[pdf_paragraph(left, styles[left_style]), pdf_paragraph(right, styles["right"])]],
+        colWidths=[5.15 * inch, 2.15 * inch],
+        hAlign="LEFT",
+    )
+    table.setStyle(
+        TableStyle(
+            [
+                ("VALIGN", (0, 0), (-1, -1), "TOP"),
+                ("LEFTPADDING", (0, 0), (-1, -1), 0),
+                ("RIGHTPADDING", (0, 0), (-1, -1), 0),
+                ("TOPPADDING", (0, 0), (-1, -1), 0),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 0),
+            ]
+        )
+    )
+    story.append(table)
 
 
 def add_pdf():
@@ -267,15 +298,15 @@ def add_pdf():
             "Name",
             parent=base["Normal"],
             fontName="Helvetica-Bold",
-            fontSize=15.3,
-            leading=16.8,
+            fontSize=20,
+            leading=22,
             alignment=1,
             spaceAfter=0.5,
         ),
         "headline": ParagraphStyle(
             "Headline",
             parent=base["Normal"],
-            fontName="Helvetica-Bold",
+            fontName="Helvetica",
             fontSize=9.0,
             leading=10,
             alignment=1,
@@ -285,59 +316,63 @@ def add_pdf():
             "Contact",
             parent=base["Normal"],
             fontName="Helvetica",
-            fontSize=7.25,
+            fontSize=7.15,
             leading=8.2,
             alignment=1,
             spaceAfter=2,
         ),
-        "body": ParagraphStyle("Body", parent=base["Normal"], fontName="Helvetica", fontSize=8.05, leading=9.0, spaceAfter=1.2),
+        "body": ParagraphStyle("Body", parent=base["Normal"], fontName="Helvetica", fontSize=8.0, leading=8.8, spaceAfter=1),
         "section": ParagraphStyle(
             "Section",
             parent=base["Normal"],
             fontName="Helvetica-Bold",
-            fontSize=8.7,
-            leading=9.2,
+            fontSize=9.0,
+            leading=9.4,
             spaceBefore=0,
             spaceAfter=0,
         ),
-        "role": ParagraphStyle("Role", parent=base["Normal"], fontName="Helvetica-Bold", fontSize=8.15, leading=9.0, spaceAfter=0.2),
-        "link": ParagraphStyle("Link", parent=base["Normal"], fontName="Helvetica", fontSize=7.3, leading=8.0, textColor=colors.HexColor("#333333"), spaceAfter=0.2),
-        "bullet": ParagraphStyle("Bullet", parent=base["Normal"], fontName="Helvetica", fontSize=7.8, leading=8.7, leftIndent=9, firstLineIndent=-5.5, spaceAfter=0.2),
+        "entry": ParagraphStyle("Entry", parent=base["Normal"], fontName="Helvetica-Bold", fontSize=8.35, leading=9.0, spaceAfter=0),
+        "subentry": ParagraphStyle("Subentry", parent=base["Normal"], fontName="Helvetica-Oblique", fontSize=8.1, leading=8.7, spaceAfter=0),
+        "right": ParagraphStyle("Right", parent=base["Normal"], fontName="Helvetica", fontSize=7.7, leading=8.5, alignment=2, spaceAfter=0),
+        "skill": ParagraphStyle("Skill", parent=base["Normal"], fontName="Helvetica", fontSize=8.0, leading=8.7, spaceAfter=0.4),
+        "bullet": ParagraphStyle("Bullet", parent=base["Normal"], fontName="Helvetica", fontSize=7.75, leading=8.35, leftIndent=9, firstLineIndent=-5.5, spaceAfter=0.1),
     }
 
     story = [
-        pdf_paragraph(RESUME["name"].upper(), styles["name"]),
+        pdf_paragraph(RESUME["name"], styles["name"]),
         pdf_paragraph(RESUME["headline"], styles["headline"]),
         pdf_paragraph(RESUME["contact"], styles["contact"]),
     ]
 
-    add_pdf_section(story, styles, "Professional Summary")
-    story.append(pdf_paragraph(RESUME["summary"], styles["body"]))
+    add_pdf_section(story, styles, "Education")
+    add_pdf_row(
+        story,
+        "Chalapathi Institute of Engineering and Technology",
+        "2023 - 2027",
+        styles,
+    )
+    story.append(pdf_paragraph("B.Tech in Artificial Intelligence and Machine Learning | CGPA: 8.03", styles["subentry"]))
 
-    add_pdf_section(story, styles, "Technical Skills")
-    for item in RESUME["skills"]:
-        add_pdf_bullet(story, styles, item)
-
-    add_pdf_section(story, styles, "Professional Experience")
+    add_pdf_section(story, styles, "Experience")
     for role in RESUME["experience"]:
-        story.append(pdf_paragraph(f"{role['title']} | {role['company']} | {role['date']} | {role['location']}", styles["role"]))
+        add_pdf_row(story, role["title"], role["date"], styles)
+        story.append(pdf_paragraph(f"{role['company']} | {role['location']}", styles["subentry"]))
         for bullet in role["bullets"]:
             add_pdf_bullet(story, styles, bullet)
 
     add_pdf_section(story, styles, "Projects")
     for project in RESUME["projects"]:
-        story.append(pdf_paragraph(f"{project['name']} | {project['tech']}", styles["role"]))
-        story.append(pdf_paragraph(project["link"], styles["link"]))
+        add_pdf_row(story, f"{project['name']} | {project['tech']}", project["link"], styles)
         for bullet in project["bullets"]:
             add_pdf_bullet(story, styles, bullet)
 
-    add_pdf_section(story, styles, "Education")
-    for item in RESUME["education"]:
-        add_pdf_bullet(story, styles, item)
+    add_pdf_section(story, styles, "Technical Skills")
+    for item in RESUME["skills"]:
+        story.append(pdf_paragraph(item, styles["skill"]))
 
     add_pdf_section(story, styles, "Certifications")
     for item in RESUME["certifications"]:
-        add_pdf_bullet(story, styles, item)
+        story.append(pdf_paragraph(item, styles["skill"]))
 
     add_pdf_section(story, styles, "Achievements")
     for item in RESUME["achievements"]:
