@@ -351,6 +351,19 @@ document.addEventListener('DOMContentLoaded', () => {
             githubLink: "https://github.com/rkotesh/college_website"
         },
         
+        nandini: {
+            title: "Nandini",
+            tags: ["Python", "Utility"],
+            description: "An open-source repository for Nandini built to solve development challenges.",
+            highlights: [
+                "Implemented robust application structures.",
+                "Fully configured for easy deployment and local testing.",
+                "Built using Python."
+            ],
+            liveLink: "",
+            githubLink: "https://github.com/rkotesh/nandini"
+        },
+        
         /* AUTO_PROJECT_DB_MARKER */
     };
 
@@ -679,6 +692,14 @@ class KoteshAI {
                     description: 'A deployed college website repository built with TypeScript and maintained as one of the most active recent GitHub projects.',
                     live: 'https://college-website-omega-flax.vercel.app',
                     github: 'https://github.com/rkotesh/college_website'
+                },
+                
+                {
+                    id: 'nandini',
+                    title: 'Nandini',
+                    tech: ['Python', 'Utility'],
+                    description: 'An open-source repository for Nandini built to solve development challenges.',
+                    github: 'https://github.com/rkotesh/nandini'
                 },
                 
                 /* AUTO_CHATBOT_PROJECTS_MARKER */
