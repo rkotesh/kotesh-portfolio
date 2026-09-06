@@ -364,6 +364,19 @@ document.addEventListener('DOMContentLoaded', () => {
             githubLink: "https://github.com/rkotesh/nandini"
         },
         
+        polynomialassignment: {
+            title: "Polynomialassignment",
+            tags: ["Java", "Utility"],
+            description: "An open-source repository for Polynomialassignment built to solve development challenges.",
+            highlights: [
+                "Implemented robust application structures.",
+                "Fully configured for easy deployment and local testing.",
+                "Built using Java."
+            ],
+            liveLink: "",
+            githubLink: "https://github.com/rkotesh/PolynomialAssignment"
+        },
+        
         /* AUTO_PROJECT_DB_MARKER */
     };
 
@@ -700,6 +713,14 @@ class KoteshAI {
                     tech: ['Python', 'Utility'],
                     description: 'An open-source repository for Nandini built to solve development challenges.',
                     github: 'https://github.com/rkotesh/nandini'
+                },
+                
+                {
+                    id: 'polynomialassignment',
+                    title: 'Polynomialassignment',
+                    tech: ['Java', 'Utility'],
+                    description: 'An open-source repository for Polynomialassignment built to solve development challenges.',
+                    github: 'https://github.com/rkotesh/PolynomialAssignment'
                 },
                 
                 /* AUTO_CHATBOT_PROJECTS_MARKER */
