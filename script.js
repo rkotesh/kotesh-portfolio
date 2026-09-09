@@ -377,6 +377,19 @@ document.addEventListener('DOMContentLoaded', () => {
             githubLink: "https://github.com/rkotesh/PolynomialAssignment"
         },
         
+        java: {
+            title: "Java",
+            tags: ["Java", "Utility"],
+            description: "An open-source repository for Java built to solve development challenges.",
+            highlights: [
+                "Implemented robust application structures.",
+                "Fully configured for easy deployment and local testing.",
+                "Built using Java."
+            ],
+            liveLink: "",
+            githubLink: "https://github.com/rkotesh/java"
+        },
+        
         /* AUTO_PROJECT_DB_MARKER */
     };
 
@@ -721,6 +734,14 @@ class KoteshAI {
                     tech: ['Java', 'Utility'],
                     description: 'An open-source repository for Polynomialassignment built to solve development challenges.',
                     github: 'https://github.com/rkotesh/PolynomialAssignment'
+                },
+                
+                {
+                    id: 'java',
+                    title: 'Java',
+                    tech: ['Java', 'Utility'],
+                    description: 'An open-source repository for Java built to solve development challenges.',
+                    github: 'https://github.com/rkotesh/java'
                 },
                 
                 /* AUTO_CHATBOT_PROJECTS_MARKER */
