@@ -48,7 +48,7 @@ body {
 ::selection { background: var(--highlight); color: #fff; }
 
 /* ---- NAV ---- */
-nav {
+#navbar {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     background: rgba(245, 245, 247, 0.65);
     backdrop-filter: blur(20px) saturate(180%);
@@ -67,11 +67,11 @@ nav {
     gap: 1.25rem;
     transition: padding 0.3s;
 }
-nav.scrolled {
+#navbar.scrolled {
     background: rgba(255, 255, 255, 0.82);
     border-bottom-color: var(--border);
 }
-nav.scrolled .nav-container { padding-top: 0.85rem; padding-bottom: 0.85rem; }
+#navbar.scrolled .nav-container { padding-top: 0.85rem; padding-bottom: 0.85rem; }
 
 .nav-logo {
     font-family: var(--font-display);
@@ -3432,6 +3432,158 @@ body::before {
     color: #FFFFFF;
     font-size: 0.72rem;
 }
+
+/* ==========================================================================
+   INSTAGRAM / iOS APP-STYLE MOBILE BOTTOM NAVIGATION BAR
+   ========================================================================== */
+.mobile-bottom-nav {
+    display: none;
+    top: auto !important;
+    bottom: 0 !important;
+}
+
+@media (max-width: 768px) {
+    /* Hide top nav links and hamburger in favor of the bottom dock */
+    .nav-toggle {
+        display: none !important;
+    }
+    .nav-links {
+        display: none !important;
+    }
+    
+    .mobile-bottom-nav {
+        display: block !important;
+        position: fixed !important;
+        top: auto !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100vw !important;
+        height: auto !important;
+        min-height: 56px !important;
+        z-index: 99999 !important;
+        background: rgba(14, 14, 22, 0.94) !important;
+        backdrop-filter: blur(24px) saturate(190%) !important;
+        -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
+        box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5) !important;
+        padding-bottom: max(0.45rem, env(safe-area-inset-bottom)) !important;
+        padding-top: 0.45rem !important;
+    }
+
+    .mobile-bottom-nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 0 0.5rem;
+    }
+
+    .mob-nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        color: rgba(255, 255, 255, 0.5);
+        text-decoration: none;
+        background: none;
+        border: none;
+        outline: none;
+        padding: 0.35rem 0.5rem;
+        border-radius: 12px;
+        cursor: pointer;
+        position: relative;
+        transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+        -webkit-tap-highlight-color: transparent;
+        flex: 1;
+        max-width: 78px;
+    }
+
+    .mob-nav-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        border-radius: 8px;
+        transition: all 0.22s ease;
+    }
+
+    .mob-nav-icon svg {
+        transition: transform 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275), stroke 0.2s ease;
+    }
+
+    .mob-nav-item span {
+        font-size: 0.68rem;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        line-height: 1;
+        transition: color 0.2s ease, font-weight 0.2s ease;
+    }
+
+    .mob-nav-indicator {
+        position: absolute;
+        bottom: -2px;
+        width: 14px;
+        height: 2.5px;
+        background: var(--highlight);
+        border-radius: 9999px;
+        opacity: 0;
+        transform: scaleX(0);
+        transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: 0 0 8px var(--highlight);
+    }
+
+    /* Active / Tap state (Instagram style) */
+    .mob-nav-item.active {
+        color: #FFFFFF;
+    }
+
+    .mob-nav-item.active .mob-nav-icon {
+        color: var(--highlight);
+        transform: translateY(-2px);
+    }
+
+    .mob-nav-item.active .mob-nav-icon svg {
+        stroke: var(--highlight);
+        transform: scale(1.12);
+    }
+
+    .mob-nav-item.active span {
+        color: #FFFFFF;
+        font-weight: 600;
+    }
+
+    .mob-nav-item.active .mob-nav-indicator {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+
+    .mob-nav-item:active {
+        transform: scale(0.92);
+    }
+
+    /* Adjust AI Assistant floating button so it floats cleanly above bottom nav */
+    .rolla-fab {
+        bottom: 5.2rem !important;
+        right: 1.2rem !important;
+        width: 52px !important;
+        height: 52px !important;
+    }
+
+    /* Adjust toast so it appears above bottom nav on mobile */
+    .portfolio-toast {
+        bottom: 5.5rem !important;
+        right: 50% !important;
+        transform: translate(50%, 15px) scale(0.95) !important;
+    }
+    .portfolio-toast.show {
+        transform: translate(50%, 0) scale(1) !important;
+    }
+}
+
 
 
 

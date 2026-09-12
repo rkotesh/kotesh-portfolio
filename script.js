@@ -1662,4 +1662,32 @@ window.addEventListener('click', e => {
         else if (e.key==='Escape' && palette.classList.contains('active')){ close(); }
     });
 
+
+    // 7. Mobile Bottom Navigation Active Tracker & Search Trigger
+    var mobNavSearch = document.getElementById('mobNavSearch');
+    if (mobNavSearch) {
+        mobNavSearch.addEventListener('click', open);
+    }
+
+    var mobNavItems = document.querySelectorAll('.mobile-bottom-nav .mob-nav-item[data-section]');
+    var sectionsToTrack = ['about', 'experience', 'projects', 'contact'];
+
+    window.addEventListener('scroll', function() {
+        var scrollY = window.scrollY + 220;
+        var currentSec = 'about';
+        sectionsToTrack.forEach(function(id) {
+            var sec = document.getElementById(id);
+            if (sec && sec.offsetTop <= scrollY) {
+                currentSec = id;
+            }
+        });
+        mobNavItems.forEach(function(item) {
+            if (item.dataset.section === currentSec) {
+                item.classList.add('active');
+            } else {
+                item.classList.remove('active');
+            }
+        });
+    }, { passive: true });
+
 })();
