@@ -1190,14 +1190,18 @@ footer a:hover {
 
 /* ---- SCROLL REVEAL ---- */
 .reveal {
-    opacity: 0; transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    opacity: 0; transform: translateY(16px);
+    transition: opacity 0.32s ease, transform 0.32s ease;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
 .reveal-item {
-    opacity: 0; transform: translateY(20px);
-    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0; transform: translateY(12px);
+    transition: opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1), transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
 }
 .reveal-item.visible { opacity: 1; transform: translateY(0); }
 
@@ -2411,7 +2415,7 @@ body.cursor-hover .fast-cursor-crosshair {
 .holographic-heading.visible::before,
 .holographic-heading:hover::before {
     opacity: 1;
-    animation: headingSlotUnderline 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: headingSlotUnderline 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .holographic-heading.visible::after,
@@ -2488,11 +2492,11 @@ body.cursor-hover .fast-cursor-crosshair {
 }
 
 .split-char.flip-in {
-    animation: charSlotRoll 0.78s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: charSlotRoll 0.42s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .split-char.flip-in::after {
-    animation: charSlotGhost 0.78s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: charSlotGhost 0.42s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes charSlotRoll {
@@ -2576,11 +2580,11 @@ p, li, .section-headline, .section-label, .education-meta, .experience-meta {
 .text-dust-reveal {
     position: relative;
     opacity: 0;
-    transform: translateY(18px) skewY(1.8deg);
-    filter: blur(7px);
-    transition: opacity 0.78s cubic-bezier(0.16, 1, 0.3, 1) var(--copy-delay, 0ms),
-                transform 0.78s cubic-bezier(0.16, 1, 0.3, 1) var(--copy-delay, 0ms),
-                filter 0.78s cubic-bezier(0.16, 1, 0.3, 1) var(--copy-delay, 0ms),
+    transform: translateY(10px) skewY(0.8deg);
+    filter: blur(3px);
+    transition: opacity 0.38s cubic-bezier(0.16, 1, 0.3, 1) var(--copy-delay, 0ms),
+                transform 0.38s cubic-bezier(0.16, 1, 0.3, 1) var(--copy-delay, 0ms),
+                filter 0.38s cubic-bezier(0.16, 1, 0.3, 1) var(--copy-delay, 0ms),
                 color 0.3s ease;
     will-change: opacity, transform, filter;
 }

@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     e.target.classList.add('visible');
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.05 });
         reveals.forEach(el => observer.observe(el));
 
         // Staggered lists reveal (skills, projects, timeline, socials)
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     children.forEach((child, index) => {
                         setTimeout(() => {
                             child.classList.add('visible');
-                        }, index * 65); // 65ms delay stagger
+                        }, index * 28); // 28ms delay stagger
                     });
                     staggerObserver.unobserve(entry.target);
                 }
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
     );
     motionText.forEach((el, index) => {
         el.classList.add('text-dust-reveal');
-        el.style.setProperty('--copy-delay', `${Math.min(index % 8, 7) * 45}ms`);
+        el.style.setProperty('--copy-delay', `${Math.min(index % 8, 7) * 18}ms`);
     });
 
     const showMotionElement = el => {
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (el.classList.contains('split-flip-heading')) {
             el.closest('.section-header')?.classList.add('visible');
             el.querySelectorAll('.split-char').forEach((char, index) => {
-                char.style.animationDelay = `${index * 44}ms`;
+                char.style.animationDelay = `${index * 20}ms`;
                 char.classList.add('flip-in');
             });
         }
@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     headingObserver.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.45 });
+        }, { threshold: 0.12 });
 
         sectionHeadings.forEach(heading => headingObserver.observe(heading));
 
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     copyObserver.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+        }, { threshold: 0.08, rootMargin: '0px 0px 5% 0px' });
 
         motionText.forEach(el => copyObserver.observe(el));
     } else {
