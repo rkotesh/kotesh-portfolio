@@ -58,9 +58,9 @@ nav {
 }
 .nav-container {
     width: 100%;
-    max-width: 1440px;
+    max-width: 100%;
     margin: 0 auto;
-    padding: 1.1rem clamp(1rem, 3vw, 4rem);
+    padding: 1.15rem clamp(1.5rem, 4vw, 4.5rem);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -124,17 +124,21 @@ nav.scrolled .nav-container { padding-top: 0.85rem; padding-bottom: 0.85rem; }
 /* ---- HERO ---- */
 .hero {
     min-height: 100vh; display: flex; align-items: center;
-    padding: 6rem 2.5rem 2rem;
-    max-width: 1200px; margin: 0 auto;
+    padding: 7rem clamp(1.2rem, 3.5vw, 4.5rem) 3rem;
+    width: 100%;
     position: relative;
+    box-sizing: border-box;
+    background: var(--bg);
 }
 .hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
     width: 100%;
     position: relative;
     z-index: 1;
     display: grid;
     grid-template-columns: 1.15fr 0.85fr;
-    gap: 4rem;
+    gap: 3.5rem;
     align-items: center;
 }
 
@@ -145,7 +149,7 @@ nav.scrolled .nav-container { padding-top: 0.85rem; padding-bottom: 0.85rem; }
 
 .hero-image-col {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     position: relative;
 }
@@ -155,140 +159,140 @@ nav.scrolled .nav-container { padding-top: 0.85rem; padding-bottom: 0.85rem; }
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 360px;
-    height: 360px;
+    width: 100%;
+    max-width: 440px;
+    aspect-ratio: 4 / 3.9;
+    border-radius: 26px;
     opacity: 0;
-    transform: translateY(30px) scale(0.95);
-    animation: imageIntro 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.6s;
-    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+    transform: translateY(28px);
+    animation: imageIntro 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.45s;
     z-index: 2;
 }
 
 @keyframes imageIntro {
     to {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translateY(0);
     }
 }
 
-/* Sketched outer rotating ring */
-.hero-image-wrapper::after {
+/* Ambient Radiant Glow behind card */
+.hero-image-wrapper::before {
     content: '';
     position: absolute;
-    width: 385px;
-    height: 385px;
-    border: 1.5px dashed var(--highlight);
-    border-radius: 40% 60% 70% 30% / 40% 50% 60% 70%;
-    opacity: 0.35;
-    pointer-events: none;
-    animation: rotateSketch 22s linear infinite, morphBlobOuter 12s ease-in-out infinite;
-    z-index: 0;
-    transition: border-color 0.3s, opacity 0.3s;
+    inset: -12px;
+    border-radius: 34px;
+    background: linear-gradient(135deg, rgba(153, 102, 255, 0.4), rgba(66, 133, 244, 0.25), rgba(153, 102, 255, 0.15));
+    filter: blur(24px);
+    opacity: 0.55;
+    z-index: -1;
+    transition: opacity 0.5s ease, filter 0.5s ease;
+    animation: pulseGlow 5s ease-in-out infinite alternate;
 }
 
-.hero-image-wrapper:hover::after {
-    border-color: var(--highlight-dark);
-    opacity: 0.65;
+.hero-image-wrapper:hover::before {
+    opacity: 0.85;
+    filter: blur(30px);
 }
 
-/* Organic blob shape morphing photo container */
+@keyframes pulseGlow {
+    0% { opacity: 0.45; transform: scale(0.97); }
+    100% { opacity: 0.7; transform: scale(1.02); }
+}
+
+/* Modern Card Frame */
 .hero-image-card {
     position: relative;
     width: 100%;
     height: 100%;
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-    background: transparent;
-    border: none;
-    padding: 0;
-    box-shadow: none;
+    border-radius: 26px;
+    background: #14141E;
+    border: 1.5px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 24px 60px -15px rgba(0, 0, 0, 0.25), 
+                0 0 35px rgba(153, 102, 255, 0.15);
     overflow: hidden;
     z-index: 1;
-    animation: morphBlob 10s ease-in-out infinite;
-    transition: border-color 0.3s, box-shadow 0.5s ease;
-    
-    /* Fix Safari overflow-hidden border-radius clipping bug with morphing animations */
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: -webkit-radial-gradient(white, black);
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    isolation: isolate;
-    will-change: border-radius;
+    transform-style: preserve-3d;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
 }
 
-.hero-image-card img {
+.hero-image-wrapper:hover .hero-image-card {
+    transform: translateY(-6px) scale(1.015);
+    box-shadow: 0 32px 75px -15px rgba(0, 0, 0, 0.35), 
+                0 0 45px rgba(153, 102, 255, 0.3);
+    border-color: rgba(153, 102, 255, 0.5);
+}
+
+.hero-profile-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: 68% 18%;
+    display: block;
     border-radius: inherit;
-    position: relative;
-    z-index: 1;
-    transform: scale(1.08) translate3d(0, 0, 0); /* added translate3d for hardware acceleration */
-    -webkit-transform: scale(1.08) translate3d(0, 0, 0);
-    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
-    filter: grayscale(12%) contrast(102%);
-    will-change: border-radius, transform;
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+    filter: contrast(104%) saturate(102%);
 }
 
-.hero-image-card::before {
-    content: '';
+.hero-image-wrapper:hover .hero-profile-img {
+    transform: scale(1.04);
+}
+
+/* Diagonal Sheen Sweep */
+.hero-image-sheen {
     position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: radial-gradient(300px circle at var(--card-x, 0px) var(--card-y, 0px), rgba(153, 102, 255, 0.12), transparent 75%);
-    z-index: 2;
-    opacity: 0;
-    transition: opacity 0.4s ease;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 20%, rgba(255, 255, 255, 0.15) 45%, rgba(255, 255, 255, 0.35) 50%, rgba(255, 255, 255, 0.15) 55%, transparent 80%);
+    transform: translateX(-150%);
+    transition: transform 0.85s ease;
     pointer-events: none;
+    z-index: 3;
 }
 
-.hero-image-card:hover::before {
-    opacity: 1;
+.hero-image-wrapper:hover .hero-image-sheen {
+    transform: translateX(150%);
 }
 
-.hero-image-card:hover {
-    border-color: transparent;
-    box-shadow: none;
+/* Floating Status Pill Badge */
+.hero-image-badge {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(14, 14, 22, 0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 100px;
+    padding: 7px 15px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #FFFFFF;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    z-index: 5;
+    pointer-events: none;
+    transition: transform 0.3s ease;
 }
 
-.hero-image-card:hover img {
-    transform: scale(1.14); /* extra zoom on hover */
-    filter: grayscale(0%) contrast(105%);
+.hero-image-wrapper:hover .hero-image-badge {
+    transform: translateY(-2px);
 }
 
-/* Sketch Morphing Keyframes */
-@keyframes morphBlob {
-    0% {
-        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-    }
-    50% {
-        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
-    }
-    100% {
-        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-    }
+.badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #10B981;
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    animation: badgePulse 2s infinite;
 }
 
-@keyframes morphBlobOuter {
-    0% {
-        border-radius: 40% 60% 70% 30% / 40% 50% 60% 70%;
-    }
-    50% {
-        border-radius: 70% 30% 50% 50% / 50% 70% 40% 60%;
-    }
-    100% {
-        border-radius: 40% 60% 70% 30% / 40% 50% 60% 70%;
-    }
-}
-
-@keyframes rotateSketch {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+@keyframes badgePulse {
+    0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+    70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
 }
 
 
@@ -405,7 +409,31 @@ nav.scrolled .nav-container { padding-top: 0.85rem; padding-bottom: 0.85rem; }
 }
 
 /* ---- SECTIONS ---- */
-section { padding: 6rem 2.5rem; max-width: 1200px; margin: 0 auto; }
+section {
+    padding: clamp(5rem, 7vw, 7.5rem) clamp(1.2rem, 3.5vw, 4.5rem);
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+    background: var(--bg);
+}
+
+.section-header,
+.about-grid,
+.about-highlights,
+.experience-timeline,
+.education-timeline,
+.certificates-grid,
+.linkedin-overview,
+.linkedin-content-grid,
+.github-overview,
+.github-content-grid,
+.projects-grid,
+.otw-container,
+.contact-grid {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 .section-header {
     display: flex; justify-content: space-between; align-items: flex-end;
@@ -1096,25 +1124,30 @@ section { padding: 6rem 2.5rem; max-width: 1200px; margin: 0 auto; }
 /* ---- FOOTER ---- */
 footer {
     position: relative;
-    padding: 1.35rem 2rem;
-    border-top: 1px solid var(--border);
-    max-width: 1180px;
-    margin: 1rem auto 0;
+    padding: 2.8rem clamp(1.2rem, 3.5vw, 4.5rem);
+    border-top: 1px solid #1E1E2A;
+    width: 100%;
+    margin-top: 0;
+    background: #08080C;
+    overflow: hidden;
+}
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 1rem;
-    background: transparent;
-    overflow: hidden;
+    gap: 1.5rem;
+    width: 100%;
 }
 footer::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 1.5rem;
-    right: 1.5rem;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--highlight), #4285F4, transparent);
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(153, 102, 255, 0.4), rgba(66, 133, 244, 0.4), transparent);
 }
 .footer-brand,
 .footer-links {
@@ -1124,35 +1157,35 @@ footer::before {
 .footer-kicker {
     display: inline-block;
     margin-bottom: 0.25rem;
-    font-size: 0.68rem;
+    font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--highlight-dark);
+    color: var(--highlight);
 }
-footer p { font-size: 0.82rem; color: var(--text-secondary); }
+footer p { font-size: 0.92rem; color: #9CA3AF; }
 .footer-links {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
-    gap: 0.65rem;
+    gap: 0.85rem;
 }
 footer a {
     position: relative;
-    color: var(--text);
+    color: #D1D5DB;
     text-decoration: none;
-    font-size: 0.82rem;
-    font-weight: 600;
-    padding: 0.45rem 0.72rem;
+    font-size: 0.88rem;
+    font-weight: 500;
+    padding: 0.45rem 0.85rem;
     border: 1px solid transparent;
     border-radius: 999px;
     transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease, color 0.25s ease;
 }
 footer a:hover {
-    transform: translateY(-3px);
-    color: var(--highlight-dark);
-    border-color: rgba(153, 102, 255, 0.28);
-    background: rgba(153, 102, 255, 0.08);
+    transform: translateY(-2px);
+    color: #FFFFFF;
+    border-color: rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.08);
 }
 
 /* ---- SCROLL REVEAL ---- */
@@ -1237,9 +1270,8 @@ footer a:hover {
 @media (max-width: 768px) {
     .hero { padding: 5.5rem 1.5rem 2.5rem; }
     .hero-content { grid-template-columns: 1fr; gap: 3rem; }
-    .hero-image-col { order: -1; justify-content: flex-start; }
-    .hero-image-wrapper { width: 260px; height: 260px; }
-    .hero-image-wrapper::after { width: 280px; height: 280px; }
+    .hero-image-col { order: -1; justify-content: center; width: 100%; }
+    .hero-image-wrapper { width: 100%; max-width: 340px; aspect-ratio: 4 / 3.9; height: auto; }
     .hero-image-card { max-width: 100%; }
     section { padding: 4rem 1.5rem; }
 
@@ -1258,7 +1290,9 @@ footer a:hover {
     .hero-stats { gap: 2rem; }
     .otw-container { padding: 2.5rem 1.5rem; }
 
-    footer { padding: 2.5rem 1.5rem; flex-direction: column; gap: 0.75rem; text-align: center; }
+    footer { padding: 2.5rem 1.5rem; }
+    .footer-container { flex-direction: column; gap: 1.25rem; text-align: center; }
+    .footer-links { justify-content: center; }
 }
 
 /* Small Mobile Screen (max 480px) */
@@ -1322,20 +1356,19 @@ footer a:hover {
 .project-card, .highlight-card, .education-card, .experience-card, .certificate-card, .skills-category, .social-link, .contact-form-card {
     position: relative;
     overflow: hidden;
-    border: 1.5px solid transparent;
+    border: 1px solid var(--border);
     border-radius: 18px;
-    background: linear-gradient(var(--card-bg), var(--card-bg)) padding-box,
-                linear-gradient(135deg, var(--border), var(--border)) border-box;
+    background: var(--card-bg);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.02);
-    transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, border-color 0.3s ease;
     transform-style: preserve-3d;
     will-change: transform;
 }
 
 .project-card:hover, .highlight-card:hover, .education-card:hover, .experience-card:hover, .certificate-card:hover, .skills-category:hover, .social-link:hover, .contact-form-card:hover {
-    background: linear-gradient(var(--card-bg), var(--card-bg)) padding-box,
-                radial-gradient(180px circle at var(--card-x, 50%) var(--card-y, 50%), var(--highlight), #4285F4 60%, transparent 80%) border-box;
-    box-shadow: 0 25px 50px rgba(153, 102, 255, 0.18), 0 0 20px rgba(153, 102, 255, 0.1);
+    transform: translateY(-8px) scale(1.015);
+    border-color: rgba(153, 102, 255, 0.45);
+    box-shadow: 0 20px 45px -12px rgba(153, 102, 255, 0.16), 0 0 1px rgba(153, 102, 255, 0.45);
 }
 
 /* 3D Parallax Children Transitions for ALL Cards */
@@ -1346,37 +1379,10 @@ footer a:hover {
     transform: translateZ(0px);
 }
 
-/* Glossy sweep sheen overlay for ALL cards */
+/* Clean card overlays (colored hover spots removed) */
+.project-card::before, .highlight-card::before, .education-card::before, .experience-card::before, .certificate-card::before, .skills-category::before, .social-link::before, .contact-form-card::before,
 .project-card::after, .highlight-card::after, .education-card::after, .experience-card::after, .certificate-card::after, .skills-category::after, .social-link::after, .contact-form-card::after {
-    content: '';
-    position: absolute;
-    top: 0; left: -150%;
-    width: 150%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
-    transform: skewX(-25deg);
-    transition: left 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-    z-index: 3;
-    pointer-events: none;
-}
-
-.project-card:hover::after, .highlight-card:hover::after, .education-card:hover::after, .experience-card:hover::after, .certificate-card:hover::after, .skills-category:hover::after, .social-link:hover::after, .contact-form-card:hover::after {
-    left: 150%;
-}
-
-.project-card::before, .highlight-card::before, .education-card::before, .experience-card::before, .certificate-card::before, .skills-category::before, .social-link::before, .contact-form-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: radial-gradient(350px circle at var(--card-x, 50%) var(--card-y, 50%), rgba(153, 102, 255, 0.12), transparent 75%);
-    z-index: 0;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-}
-
-.project-card:hover::before, .highlight-card:hover::before, .education-card:hover::before, .experience-card:hover::before, .certificate-card:hover::before, .skills-category:hover::before, .social-link:hover::before, .contact-form-card:hover::before {
-    opacity: 1;
+    display: none !important;
 }
 
 .project-info, .highlight-card > *, .education-body, .experience-body, .education-meta, .experience-meta, .certificate-info, .skills-category > *, .contact-form-card > * {
@@ -2115,51 +2121,9 @@ body.cursor-hover .fast-cursor-crosshair {
     }
 }
 
-/* 3. Electric Border Beam Effect on ALL Cards (OriginKit Inspired) */
+/* 3. Clean Card Borders (Border Beam removed) */
 .border-beam {
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1.5px;
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-    z-index: 4;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-
-.project-card:hover .border-beam,
-.highlight-card:hover .border-beam,
-.education-card:hover .border-beam,
-.experience-card:hover .border-beam,
-.certificate-card:hover .border-beam,
-.skills-category:hover .border-beam,
-.social-link:hover .border-beam,
-.contact-form-card:hover .border-beam,
-.project-card.featured .border-beam,
-.highlight-card:first-child .border-beam,
-.otw-container .border-beam {
-    opacity: 1;
-}
-
-.border-beam::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 300%;
-    height: 300%;
-    transform: translate(-50%, -50%);
-    background: conic-gradient(from 0deg, transparent 0 280deg, var(--highlight) 320deg, #4285F4 360deg);
-    animation: rotateBeam 3.2s linear infinite;
-}
-
-@keyframes rotateBeam {
-    from { transform: translate(-50%, -50%) rotate(0deg); }
-    to { transform: translate(-50%, -50%) rotate(360deg); }
+    display: none !important;
 }
 
 /* 4. Liquid Neon & Shimmer Text Effects (Vengence UI & OriginKit Inspired) */
@@ -2369,20 +2333,7 @@ body.cursor-hover .fast-cursor-crosshair {
     .pill-react { bottom: -4%; right: 2%; }
 }
 
-/* 11. Pixel Card Grid Overlay & Sticker Peel (OriginKit Inspired) */
-.highlight-card, .skills-category {
-    background-image: radial-gradient(rgba(153, 102, 255, 0.12) 1px, transparent 1px);
-    background-size: 16px 16px;
-}
-
-.highlight-card:hover, .skills-category:hover {
-    animation: pixelPulse 1.5s infinite alternate ease-in-out;
-}
-
-@keyframes pixelPulse {
-    0% { background-size: 16px 16px; }
-    100% { background-size: 20px 20px; }
-}
+/* 11. Clean Card Aesthetics (Pixel Grid removed) */
 
 /* 12. OriginKit Shiny Pill Hover Effect on Skill Tags & Project Badges */
 .skill-tag, .project-tags span, .education-tags span, .experience-tags span {
@@ -2674,7 +2625,10 @@ p, li, .section-headline, .section-label, .education-meta, .experience-meta {
     .split-char.flip-in,
     .text-dust-reveal,
     .holographic-heading::before,
-    .holographic-heading::after {
+    .holographic-heading::after,
+    .letter-wrap-up,
+    .letter-wrap-down,
+    .preloader-letter-shadow {
         animation: none !important;
         transition: none !important;
         opacity: 1 !important;
@@ -2682,6 +2636,803 @@ p, li, .section-headline, .section-label, .education-meta, .experience-meta {
         filter: none !important;
     }
 }
+
+/* ==========================================================================
+   SKIPER UI & VENGENCE UI INSPIRED CARD JUMPING & HOVER LIFT EFFECTS
+   ========================================================================== */
+.project-card,
+.experience-card,
+.education-card,
+.certificate-card,
+.skills-category,
+.highlight-card,
+.linkedin-profile-card,
+.linkedin-panel,
+.linkedin-stat-card,
+.github-profile-card,
+.github-panel,
+.github-stat-card,
+.contact-form-card,
+.social-link {
+    transition: transform 0.38s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                box-shadow 0.38s cubic-bezier(0.16, 1, 0.3, 1), 
+                border-color 0.3s ease !important;
+    will-change: transform, box-shadow;
+}
+
+/* Smooth jump on cursor hover without jarring background color change */
+.project-card:hover,
+.experience-card:hover,
+.education-card:hover,
+.certificate-card:hover,
+.skills-category:hover,
+.highlight-card:hover,
+.linkedin-profile-card:hover,
+.linkedin-panel:hover,
+.linkedin-stat-card:hover,
+.github-profile-card:hover,
+.github-panel:hover,
+.github-stat-card:hover,
+.contact-form-card:hover,
+.social-link:hover {
+    transform: translateY(-8px) scale(1.015) !important;
+    box-shadow: 0 20px 40px -12px rgba(153, 102, 255, 0.16), 
+                0 0 1px rgba(153, 102, 255, 0.45) !important;
+    border-color: rgba(153, 102, 255, 0.42) !important;
+}
+
+/* ==========================================================================
+   MINIMAL LIGHT PRELOADER ("Ram" Alternating Up/Down Animation)
+   ========================================================================== */
+body.preloader-active {
+    overflow: hidden !important;
+    height: 100vh !important;
+}
+
+.portfolio-preloader {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999999;
+    background: radial-gradient(circle at 50% 50%, #FFFFFF 0%, #F5F5F8 60%, #ECEEF2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.7s;
+}
+
+.portfolio-preloader.preloader-hidden {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.05);
+    pointer-events: none;
+}
+
+.preloader-title-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.8rem, 2.8vw, 2.2rem);
+    position: relative;
+    user-select: none;
+}
+
+.preloader-letter-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.letter-wrap-up {
+    animation: preloaderLetterFloatUp 2.2s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
+    animation-delay: var(--delay);
+}
+
+.letter-wrap-down {
+    animation: preloaderLetterFloatDown 2.2s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
+    animation-delay: var(--delay);
+}
+
+.preloader-letter {
+    font-family: var(--font-display);
+    font-size: clamp(6.5rem, 22vw, 13rem);
+    font-weight: 800;
+    line-height: 0.88;
+    letter-spacing: -0.03em;
+    color: #111111;
+    display: block;
+    text-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;
+}
+
+.preloader-letter-shadow {
+    width: clamp(2.5rem, 8vw, 5.5rem);
+    height: 14px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.04) 55%, transparent 75%);
+    filter: blur(4px);
+    margin-top: 0.8rem;
+    position: relative;
+    z-index: 1;
+}
+
+.letter-wrap-up .preloader-letter-shadow {
+    animation: preloaderShadowOnUp 2.2s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
+    animation-delay: var(--delay);
+}
+
+.letter-wrap-down .preloader-letter-shadow {
+    animation: preloaderShadowOnDown 2.2s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
+    animation-delay: var(--delay);
+}
+
+@keyframes preloaderLetterFloatUp {
+    0% { transform: translateY(18px) rotate(2deg) scale(0.97); }
+    50% { transform: translateY(-28px) rotate(-3.5deg) scale(1.04); }
+    100% { transform: translateY(18px) rotate(2deg) scale(0.97); }
+}
+
+@keyframes preloaderLetterFloatDown {
+    0% { transform: translateY(-18px) rotate(-2deg) scale(0.97); }
+    50% { transform: translateY(28px) rotate(3.5deg) scale(1.04); }
+    100% { transform: translateY(-18px) rotate(-2deg) scale(0.97); }
+}
+
+@keyframes preloaderShadowOnUp {
+    0% { transform: scale(1.15); opacity: 0.65; }
+    50% { transform: scale(0.65); opacity: 0.22; }
+    100% { transform: scale(1.15); opacity: 0.65; }
+}
+
+@keyframes preloaderShadowOnDown {
+    0% { transform: scale(0.65); opacity: 0.22; }
+    50% { transform: scale(1.15); opacity: 0.65; }
+    100% { transform: scale(0.65); opacity: 0.22; }
+}
+
+/* ==========================================================================
+   ALTERNATING SECTION BACKGROUND THEMES (Dark Section Overrides)
+   ========================================================================== */
+section.section-dark {
+    background-color: #0B0B11 !important;
+    color: #F3F4F6 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.07) !important;
+}
+
+section.section-dark .section-label {
+    color: #9CA3AF !important;
+}
+
+section.section-dark .section-title {
+    color: #FFFFFF !important;
+}
+
+section.section-dark .section-headline {
+    color: #9CA3AF !important;
+}
+
+/* Cards & Panels inside dark sections */
+section.section-dark .skills-category,
+section.section-dark .highlight-card,
+section.section-dark .education-card,
+section.section-dark .github-profile-card,
+section.section-dark .github-stat-card,
+section.section-dark .github-panel,
+section.section-dark .contact-form-card,
+section.section-dark .social-link {
+    background-color: #14141E !important;
+    border-color: rgba(255, 255, 255, 0.09) !important;
+    color: #F3F4F6 !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+section.section-dark .highlight-card h4,
+section.section-dark .skills-category h5,
+section.section-dark .education-body h4,
+section.section-dark .education-meta .institution,
+section.section-dark .github-profile-top h3,
+section.section-dark .github-stat-card strong,
+section.section-dark .github-panel-heading p,
+section.section-dark .github-repo strong,
+section.section-dark .contribution-item strong,
+section.section-dark .contact-info h3,
+section.section-dark .contact-form-card h4,
+section.section-dark .social-link .s-name,
+section.section-dark .about-text p strong {
+    color: #FFFFFF !important;
+}
+
+section.section-dark .about-text p,
+section.section-dark .highlight-card p,
+section.section-dark .education-body p,
+section.section-dark .education-body li,
+section.section-dark .education-meta,
+section.section-dark .github-profile-top p,
+section.section-dark .github-stat-card span,
+section.section-dark .github-panel-heading span,
+section.section-dark .github-repo span,
+section.section-dark .contribution-item p,
+section.section-dark .contact-info p,
+section.section-dark .social-link .s-handle,
+section.section-dark .form-group label {
+    color: #9CA3AF !important;
+}
+
+section.section-dark .skill-tag,
+section.section-dark .education-tags span,
+section.section-dark .github-meta span {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    color: #E5E7EB !important;
+}
+
+section.section-dark .skill-tag:hover {
+    background: var(--highlight) !important;
+    color: #FFFFFF !important;
+    border-color: var(--highlight) !important;
+}
+
+section.section-dark .github-repo {
+    background: #0E0E17 !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    color: #F3F4F6 !important;
+}
+
+section.section-dark .github-repo:hover {
+    background: rgba(153, 102, 255, 0.1) !important;
+    border-color: var(--highlight) !important;
+}
+
+section.section-dark .contact-email {
+    color: #FFFFFF !important;
+    border-bottom-color: var(--highlight) !important;
+}
+
+section.section-dark .form-group input,
+section.section-dark .form-group textarea {
+    background-color: #0E0E17 !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    color: #FFFFFF !important;
+}
+
+section.section-dark .form-group input:focus,
+section.section-dark .form-group textarea:focus {
+    border-color: var(--highlight) !important;
+    box-shadow: 0 0 0 3px rgba(153, 102, 255, 0.2) !important;
+}
+
+section.section-dark .brand-item {
+    color: #FFFFFF !important;
+    opacity: 0.35 !important;
+}
+
+section.section-dark .brand-item:hover {
+    opacity: 1 !important;
+    color: var(--highlight) !important;
+    text-shadow: 0 0 16px rgba(153, 102, 255, 0.5) !important;
+}
+
+section.section-dark .brand-sep {
+    color: rgba(255, 255, 255, 0.15) !important;
+}
+
+section.section-dark .education-timeline::before {
+    background: rgba(255, 255, 255, 0.12) !important;
+}
+
+section.section-dark .education-card::before {
+    background: #14141E !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+section.section-dark .education-card:hover::before {
+    background: var(--highlight) !important;
+    border-color: var(--highlight) !important;
+}
+
+section.section-dark .contribution-item {
+    border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Explicit Light Section Backgrounds */
+#experience,
+#certificates,
+#linkedin,
+#projects {
+    background-color: #FFFFFF !important;
+    background: #FFFFFF !important;
+    color: #111111 !important;
+}
+
+#experience .section-title,
+#certificates .section-title,
+#linkedin .section-title,
+#projects .section-title {
+    color: #111111 !important;
+}
+
+#experience .section-headline,
+#certificates .section-headline,
+#linkedin .section-headline,
+#projects .section-headline {
+    color: #5F5F64 !important;
+}
+
+/* Explicit Dark Section Backgrounds */
+#about.section-dark,
+#education.section-dark,
+#brands.section-dark,
+#github.section-dark,
+#contact.section-dark {
+    background-color: #0B0B11 !important;
+    background: #0B0B11 !important;
+    color: #F3F4F6 !important;
+}
+
+/* Card Jumping Effects with NO Hover Color Change */
+/* 1. Dark Section Cards on Hover: Remain Deep Obsidian #14141E, Clean Jumping Lift */
+section.section-dark .skills-category:hover,
+section.section-dark .highlight-card:hover,
+section.section-dark .education-card:hover,
+section.section-dark .github-profile-card:hover,
+section.section-dark .github-stat-card:hover,
+section.section-dark .github-panel:hover,
+section.section-dark .contact-form-card:hover,
+section.section-dark .social-link:hover {
+    background-color: #14141E !important;
+    background: #14141E !important;
+    color: #F3F4F6 !important;
+    transform: translateY(-8px) scale(1.015) !important;
+    box-shadow: 0 20px 45px -12px rgba(0, 0, 0, 0.6) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+section.section-dark .highlight-card:hover h4,
+section.section-dark .skills-category:hover h5,
+section.section-dark .education-card:hover .education-body h4,
+section.section-dark .github-profile-card:hover h3,
+section.section-dark .contact-form-card:hover h4,
+section.section-dark .social-link:hover .s-name {
+    color: #FFFFFF !important;
+}
+
+section.section-dark .highlight-card:hover p,
+section.section-dark .education-card:hover .education-body p,
+section.section-dark .education-card:hover .education-body li,
+section.section-dark .social-link:hover .s-handle {
+    color: #9CA3AF !important;
+}
+
+/* 2. Light Section Cards on Hover: Remain Crisp White #FFFFFF, Clean Jumping Lift */
+#experience .experience-card:hover,
+#certificates .certificate-card:hover,
+#linkedin .linkedin-profile-card:hover,
+#linkedin .linkedin-stat-card:hover,
+#linkedin .linkedin-panel:hover,
+#projects .project-card:hover {
+    background-color: #FFFFFF !important;
+    background: #FFFFFF !important;
+    color: #111111 !important;
+    transform: translateY(-8px) scale(1.015) !important;
+    box-shadow: 0 20px 45px -12px rgba(0, 0, 0, 0.12) !important;
+    border-color: rgba(0, 0, 0, 0.15) !important;
+}
+
+/* ==========================================================================
+   SKIPER UI & VENGEANCE UI $100,000 ARCHITECTURE ENHANCEMENTS
+   ========================================================================== */
+
+/* 1. Organic Studio Film Grain Texture Overlay */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.024;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* 2. Vengeance UI Radiant Border Beam */
+@property --beam-angle {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+}
+
+.border-beam-card {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.border-beam-card::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    padding: 2px;
+    background: conic-gradient(
+        from var(--beam-angle, 0deg),
+        transparent 0%,
+        transparent 65%,
+        rgba(153, 102, 255, 0.85) 85%,
+        #ffffff 92%,
+        rgba(153, 102, 255, 0.85) 96%,
+        transparent 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    animation: borderBeamSpin 6s linear infinite;
+    z-index: 3;
+    opacity: 0.9;
+}
+
+@keyframes borderBeamSpin {
+    to {
+        --beam-angle: 360deg;
+    }
+}
+
+/* 3. 3D Perspective Tilt & Specular Sheen (Vengeance UI Inspired) */
+.perspective-tilt {
+    transform-style: preserve-3d;
+    perspective: 1100px;
+    will-change: transform;
+    transition: transform 0.18s cubic-bezier(0.2, 0, 0.38, 0.9), box-shadow 0.3s ease;
+    position: relative;
+}
+
+.card-specular-glare {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(
+        circle 240px at var(--glare-x, 50%) var(--glare-y, 50%),
+        rgba(255, 255, 255, 0.22),
+        transparent 75%
+    );
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    z-index: 6;
+}
+
+.perspective-tilt:hover .card-specular-glare {
+    opacity: 1;
+}
+
+/* 4. Skiper UI Spotlight Cursor Lighting */
+.spotlight-card {
+    position: relative;
+}
+
+.spotlight-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+        380px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(153, 102, 255, 0.12),
+        transparent 75%
+    );
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+    z-index: 2;
+}
+
+.spotlight-card:hover::after {
+    opacity: 1;
+}
+
+/* 5. Magnetic Shimmer Button Sweeps */
+.btn-primary, .btn-secondary, .nav-cta, .otw-cta {
+    position: relative;
+    overflow: hidden;
+    will-change: transform;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.btn-primary::after, .nav-cta::after, .otw-cta::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -80%;
+    width: 60%;
+    height: 200%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.35),
+        transparent
+    );
+    transform: rotate(25deg);
+    pointer-events: none;
+}
+
+.btn-primary:hover::after, .nav-cta:hover::after, .otw-cta:hover::after {
+    left: 140%;
+    transition: left 0.75s ease-in-out;
+}
+
+/* 6. Navigation Command Menu Trigger */
+.nav-cmd-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.38rem 0.75rem;
+    background: rgba(17, 17, 17, 0.05);
+    border: 1px solid rgba(17, 17, 17, 0.12);
+    border-radius: 9999px;
+    font-size: 0.78rem;
+    font-family: var(--font-body);
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    outline: none;
+    white-space: nowrap;
+    margin-left: 0.25rem;
+}
+
+.nav-cmd-trigger:hover {
+    background: rgba(17, 17, 17, 0.09);
+    border-color: rgba(153, 102, 255, 0.4);
+    color: var(--text);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(153, 102, 255, 0.15);
+}
+
+.nav-cmd-trigger svg {
+    opacity: 0.75;
+    transition: transform 0.2s ease;
+}
+
+.nav-cmd-trigger:hover svg {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+.nav-cmd-trigger kbd {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.15rem 0.38rem;
+    font-size: 0.65rem;
+    font-family: monospace;
+    font-weight: 600;
+    line-height: 1;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    color: var(--text);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+/* 7. Command Palette Modal (Raycast / Skiper UI / Vengeance UI standard) */
+.cmd-palette-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: rgba(10, 10, 15, 0.75);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 12vh 1rem 2rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cmd-palette-backdrop.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.cmd-palette-card {
+    width: 100%;
+    max-width: 620px;
+    background: #14141E;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 20px;
+    box-shadow: 0 30px 80px -15px rgba(0, 0, 0, 0.85), 0 0 50px rgba(153, 102, 255, 0.2);
+    overflow: hidden;
+    transform: scale(0.96) translateY(-10px);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    color: #F3F4F6;
+}
+
+.cmd-palette-backdrop.active .cmd-palette-card {
+    transform: scale(1) translateY(0);
+}
+
+.cmd-palette-header {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 1.1rem 1.35rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.cmd-palette-header svg {
+    color: var(--highlight);
+    flex-shrink: 0;
+}
+
+.cmd-palette-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    color: #FFFFFF;
+}
+
+.cmd-palette-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.cmd-palette-esc {
+    display: inline-block;
+    padding: 0.2rem 0.45rem;
+    font-size: 0.7rem;
+    font-family: monospace;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cmd-palette-body {
+    max-height: 380px;
+    overflow-y: auto;
+    padding: 0.65rem;
+}
+
+.cmd-palette-group-title {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.45);
+    padding: 0.6rem 0.85rem 0.3rem;
+    font-weight: 600;
+}
+
+.cmd-palette-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.7rem 0.9rem;
+    border-radius: 12px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #D1D5DB;
+    font-size: 0.92rem;
+    transition: all 0.15s ease;
+    border: 1px solid transparent;
+}
+
+.cmd-palette-item-left {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.cmd-palette-item-left svg {
+    color: rgba(255, 255, 255, 0.5);
+    transition: color 0.15s ease;
+}
+
+.cmd-palette-item:hover,
+.cmd-palette-item.selected {
+    background: rgba(153, 102, 255, 0.16);
+    border-color: rgba(153, 102, 255, 0.35);
+    color: #FFFFFF;
+}
+
+.cmd-palette-item:hover .cmd-palette-item-left svg,
+.cmd-palette-item.selected .cmd-palette-item-left svg {
+    color: var(--highlight);
+}
+
+.cmd-palette-item-badge {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.06);
+    padding: 0.15rem 0.45rem;
+    border-radius: 6px;
+    font-family: monospace;
+}
+
+.cmd-palette-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1.25rem;
+    background: rgba(0, 0, 0, 0.25);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.cmd-palette-footer-keys {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.cmd-palette-footer-keys span {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.cmd-palette-footer-keys kbd {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.15rem 0.35rem;
+    border-radius: 4px;
+    font-size: 0.68rem;
+    font-family: monospace;
+    color: #E5E7EB;
+}
+
+/* 8. Micro-Toast Notification (Tactile Copy / Action Feedback) */
+.portfolio-toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 10001;
+    background: #14141E;
+    color: #FFFFFF;
+    border: 1px solid rgba(153, 102, 255, 0.4);
+    box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.7), 0 0 25px rgba(153, 102, 255, 0.3);
+    border-radius: 9999px;
+    padding: 0.65rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-size: 0.88rem;
+    font-weight: 500;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(15px) scale(0.95);
+    transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.portfolio-toast.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.portfolio-toast-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--highlight);
+    color: #FFFFFF;
+    font-size: 0.72rem;
+}
+
 
 
 

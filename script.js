@@ -1,4 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Kinetic Light Preloader ("Ram")
+    const preloader = document.getElementById('portfolioPreloader');
+    if (preloader) {
+        document.body.classList.add('preloader-active');
+        const dismissPreloader = () => {
+            if (preloader.classList.contains('preloader-hidden')) return;
+            preloader.classList.add('preloader-hidden');
+            document.body.classList.remove('preloader-active');
+            setTimeout(() => {
+                if (preloader.parentNode) preloader.parentNode.removeChild(preloader);
+            }, 750);
+        };
+        
+        window.addEventListener('load', () => {
+            setTimeout(dismissPreloader, 900);
+        });
+        // Fallback safety timer
+        setTimeout(dismissPreloader, 2200);
+    }
+
     // Dynamic year in footer
     const yearEl = document.getElementById('year');
     if (yearEl) {
@@ -364,30 +384,30 @@ document.addEventListener('DOMContentLoaded', () => {
             githubLink: "https://github.com/rkotesh/nandini"
         },
         
-        polynomialassignment: {
-            title: "Polynomialassignment",
-            tags: ["Java", "Utility"],
-            description: "An open-source repository for Polynomialassignment built to solve development challenges.",
-            highlights: [
-                "Implemented robust application structures.",
-                "Fully configured for easy deployment and local testing.",
-                "Built using Java."
-            ],
-            liveLink: "",
-            githubLink: "https://github.com/rkotesh/PolynomialAssignment"
-        },
-        
         java: {
-            title: "Java",
-            tags: ["Java", "Utility"],
-            description: "An open-source repository for Java built to solve development challenges.",
+            title: "Core Java & Data Structures",
+            tags: ["Java", "Algorithms", "OOP", "Data Structures"],
+            description: "Core Java engineering repository implementing object-oriented programming concepts, collections framework, exception handling, and algorithmic problem-solving routines.",
             highlights: [
-                "Implemented robust application structures.",
-                "Fully configured for easy deployment and local testing.",
-                "Built using Java."
+                "Comprehensive implementations of OOP principles (Inheritance, Polymorphism, Abstraction, Encapsulation).",
+                "Optimized data structure routines and algorithmic problem-solving methods.",
+                "Organized package structures suitable for production reference and academic excellence."
             ],
             liveLink: "",
             githubLink: "https://github.com/rkotesh/java"
+        },
+
+        polynomial_assignment: {
+            title: "Polynomial Assignment Algorithm",
+            tags: ["Java", "Algorithms", "Mathematics", "Interpolation"],
+            description: "Mathematical polynomial evaluation and Lagrange interpolation algorithm implemented in Java to decode hidden constant secrets from encoded coordinate pairs.",
+            highlights: [
+                "Decodes variable-base numerical coordinates into big integer representations.",
+                "Implements Lagrange basis polynomial interpolation for algebraic secret solving.",
+                "Handles arbitrary precision arithmetic and corner test cases."
+            ],
+            liveLink: "",
+            githubLink: "https://github.com/rkotesh/PolynomialAssignment"
         },
         
         /* AUTO_PROJECT_DB_MARKER */
@@ -475,56 +495,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeModal();
     });
-
-    // Stats count up animation
-    const stats = document.querySelectorAll('.stat h3');
-    const animateStats = () => {
-        stats.forEach(stat => {
-            const text = stat.textContent;
-            const isPlus = text.includes('+');
-            const targetVal = parseFloat(text.replace('+', ''));
-            const isFloat = text.includes('.');
-            
-            const duration = 1500; // 1.5s
-            const start = performance.now();
-            
-            const step = (now) => {
-                const progress = Math.min((now - start) / duration, 1);
-                // Easing out quad
-                const ease = progress * (2 - progress);
-                const currentVal = ease * targetVal;
-                
-                if (isFloat) {
-                    stat.textContent = currentVal.toFixed(2) + (isPlus ? '+' : '');
-                } else {
-                    stat.textContent = Math.floor(currentVal) + (isPlus ? '+' : '');
-                }
-                
-                if (progress < 1) {
-                    requestAnimationFrame(step);
-                } else {
-                    stat.textContent = text; // safety reset to initial text
-                }
-            };
-            requestAnimationFrame(step);
-        });
-    };
-    
-    // Trigger when stats section enters view
-    const heroStatsContainer = document.querySelector('.hero-stats');
-    if (heroStatsContainer && 'IntersectionObserver' in window) {
-        const statsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateStats();
-                    statsObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-        statsObserver.observe(heroStatsContainer);
-    } else {
-        animateStats(); // fallback
-    }
 
     // Initialize AI Assistant
     window.koteshAI = new KoteshAI();
@@ -1416,17 +1386,7 @@ window.addEventListener('click', e => {
     });
 })();
 
-// 6. ALL Cards Electric Border Beam Auto-Injector (OriginKit & Skiper UI)
-(function injectBorderBeamsAllCards() {
-    const allCards = document.querySelectorAll('.project-card, .highlight-card, .education-card, .experience-card, .certificate-card, .skills-category, .social-link, .contact-form-card, .otw-container');
-    allCards.forEach(el => {
-        if (!el.querySelector('.border-beam')) {
-            const beam = document.createElement('div');
-            beam.className = 'border-beam';
-            el.appendChild(beam);
-        }
-    });
-})();
+// 6. Border Beam disabled (clean card aesthetics)
 
 // 7. Dynamic Typewriter Role Switcher (OriginKit & Skiper UI)
 (function initTypewriterRoleSwitcher() {
@@ -1474,3 +1434,232 @@ window.addEventListener('click', e => {
 
 
 
+
+/* ==========================================================================
+   SKIPER UI & VENGEANCE UI INTERACTIVE ENGINE
+   ========================================================================== */
+
+(function initSkiperAndVengeanceEngine() {
+
+    // 1. Toast Notification Utility
+    var toastEl = document.getElementById('portfolioToast');
+    var toastMsgEl = document.getElementById('portfolioToastMsg');
+    var toastTimer = null;
+
+    function showToast(message, iconChar) {
+        if (!toastEl || !toastMsgEl) return;
+        toastMsgEl.textContent = message;
+        var iconEl = toastEl.querySelector('.portfolio-toast-icon');
+        if (iconEl) iconEl.textContent = iconChar || '\u2713';
+        toastEl.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function() {
+            toastEl.classList.remove('show');
+        }, 2600);
+    }
+
+    // Click-to-copy on email links
+    document.querySelectorAll('a[href^="mailto:"]').forEach(function(link) {
+        link.addEventListener('click', function() {
+            var email = link.getAttribute('href').replace('mailto:', '');
+            if (navigator.clipboard && email) {
+                navigator.clipboard.writeText(email).then(function() {
+                    showToast('Copied ' + email, '\u2713');
+                }).catch(function() {});
+            }
+        });
+    });
+
+    // 2. Vengeance UI 3D Perspective Tilt + Specular Glare
+    document.querySelectorAll('.perspective-tilt').forEach(function(card) {
+        var bounds = null;
+        card.addEventListener('mouseenter', function() {
+            bounds = card.getBoundingClientRect();
+        }, { passive: true });
+        card.addEventListener('mousemove', function(e) {
+            if (!bounds) bounds = card.getBoundingClientRect();
+            var mx = e.clientX - bounds.left;
+            var my = e.clientY - bounds.top;
+            var xPct = (mx / bounds.width - 0.5) * 2;
+            var yPct = (my / bounds.height - 0.5) * 2;
+            var rotX = (-yPct * 10).toFixed(2);
+            var rotY = (xPct * 10).toFixed(2);
+            card.style.transform = 'perspective(1000px) rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg) translateZ(6px)';
+            card.style.setProperty('--glare-x', (mx / bounds.width * 100).toFixed(1) + '%');
+            card.style.setProperty('--glare-y', (my / bounds.height * 100).toFixed(1) + '%');
+        }, { passive: true });
+        card.addEventListener('mouseleave', function() {
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+            bounds = null;
+        }, { passive: true });
+    });
+
+    // 3. Skiper UI Spotlight Cursor Lighting
+    document.querySelectorAll('.spotlight-card').forEach(function(card) {
+        card.addEventListener('mousemove', function(e) {
+            var rect = card.getBoundingClientRect();
+            card.style.setProperty('--mouse-x', (e.clientX - rect.left).toFixed(1) + 'px');
+            card.style.setProperty('--mouse-y', (e.clientY - rect.top).toFixed(1) + 'px');
+        }, { passive: true });
+    });
+
+    // 4. Magnetic Physics for CTA Buttons (Desktop Only)
+    if (window.matchMedia('(pointer: fine)').matches) {
+        document.querySelectorAll('.btn-primary, .otw-cta').forEach(function(btn) {
+            btn.addEventListener('mousemove', function(e) {
+                var rect = btn.getBoundingClientRect();
+                var x = e.clientX - (rect.left + rect.width / 2);
+                var y = e.clientY - (rect.top + rect.height / 2);
+                btn.style.transform = 'translate(' + (x * 0.2).toFixed(1) + 'px, ' + (y * 0.2).toFixed(1) + 'px)';
+            }, { passive: true });
+            btn.addEventListener('mouseleave', function() {
+                btn.style.transform = 'translate(0px, 0px)';
+            }, { passive: true });
+        });
+    }
+
+    // 5. Stat Counter Animations (on scroll-into-view)
+    var statEls = document.querySelectorAll('.hero-stats .stat h3, .github-stat-card strong, .linkedin-stat-card strong');
+    if ('IntersectionObserver' in window && statEls.length) {
+        var counterObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (!entry.isIntersecting) return;
+                var el = entry.target;
+                if (el.dataset.animated === 'true') return;
+                el.dataset.animated = 'true';
+                counterObserver.unobserve(el);
+
+                var targetStr = el.getAttribute('data-target') || el.innerText.trim();
+                var hasPlus = targetStr.indexOf('+') !== -1;
+                var isFloat = targetStr.indexOf('.') !== -1;
+                var targetVal = parseFloat(targetStr.replace('+', ''));
+                if (isNaN(targetVal)) return;
+
+                var start = performance.now();
+                var dur = 950;
+                (function tick(now) {
+                    var p = Math.min((now - start) / dur, 1);
+                    var ease = 1 - Math.pow(1 - p, 3);
+                    var val = targetVal * ease;
+                    el.innerText = (isFloat ? val.toFixed(2) : Math.floor(val)) + (hasPlus ? '+' : '');
+                    if (p < 1) {
+                        requestAnimationFrame(tick);
+                    } else {
+                        el.innerText = targetStr;
+                    }
+                })(performance.now());
+            });
+        }, { threshold: 0.15 });
+        statEls.forEach(function(el) { counterObserver.observe(el); });
+    }
+
+    // 6. Command Palette (Ctrl+K / Cmd+K)
+    var palette = document.getElementById('cmdPalette');
+    var input = document.getElementById('cmdInput');
+    var resultsEl = document.getElementById('cmdResults');
+    var trigger = document.getElementById('navCmdTrigger');
+    var closeBtn = document.getElementById('cmdCloseBtn');
+    if (!palette || !input || !resultsEl) return;
+
+    function goTo(hash) {
+        var el = document.querySelector(hash);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    var db = [
+        { g: 'Navigate', lbl: 'Home',              sub: 'Jump to top',                           fn: function() { window.scrollTo({ top:0, behavior:'smooth' }); } },
+        { g: 'Navigate', lbl: 'About Me',           sub: 'Background, skills & specialties',      fn: function() { goTo('#about'); } },
+        { g: 'Navigate', lbl: 'Work Experience',    sub: 'Flipkart Launchpad internship',         fn: function() { goTo('#experience'); } },
+        { g: 'Navigate', lbl: 'Education',          sub: 'CIET B.Tech AI & ML (8.03 CGPA)',      fn: function() { goTo('#education'); } },
+        { g: 'Navigate', lbl: 'Certifications',     sub: 'Flipkart & Freedom with AI certs',     fn: function() { goTo('#certificates'); } },
+        { g: 'Navigate', lbl: 'Technologies',       sub: 'Python, Django, React, REST APIs',      fn: function() { goTo('#brands'); } },
+        { g: 'Navigate', lbl: 'LinkedIn',           sub: '735 followers, recruiter snapshot',     fn: function() { goTo('#linkedin'); } },
+        { g: 'Navigate', lbl: 'GitHub',             sub: 'Open source repos & commits',          fn: function() { goTo('#github'); } },
+        { g: 'Navigate', lbl: 'Projects',           sub: 'Rolla AI, ELMS, Hospital Chatbot',     fn: function() { goTo('#projects'); } },
+        { g: 'Navigate', lbl: 'Contact',            sub: 'Get in touch for roles & projects',    fn: function() { goTo('#contact'); } },
+
+        { g: 'Quick Actions', lbl: 'Copy Email',        sub: 'srkotesh23@gmail.com',       badge:'Copy',
+          fn: function() { navigator.clipboard && navigator.clipboard.writeText('srkotesh23@gmail.com').then(function(){ showToast('Copied email!', '\u2713'); }); } },
+        { g: 'Quick Actions', lbl: 'Download Resume',   sub: 'Latest PDF resume',          badge:'PDF',
+          fn: function() { var a=document.createElement('a'); a.href='./assets/Sankula_Koteswara_Rao_Resume.pdf'; a.download='Resume.pdf'; a.click(); showToast('Downloading...', '\u2193'); } },
+        { g: 'Quick Actions', lbl: 'Open LinkedIn',     sub: 'linkedin.com/in/sankula-koteswararao', badge:'Open',
+          fn: function() { window.open('https://www.linkedin.com/in/sankula-koteswararao/','_blank'); } },
+        { g: 'Quick Actions', lbl: 'Open GitHub',       sub: 'github.com/rkotesh',         badge:'Open',
+          fn: function() { window.open('https://github.com/rkotesh','_blank'); } },
+
+        { g: 'Projects',  lbl: 'Rolla AI',          sub: 'Featured Agency & SaaS platform',   badge:'Live', fn: function() { window.open('https://rolla-ai.vercel.app/','_blank'); } },
+        { g: 'Projects',  lbl: 'ELMS',              sub: 'Leave Management System',            badge:'Live', fn: function() { window.open('https://elms-one.vercel.app/','_blank'); } },
+        { g: 'Projects',  lbl: 'Asset Management SPA', sub: 'JavaScript Single Page App',       badge:'GitHub', fn: function() { window.open('https://github.com/rkotesh/asset-management-spa','_blank'); } },
+        { g: 'Projects',  lbl: 'Core Java & Algorithms', sub: 'OOP, Collections & Data Structures', badge:'GitHub', fn: function() { window.open('https://github.com/rkotesh/java','_blank'); } },
+        { g: 'Projects',  lbl: 'Hospital Chatbot',  sub: 'AI-driven healthcare assistant',    badge:'Live', fn: function() { window.open('https://hospitalchatbot04.streamlit.app','_blank'); } },
+        { g: 'Projects',  lbl: 'College Website',   sub: 'Deployed TypeScript web portal',    badge:'Live', fn: function() { window.open('https://college-website-omega-flax.vercel.app','_blank'); } }
+    ];
+
+    var sel = 0, filtered = [];
+
+    function open() {
+        palette.classList.add('active');
+        palette.setAttribute('aria-hidden','false');
+        input.value = '';
+        sel = 0;
+        render('');
+        setTimeout(function(){ input.focus(); }, 50);
+        document.body.style.overflow = 'hidden';
+    }
+    function close() {
+        palette.classList.remove('active');
+        palette.setAttribute('aria-hidden','true');
+        document.body.style.overflow = '';
+    }
+    function render(q) {
+        q = q.toLowerCase().trim();
+        filtered = db.filter(function(it){
+            return !q || it.lbl.toLowerCase().indexOf(q)>=0 || it.sub.toLowerCase().indexOf(q)>=0 || it.g.toLowerCase().indexOf(q)>=0;
+        });
+        if (sel >= filtered.length) sel = Math.max(0, filtered.length - 1);
+        if (!filtered.length) {
+            resultsEl.innerHTML = '<div style="padding:2.5rem 1rem;text-align:center;color:rgba(255,255,255,0.4);font-size:0.9rem;">No results. Try: Projects, Resume, Email, About</div>';
+            return;
+        }
+        var html = '', grp = '';
+        filtered.forEach(function(it, i){
+            if (it.g !== grp) {
+                grp = it.g;
+                html += '<div class="cmd-palette-group-title">' + grp + '</div>';
+            }
+            html += '<div class="cmd-palette-item' + (i===sel?' selected':'') + '" data-i="' + i + '">' +
+                    '<div class="cmd-palette-item-left"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 8 16 12 12 16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>' +
+                    '<div><div style="font-weight:600;color:#fff;font-size:0.93rem;">' + it.lbl + '</div>' +
+                    '<div style="font-size:0.75rem;color:rgba(255,255,255,0.4);">' + it.sub + '</div></div></div>' +
+                    (it.badge ? '<span class="cmd-palette-item-badge">' + it.badge + '</span>' : '') +
+                    '</div>';
+        });
+        resultsEl.innerHTML = html;
+        resultsEl.querySelectorAll('.cmd-palette-item').forEach(function(el){
+            el.addEventListener('click', function(){
+                var i = parseInt(el.dataset.i, 10);
+                close();
+                filtered[i] && filtered[i].fn();
+            });
+        });
+        var s = resultsEl.querySelector('.selected');
+        if (s) s.scrollIntoView({ block:'nearest' });
+    }
+
+    input.addEventListener('input', function(){ sel=0; render(input.value); });
+    input.addEventListener('keydown', function(e){
+        if (e.key==='ArrowDown'){ e.preventDefault(); sel=(sel+1)%Math.max(1,filtered.length); render(input.value); }
+        else if (e.key==='ArrowUp'){ e.preventDefault(); sel=(sel-1+Math.max(1,filtered.length))%Math.max(1,filtered.length); render(input.value); }
+        else if (e.key==='Enter'){ e.preventDefault(); close(); filtered[sel] && filtered[sel].fn(); }
+        else if (e.key==='Escape'){ close(); }
+    });
+
+    if (trigger) trigger.addEventListener('click', open);
+    if (closeBtn) closeBtn.addEventListener('click', close);
+    palette.addEventListener('click', function(e){ if (e.target===palette) close(); });
+    window.addEventListener('keydown', function(e){
+        if ((e.ctrlKey||e.metaKey) && e.key.toLowerCase()==='k'){ e.preventDefault(); palette.classList.contains('active') ? close() : open(); }
+        else if (e.key==='Escape' && palette.classList.contains('active')){ close(); }
+    });
+
+})();

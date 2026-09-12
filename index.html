@@ -18,6 +18,24 @@
 </head>
 <body>
 
+<!-- PRELOADER (Minimal Light "Ram" Kinetic Letters) -->
+<div class="portfolio-preloader" id="portfolioPreloader" aria-hidden="true">
+    <div class="preloader-title-container">
+        <div class="preloader-letter-wrap letter-wrap-up" style="--delay: 0s;">
+            <span class="preloader-letter">R</span>
+            <div class="preloader-letter-shadow"></div>
+        </div>
+        <div class="preloader-letter-wrap letter-wrap-down" style="--delay: 0.18s;">
+            <span class="preloader-letter">a</span>
+            <div class="preloader-letter-shadow"></div>
+        </div>
+        <div class="preloader-letter-wrap letter-wrap-up" style="--delay: 0.36s;">
+            <span class="preloader-letter">m</span>
+            <div class="preloader-letter-shadow"></div>
+        </div>
+    </div>
+</div>
+
 <!-- High-Speed Cosmic Plasma Canvas Background (Next-Gen AnimMaster & Skiper UI) -->
 <canvas id="cosmicPlasmaCanvas"></canvas>
 <canvas id="laserTrailCanvas"></canvas>
@@ -47,6 +65,11 @@
             <a href="#projects">Projects</a>
             <a href="#contact" class="nav-cta">Contact</a>
         </div>
+        <button class="nav-cmd-trigger" id="navCmdTrigger" aria-label="Open Command Menu (Ctrl+K)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <span>Search</span>
+            <kbd>Ctrl K</kbd>
+        </button>
         <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
             <span></span><span></span><span></span>
         </button>
@@ -81,15 +104,15 @@
             </div>
             <div class="hero-stats">
                 <div class="stat">
-                    <h3>12</h3>
+                    <h3 data-target="14">14</h3>
                     <p>Public GitHub Repos</p>
                 </div>
                 <div class="stat">
-                    <h3>735</h3>
+                    <h3 data-target="735">735</h3>
                     <p>LinkedIn Followers</p>
                 </div>
                 <div class="stat">
-                    <h3>8.03</h3>
+                    <h3 data-target="8.03">8.03</h3>
                     <p>B.Tech CGPA</p>
                 </div>
             </div>
@@ -102,8 +125,13 @@
                 <div class="floating-orbit-pill pill-django" data-speed="1.4">Django</div>
                 <div class="floating-orbit-pill pill-react" data-speed="1.8">React</div>
 
-                <div class="hero-image-card">
-                    <img src="assets/profile.jpg" alt="Sankula Koteswara Rao">
+                <div class="hero-image-card perspective-tilt border-beam-card">
+                    <div class="card-specular-glare"></div>
+                    <img src="assets/profile_hero.jpg" alt="Sankula Koteswara Rao" class="hero-profile-img">
+                    <div class="hero-image-sheen"></div>
+                    <div class="hero-image-badge">
+                        <span class="badge-dot"></span> AI &amp; Full Stack Engineer
+                    </div>
                 </div>
             </div>
         </div>
@@ -111,7 +139,7 @@
 </section>
 
 <!-- ABOUT -->
-<section id="about">
+<section id="about" class="section-dark">
     <div class="section-header">
         <div>
             <p class="section-label">Who I Am</p>
@@ -157,22 +185,22 @@
         </div>
     </div>
     <div class="about-highlights stagger-reveal" style="margin-top: 4rem;">
-        <div class="highlight-card reveal-item" style="border-color: var(--highlight); box-shadow: 0 12px 24px rgba(153, 102, 255, 0.08);">
+        <div class="highlight-card reveal-item spotlight-card">
             <div class="icon">⚡</div>
             <h4>AI Tools Specialist</h4>
             <p>Utilizing AI workflows to build high-performance web systems and SaaS platforms.</p>
         </div>
-        <div class="highlight-card reveal-item">
+        <div class="highlight-card reveal-item spotlight-card">
             <div class="icon">💻</div>
             <h4>Web Development Service</h4>
             <p>Offering web development support for responsive portfolios, business sites, dashboards, and Python-backed apps.</p>
         </div>
-        <div class="highlight-card reveal-item">
+        <div class="highlight-card reveal-item spotlight-card">
             <div class="icon">🎓</div>
             <h4>CIET Student</h4>
             <p>Currently pursuing a B.Tech degree with a solid 8.03 CGPA and hands-on academic work.</p>
         </div>
-        <div class="highlight-card reveal-item">
+        <div class="highlight-card reveal-item spotlight-card">
             <div class="icon">in</div>
             <h4>LinkedIn Presence</h4>
             <p>Growing professional profile with 735 followers, 500+ connections, technical articles, and project updates.</p>
@@ -192,7 +220,7 @@
     </div>
     <div class="experience-timeline stagger-reveal">
         <!-- AUTO_EXPERIENCE_MARKER -->
-         <div class="experience-card reveal-item">
+         <div class="experience-card reveal-item border-beam-card spotlight-card">
             <div class="experience-meta">
                 <span class="company">Flipkart</span>
                 Aug 2025 – Jan 2026 (6 months)
@@ -220,7 +248,7 @@
 </section>
 
 <!-- EDUCATION -->
-<section id="education">
+<section id="education" class="section-dark">
     <div class="section-header">
         <div>
             <p class="section-label">My Journey</p>
@@ -230,7 +258,7 @@
     </div>
     <div class="education-timeline stagger-reveal">
         <!-- AUTO_EDUCATION_MARKER -->
-        <div class="education-card reveal-item">
+        <div class="education-card reveal-item border-beam-card spotlight-card">
             <div class="education-meta">
                 <span class="institution">CIET, Lam</span>
                 2023 – 2027
@@ -246,7 +274,7 @@
         </div>
         
         
-        <div class="education-card reveal-item">
+        <div class="education-card reveal-item spotlight-card">
             <div class="education-meta">
                 <span class="institution">CIET</span>
                 2025
@@ -262,7 +290,7 @@
                 </div>
             </div>
         </div>
-        <div class="education-card reveal-item">
+        <div class="education-card reveal-item spotlight-card">
             <div class="education-meta">
                 <span class="institution">Sri Saraswathi Jr College</span>
                 2021 – 2023
@@ -275,7 +303,7 @@
                 </div>
             </div>
         </div>
-        <div class="education-card reveal-item">
+        <div class="education-card reveal-item spotlight-card">
             <div class="education-meta">
                 <span class="institution">Govt Z Z P H School</span>
                 2020 – 2021
@@ -302,7 +330,8 @@
     </div>
     <div class="certificates-grid stagger-reveal">
         <!-- Certificate Card 1: Flipkart Python Development Internship -->
-        <div class="certificate-card reveal-item">
+        <div class="certificate-card reveal-item perspective-tilt spotlight-card">
+            <div class="card-specular-glare"></div>
             <div class="certificate-image-container">
                 <img src="./assets/certificate-flipkart.png" alt="Flipkart Python Development Internship Completion Certificate">
                 <div class="certificate-overlay">
@@ -326,7 +355,8 @@
         </div>
 
         <!-- Certificate Card 2: Freedom With AI Masterclass -->
-        <div class="certificate-card reveal-item">
+        <div class="certificate-card reveal-item perspective-tilt spotlight-card">
+            <div class="card-specular-glare"></div>
             <div class="certificate-image-container">
                 <img src="./assets/certificate-freedom-with-ai.png" alt="Freedom with AI Masterclass Certificate of Completion">
                 <div class="certificate-overlay">
@@ -352,7 +382,7 @@
 </section>
 
 <!-- BRAND COLLABS (TECH STACK) -->
-<section id="brands">
+<section id="brands" class="section-dark">
     <div class="section-header">
         <div>
             <p class="section-label">Expertise</p>
@@ -416,20 +446,20 @@
         </div>
 
         <div class="linkedin-stats-grid">
-            <div class="linkedin-stat-card">
-                <strong>735</strong>
+            <div class="linkedin-stat-card spotlight-card">
+                <strong data-target="735">735</strong>
                 <span>Followers</span>
             </div>
-            <div class="linkedin-stat-card">
-                <strong>500+</strong>
+            <div class="linkedin-stat-card spotlight-card">
+                <strong data-target="500+">500+</strong>
                 <span>Connections</span>
             </div>
-            <div class="linkedin-stat-card">
-                <strong>3</strong>
+            <div class="linkedin-stat-card spotlight-card">
+                <strong data-target="3">3</strong>
                 <span>Featured article topics</span>
             </div>
-            <div class="linkedin-stat-card">
-                <strong>1</strong>
+            <div class="linkedin-stat-card spotlight-card">
+                <strong data-target="1">1</strong>
                 <span>Service listed</span>
             </div>
         </div>
@@ -485,7 +515,7 @@
 </section>
 
 <!-- GITHUB -->
-<section id="github">
+<section id="github" class="section-dark">
     <div class="section-header">
         <div>
             <p class="section-label">GitHub Activity</p>
@@ -508,57 +538,57 @@
             <div class="github-meta">
                 <span>Vaidana</span>
                 <span>Joined Nov 2024</span>
-                <span>Updated Jul 2026</span>
+                <span>Updated Sep 2026</span>
             </div>
         </div>
 
         <div class="github-stats-grid">
-            <div class="github-stat-card">
-                <strong>12</strong>
+            <div class="github-stat-card spotlight-card">
+                <strong data-target="14">14</strong>
                 <span>Public repositories</span>
             </div>
-            <div class="github-stat-card">
-                <strong>42</strong>
+            <div class="github-stat-card spotlight-card">
+                <strong data-target="42">42</strong>
                 <span>Recent public push events</span>
             </div>
-            <div class="github-stat-card">
-                <strong>4</strong>
+            <div class="github-stat-card spotlight-card">
+                <strong data-target="4">4</strong>
                 <span>Recent pull request events</span>
             </div>
-            <div class="github-stat-card">
-                <strong>3</strong>
+            <div class="github-stat-card spotlight-card">
+                <strong data-target="3">3</strong>
                 <span>Followers</span>
             </div>
         </div>
     </div>
 
     <div class="github-content-grid stagger-reveal">
-        <div class="github-panel reveal-item">
+        <div class="github-panel reveal-item spotlight-card">
             <div class="github-panel-heading">
                 <p>Active repositories</p>
                 <span>Latest public API snapshot</span>
             </div>
             <div class="github-repo-list">
+                <a href="https://github.com/rkotesh/asset-management-spa" target="_blank" class="github-repo">
+                    <strong>asset-management-spa</strong>
+                    <span>JavaScript | asset management SPA | pushed Sep 11, 2026</span>
+                </a>
                 <a href="https://github.com/rkotesh/kotesh-portfolio" target="_blank" class="github-repo">
                     <strong>kotesh-portfolio</strong>
-                    <span>CSS | portfolio site | pushed Jul 24, 2026</span>
+                    <span>CSS / JS | portfolio upgrade | pushed Sep 9, 2026</span>
+                </a>
+                <a href="https://github.com/rkotesh/java" target="_blank" class="github-repo">
+                    <strong>java</strong>
+                    <span>Java | core algorithms &amp; OOP | pushed Sep 8, 2026</span>
                 </a>
                 <a href="https://github.com/rkotesh/college_website" target="_blank" class="github-repo">
                     <strong>college_website</strong>
-                    <span>TypeScript | deployed college website | pushed Jul 24, 2026</span>
-                </a>
-                <a href="https://github.com/rkotesh/ciet_erp" target="_blank" class="github-repo">
-                    <strong>ciet_erp</strong>
-                    <span>HTML/Django work | ERP portal | pushed Jul 8, 2026</span>
-                </a>
-                <a href="https://github.com/rkotesh/asset-management-spa" target="_blank" class="github-repo">
-                    <strong>asset-management-spa</strong>
-                    <span>JavaScript | asset management app | pushed Jul 6, 2026</span>
+                    <span>TypeScript | deployed college portal | pushed Aug 19, 2026</span>
                 </a>
             </div>
         </div>
         
-        <div class="github-panel reveal-item">
+        <div class="github-panel reveal-item spotlight-card">
             <div class="github-panel-heading">
                 <p>Contribution focus</p>
                 <span>Recent public activity</span>
@@ -567,29 +597,29 @@
                 <div class="contribution-item">
                     <span class="contribution-dot"></span>
                     <div>
-                        <strong>Maintained portfolio and deployment work</strong>
-                        <p>Recent pushes to kotesh-portfolio, including the live Vercel portfolio.</p>
+                        <strong>Frontend SPA and digital asset state architecture</strong>
+                        <p>Latest active engineering on asset-management-spa with modern JavaScript single-page workflows.</p>
                     </div>
                 </div>
                 <div class="contribution-item">
                     <span class="contribution-dot"></span>
                     <div>
-                        <strong>Built and iterated college_website</strong>
-                        <p>Most active recent repository with 27 public events in the fetched activity window.</p>
+                        <strong>Core Java data structures &amp; algorithmic logic</strong>
+                        <p>Active development on java and PolynomialAssignment implementing algorithmic computation solutions.</p>
                     </div>
                 </div>
                 <div class="contribution-item">
                     <span class="contribution-dot"></span>
                     <div>
-                        <strong>Opened and closed PR work in ciet_erp</strong>
-                        <p>Public pull request activity around the student profile branch and ERP improvements.</p>
+                        <strong>Open source collaborations and PR reviews</strong>
+                        <p>Collaborative contribution events on voting_application, ApexStore, and AI-Customer-Support.</p>
                     </div>
                 </div>
                 <div class="contribution-item">
                     <span class="contribution-dot"></span>
                     <div>
-                        <strong>Published practical Python projects</strong>
-                        <p>Repositories include QR generation, hospital chatbot, inventory billing, automation, feedback monitoring, and weather forecasting.</p>
+                        <strong>Continuous deployment &amp; web optimization</strong>
+                        <p>Maintained production deployments across kotesh-portfolio, college_website, and Rolla AI.</p>
                     </div>
                 </div>
             </div>
@@ -607,7 +637,8 @@
         </div>
     </div>
     <div class="projects-grid stagger-reveal">
-        <div class="project-card featured reveal-item" data-project="rolla_ai">
+        <div class="project-card featured reveal-item border-beam-card perspective-tilt spotlight-card" data-project="rolla_ai">
+            <div class="card-specular-glare"></div>
             <span class="featured-badge">✨ Featured Agency</span>
             <div class="project-info">
                 <h4 style="color: #534AB7; font-weight: 700; display: flex; align-items: center; gap: 0.75rem;">
@@ -625,7 +656,7 @@
                 </div>
             </div>
         </div>
-        <div class="project-card reveal-item" data-project="hospital_chatbot">
+        <div class="project-card reveal-item spotlight-card" data-project="hospital_chatbot">
             <div class="project-info">
                 <h4>Hospital Chatbot</h4>
                 <p>AI-driven conversational agent to assist patients with booking appointments and basic medical queries.</p>
@@ -641,7 +672,7 @@
                 </div>
             </div>
         </div>
-        <div class="project-card reveal-item" data-project="qr_generator">
+        <div class="project-card reveal-item spotlight-card" data-project="qr_generator">
             <div class="project-info">
                 <h4>QR Code Generator</h4>
                 <p>A simple utility to generate customizable QR codes for URLs, text, and contact information.</p>
@@ -655,7 +686,7 @@
                 </div>
             </div>
         </div>
-        <div class="project-card reveal-item" data-project="elms">
+        <div class="project-card reveal-item spotlight-card" data-project="elms">
             <div class="project-info">
                 <h4>ELMS (Leave Management)</h4>
                 <p>Production-grade Employee Leave Management System built during the Flipkart internship, with authentication, REST API integration, and responsive workflows.</p>
@@ -670,7 +701,7 @@
                 </div>
             </div>
         </div>
-        <div class="project-card reveal-item" data-project="inventory_system">
+        <div class="project-card reveal-item spotlight-card" data-project="inventory_system">
             <div class="project-info">
                 <h4>Inventory & Billing System</h4>
                 <p>A console-based Python application that manages product inventory, processes customer orders, and generates bills.</p>
@@ -682,7 +713,7 @@
                 </div>
             </div>
         </div>
-        <div class="project-card reveal-item" data-project="automation_system">
+        <div class="project-card reveal-item spotlight-card" data-project="automation_system">
             <div class="project-info">
                 <h4>Automation System</h4>
                 <p>An automated system designed to streamline repetitive tasks and improve operational efficiency.</p>
@@ -695,7 +726,7 @@
                 </div>
             </div>
         </div>
-        <div class="project-card reveal-item" data-project="asset_management_spa">
+        <div class="project-card reveal-item spotlight-card" data-project="asset_management_spa">
             <div class="project-info">
                 <h4>Asset Management Spa</h4>
                 <p>An open-source repository for Asset Management Spa built to solve development challenges.</p>
@@ -709,7 +740,7 @@
             </div>
         </div>
         
-        <div class="project-card reveal-item" data-project="feedback_monitoring_system">
+        <div class="project-card reveal-item spotlight-card" data-project="feedback_monitoring_system">
             <div class="project-info">
                 <h4>Feedback Monitoring System</h4>
                 <p>An open-source repository for Feedback Monitoring System built to solve development challenges.</p>
@@ -723,7 +754,7 @@
             </div>
         </div>
         
-        <div class="project-card reveal-item" data-project="weather_forecast">
+        <div class="project-card reveal-item spotlight-card" data-project="weather_forecast">
             <div class="project-info">
                 <h4>Weather Forecast</h4>
                 <p>An open-source repository for Weather Forecast built to solve development challenges.</p>
@@ -736,7 +767,7 @@
                 </div>
             </div>
         </div>
-        <div class="project-card reveal-item" data-project="personal_portfolio">
+        <div class="project-card reveal-item spotlight-card" data-project="personal_portfolio">
             <div class="project-info">
                 <h4>Personal Developer Portfolio</h4>
                 <p>Full-stack personal portfolio built with HTML, CSS, and JavaScript, deployed on Vercel to showcase projects, skills, certifications, and contact details.</p>
@@ -753,7 +784,7 @@
             </div>
         </div>
         
-        <div class="project-card reveal-item" data-project="college_website">
+        <div class="project-card reveal-item spotlight-card" data-project="college_website">
             <div class="project-info">
                 <h4>College Website</h4>
                 <p>A deployed TypeScript college website maintained as one of the most active recent GitHub projects.</p>
@@ -768,30 +799,31 @@
             </div>
         </div>
         
-        <div class="project-card reveal-item" data-project="polynomialassignment">
+        <div class="project-card reveal-item spotlight-card" data-project="java">
             <div class="project-info">
-                <h4>Polynomialassignment</h4>
-                <p>An open-source repository for Polynomialassignment built to solve development challenges.</p>
+                <h4>Core Java &amp; Data Structures</h4>
+                <p>Core Java engineering repository implementing object-oriented programming concepts, collections, and algorithmic problem-solving routines.</p>
                 <div class="project-tags">
                     <span>Java</span>
-                    <span>Utility</span>
+                    <span>Algorithms</span>
+                    <span>OOP</span>
                 </div>
                 <div class="project-links">
-                    <a href="https://github.com/rkotesh/PolynomialAssignment" target="_blank" class="project-link">GitHub ↗</a>
+                    <a href="https://github.com/rkotesh/java" target="_blank" class="project-link">GitHub ↗</a>
                 </div>
             </div>
         </div>
         
-        <div class="project-card reveal-item" data-project="java">
+        <div class="project-card reveal-item spotlight-card" data-project="polynomial_assignment">
             <div class="project-info">
-                <h4>Java</h4>
-                <p>An open-source repository for Java built to solve development challenges.</p>
+                <h4>Polynomial Assignment Algorithm</h4>
+                <p>Mathematical polynomial evaluation and Lagrange interpolation algorithm implemented in Java to decode secret coefficients.</p>
                 <div class="project-tags">
                     <span>Java</span>
-                    <span>Utility</span>
+                    <span>Mathematics</span>
                 </div>
                 <div class="project-links">
-                    <a href="https://github.com/rkotesh/java" target="_blank" class="project-link">GitHub ↗</a>
+                    <a href="https://github.com/rkotesh/PolynomialAssignment" target="_blank" class="project-link">GitHub ↗</a>
                 </div>
             </div>
         </div>
@@ -816,7 +848,7 @@
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
+<section id="contact" class="section-dark">
     <div class="section-header">
         <div>
             <p class="section-label">Get in Touch</p>
@@ -892,14 +924,16 @@
 
 <!-- FOOTER -->
 <footer>
-    <div class="footer-brand">
-        <p>© <span id="year"></span> Sankula Koteswara Rao. Built with care.</p>
-    </div>
-    <div class="footer-links">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-        <a href="#">Back to top ↑</a>
+    <div class="footer-container">
+        <div class="footer-brand">
+            <p>© <span id="year"></span> Sankula Koteswara Rao. Built with care.</p>
+        </div>
+        <div class="footer-links">
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+            <a href="#">Back to top ↑</a>
+        </div>
     </div>
 </footer>
 
@@ -966,6 +1000,34 @@
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
         </button>
     </form>
+</div>
+
+<!-- COMMAND PALETTE (Raycast & Skiper UI Inspired) -->
+<div class="cmd-palette-backdrop" id="cmdPalette" aria-hidden="true" role="dialog" aria-label="Command Menu">
+    <div class="cmd-palette-card">
+        <div class="cmd-palette-header">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" class="cmd-palette-input" id="cmdInput" placeholder="Type a command or jump to section..." autocomplete="off" spellcheck="false">
+            <kbd class="cmd-palette-esc" id="cmdCloseBtn">ESC</kbd>
+        </div>
+        <div class="cmd-palette-body" id="cmdResults">
+            <!-- Populated via script.js -->
+        </div>
+        <div class="cmd-palette-footer">
+            <div class="cmd-palette-footer-keys">
+                <span><kbd>↑</kbd> <kbd>↓</kbd> Navigate</span>
+                <span><kbd>↵</kbd> Select</span>
+                <span><kbd>Esc</kbd> Close</span>
+            </div>
+            <span>Press <kbd>Ctrl</kbd> <kbd>K</kbd> anywhere</span>
+        </div>
+    </div>
+</div>
+
+<!-- MICRO-TOAST NOTIFICATION -->
+<div class="portfolio-toast" id="portfolioToast" aria-live="polite">
+    <span class="portfolio-toast-icon">✓</span>
+    <span class="portfolio-toast-msg" id="portfolioToastMsg">Copied to clipboard</span>
 </div>
 
 <script src="script.js"></script>
