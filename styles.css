@@ -2819,6 +2819,20 @@ section.section-dark .section-title {
     color: #FFFFFF !important;
 }
 
+section.section-dark .holographic-heading {
+    color: #FFFFFF !important;
+    -webkit-text-fill-color: currentColor;
+}
+
+section.section-dark .split-char {
+    background: linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 46%, var(--highlight) 56%, #4285F4 100%) !important;
+    background-size: 100% 240% !important;
+    background-position: 0 0;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
 section.section-dark .section-headline {
     color: #9CA3AF !important;
 }
