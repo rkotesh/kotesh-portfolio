@@ -410,6 +410,19 @@ document.addEventListener('DOMContentLoaded', () => {
             githubLink: "https://github.com/rkotesh/PolynomialAssignment"
         },
         
+        employee_management_system: {
+            title: "Employee Management System",
+            tags: ["Python", "Utility"],
+            description: "An open-source repository for Employee Management System built to solve development challenges.",
+            highlights: [
+                "Implemented robust application structures.",
+                "Fully configured for easy deployment and local testing.",
+                "Built using Python."
+            ],
+            liveLink: "",
+            githubLink: "https://github.com/rkotesh/Employee_Management_System"
+        },
+        
         /* AUTO_PROJECT_DB_MARKER */
     };
 
@@ -712,6 +725,14 @@ class KoteshAI {
                     tech: ['Java', 'Utility'],
                     description: 'An open-source repository for Java built to solve development challenges.',
                     github: 'https://github.com/rkotesh/java'
+                },
+                
+                {
+                    id: 'employee_management_system',
+                    title: 'Employee Management System',
+                    tech: ['Python', 'Utility'],
+                    description: 'An open-source repository for Employee Management System built to solve development challenges.',
+                    github: 'https://github.com/rkotesh/Employee_Management_System'
                 },
                 
                 /* AUTO_CHATBOT_PROJECTS_MARKER */
