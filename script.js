@@ -423,6 +423,19 @@ document.addEventListener('DOMContentLoaded', () => {
             githubLink: "https://github.com/rkotesh/Employee_Management_System"
         },
         
+        sql_database: {
+            title: "Sql Database",
+            tags: ["Python", "Utility"],
+            description: "An open-source repository for Sql Database built to solve development challenges.",
+            highlights: [
+                "Implemented robust application structures.",
+                "Fully configured for easy deployment and local testing.",
+                "Built using Python."
+            ],
+            liveLink: "",
+            githubLink: "https://github.com/rkotesh/sql_database"
+        },
+        
         /* AUTO_PROJECT_DB_MARKER */
     };
 
@@ -733,6 +746,14 @@ class KoteshAI {
                     tech: ['Python', 'Utility'],
                     description: 'An open-source repository for Employee Management System built to solve development challenges.',
                     github: 'https://github.com/rkotesh/Employee_Management_System'
+                },
+                
+                {
+                    id: 'sql_database',
+                    title: 'Sql Database',
+                    tech: ['Python', 'Utility'],
+                    description: 'An open-source repository for Sql Database built to solve development challenges.',
+                    github: 'https://github.com/rkotesh/sql_database'
                 },
                 
                 /* AUTO_CHATBOT_PROJECTS_MARKER */
