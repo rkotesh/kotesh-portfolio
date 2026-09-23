@@ -436,6 +436,19 @@ document.addEventListener('DOMContentLoaded', () => {
             githubLink: "https://github.com/rkotesh/sql_database"
         },
         
+        javascript: {
+            title: "Javascript",
+            tags: ["JavaScript", "Utility"],
+            description: "An open-source repository for Javascript built to solve development challenges.",
+            highlights: [
+                "Implemented robust application structures.",
+                "Fully configured for easy deployment and local testing.",
+                "Built using JavaScript."
+            ],
+            liveLink: "",
+            githubLink: "https://github.com/rkotesh/javascript"
+        },
+        
         /* AUTO_PROJECT_DB_MARKER */
     };
 
@@ -754,6 +767,14 @@ class KoteshAI {
                     tech: ['Python', 'Utility'],
                     description: 'An open-source repository for Sql Database built to solve development challenges.',
                     github: 'https://github.com/rkotesh/sql_database'
+                },
+                
+                {
+                    id: 'javascript',
+                    title: 'Javascript',
+                    tech: ['JavaScript', 'Utility'],
+                    description: 'An open-source repository for Javascript built to solve development challenges.',
+                    github: 'https://github.com/rkotesh/javascript'
                 },
                 
                 /* AUTO_CHATBOT_PROJECTS_MARKER */
