@@ -410,6 +410,58 @@ document.addEventListener('DOMContentLoaded', () => {
             githubLink: "https://github.com/rkotesh/PolynomialAssignment"
         },
         
+        claude_code_ui_agents: {
+            title: "Claude Code Ui Agents",
+            tags: ["Python", "Utility"],
+            description: "🎨 A curated collection of Claude AI agent prompts specifically designed for UI/UX design, web development, and frontend tasks. Transform your design workflow with specialized prompts for creating interfaces, components, and user experiences.",
+            highlights: [
+                "Implemented robust application structures.",
+                "Fully configured for easy deployment and local testing.",
+                "Built using Python."
+            ],
+            liveLink: "",
+            githubLink: "https://github.com/rkotesh/claude-code-ui-agents"
+        },
+        
+        employee_management_system: {
+            title: "Employee Management System",
+            tags: ["Java", "Utility"],
+            description: "An open-source repository for Employee Management System built to solve development challenges.",
+            highlights: [
+                "Implemented robust application structures.",
+                "Fully configured for easy deployment and local testing.",
+                "Built using Java."
+            ],
+            liveLink: "",
+            githubLink: "https://github.com/rkotesh/Employee_Management_System"
+        },
+        
+        javascript: {
+            title: "Javascript",
+            tags: ["JavaScript", "Utility"],
+            description: "An open-source repository for Javascript built to solve development challenges.",
+            highlights: [
+                "Implemented robust application structures.",
+                "Fully configured for easy deployment and local testing.",
+                "Built using JavaScript."
+            ],
+            liveLink: "",
+            githubLink: "https://github.com/rkotesh/javascript"
+        },
+        
+        sql_database: {
+            title: "Sql Database",
+            tags: ["Python", "Utility"],
+            description: "An open-source repository for Sql Database built to solve development challenges.",
+            highlights: [
+                "Implemented robust application structures.",
+                "Fully configured for easy deployment and local testing.",
+                "Built using Python."
+            ],
+            liveLink: "",
+            githubLink: "https://github.com/rkotesh/sql_database"
+        },
+        
         /* AUTO_PROJECT_DB_MARKER */
     };
 
@@ -712,6 +764,38 @@ class KoteshAI {
                     tech: ['Java', 'Utility'],
                     description: 'An open-source repository for Java built to solve development challenges.',
                     github: 'https://github.com/rkotesh/java'
+                },
+                
+                {
+                    id: 'claude_code_ui_agents',
+                    title: 'Claude Code Ui Agents',
+                    tech: ['Python', 'Utility'],
+                    description: '🎨 A curated collection of Claude AI agent prompts specifically designed for UI/UX design, web development, and frontend tasks. Transform your design workflow with specialized prompts for creating interfaces, components, and user experiences.',
+                    github: 'https://github.com/rkotesh/claude-code-ui-agents'
+                },
+                
+                {
+                    id: 'employee_management_system',
+                    title: 'Employee Management System',
+                    tech: ['Java', 'Utility'],
+                    description: 'An open-source repository for Employee Management System built to solve development challenges.',
+                    github: 'https://github.com/rkotesh/Employee_Management_System'
+                },
+                
+                {
+                    id: 'javascript',
+                    title: 'Javascript',
+                    tech: ['JavaScript', 'Utility'],
+                    description: 'An open-source repository for Javascript built to solve development challenges.',
+                    github: 'https://github.com/rkotesh/javascript'
+                },
+                
+                {
+                    id: 'sql_database',
+                    title: 'Sql Database',
+                    tech: ['Python', 'Utility'],
+                    description: 'An open-source repository for Sql Database built to solve development challenges.',
+                    github: 'https://github.com/rkotesh/sql_database'
                 },
                 
                 /* AUTO_CHATBOT_PROJECTS_MARKER */
