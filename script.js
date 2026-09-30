@@ -592,7 +592,7 @@ class KoteshAI {
             ],
             skills: {
                 languages: ['HTML', 'CSS', 'JavaScript', 'Python', 'MySQL'],
-                frameworks: ['Bootstrap', 'Streamlit', 'Flask', 'Django', 'React (MERN Stack)', 'REST APIs'],
+                frameworks: ['Bootstrap', 'Flask', 'Django', 'React (MERN Stack)', 'REST APIs'],
                 tools: ['Prompt Engineering', 'Git', 'GitHub', 'VS Code', 'Canva', 'AI Tools', 'Vercel']
             },
             projects: [
@@ -1395,7 +1395,6 @@ window.addEventListener('click', e => {
 
     const roles = [
         "Open to Opportunities",
-        "AI & ML Specialist",
         "Python & Django Developer",
         "Full Stack Web Engineer",
         "Flipkart Launchpad Intern"
