@@ -462,6 +462,19 @@ document.addEventListener('DOMContentLoaded', () => {
             githubLink: "https://github.com/rkotesh/sql_database"
         },
         
+        aakaro: {
+            title: "Aakaro",
+            tags: ["JavaScript", "Utility"],
+            description: "An open-source repository for Aakaro built to solve development challenges.",
+            highlights: [
+                "Implemented robust application structures.",
+                "Fully configured for easy deployment and local testing.",
+                "Built using JavaScript."
+            ],
+            liveLink: "",
+            githubLink: "https://github.com/rkotesh/aakaro"
+        },
+        
         /* AUTO_PROJECT_DB_MARKER */
     };
 
@@ -796,6 +809,14 @@ class KoteshAI {
                     tech: ['Python', 'Utility'],
                     description: 'An open-source repository for Sql Database built to solve development challenges.',
                     github: 'https://github.com/rkotesh/sql_database'
+                },
+                
+                {
+                    id: 'aakaro',
+                    title: 'Aakaro',
+                    tech: ['JavaScript', 'Utility'],
+                    description: 'An open-source repository for Aakaro built to solve development challenges.',
+                    github: 'https://github.com/rkotesh/aakaro'
                 },
                 
                 /* AUTO_CHATBOT_PROJECTS_MARKER */
