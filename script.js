@@ -488,6 +488,19 @@ document.addEventListener('DOMContentLoaded', () => {
             githubLink: "https://github.com/rkotesh/terravidhal"
         },
         
+        blueprintai: {
+            title: "Blueprintai",
+            tags: ["TypeScript", "Utility"],
+            description: "An open-source repository for Blueprintai built to solve development challenges.",
+            highlights: [
+                "Implemented robust application structures.",
+                "Fully configured for easy deployment and local testing.",
+                "Built using TypeScript."
+            ],
+            liveLink: "",
+            githubLink: "https://github.com/rkotesh/blueprintai"
+        },
+        
         /* AUTO_PROJECT_DB_MARKER */
     };
 
@@ -838,6 +851,14 @@ class KoteshAI {
                     tech: ['Python', 'Utility'],
                     description: 'An open-source repository for Terravidhal built to solve development challenges.',
                     github: 'https://github.com/rkotesh/terravidhal'
+                },
+                
+                {
+                    id: 'blueprintai',
+                    title: 'Blueprintai',
+                    tech: ['TypeScript', 'Utility'],
+                    description: 'An open-source repository for Blueprintai built to solve development challenges.',
+                    github: 'https://github.com/rkotesh/blueprintai'
                 },
                 
                 /* AUTO_CHATBOT_PROJECTS_MARKER */
